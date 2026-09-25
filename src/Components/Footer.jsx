@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center">
               <img
-                src="/src/assets/AdiShakti-Logo.png"
+                src="../assets/AdiShakti-Logo.png"
                 alt="Harika Paradise Logo"
                 className="h-20 sm:h-24 w-auto object-contain bg-white p-1.5 rounded-lg shadow-md"
               />
