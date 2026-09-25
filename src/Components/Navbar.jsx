@@ -314,7 +314,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/contact-us"
+              to="/contact"
               onClick={() => setIsOpen(false)}
               className="block text-slate-700 hover:text-[#C29D56] font-medium text-base py-1"
             >

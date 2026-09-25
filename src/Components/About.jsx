@@ -1,6 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Eye, Compass, Layers, Cpu, Smile, MapPin, Phone, Mail, ArrowRight, ShieldCheck, Building2, CheckCircle2, Award, Sparkles } from 'lucide-react';
+
+// Importing all images at the top for proper Vite bundler handling and Vercel deployment
+import heroBgImg from '../assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg';
+import siteViewImg from '../assets/HARIKA PARADISE VIEW-7.jpeg';
+import visionImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import missionImg from '../assets/01.jpeg';
 
 const About = () => {
   // Counter Animation States
@@ -74,7 +80,7 @@ const About = () => {
         
         <div className="absolute inset-0 z-0">
           <img 
-            src="./src/assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg" 
+            src={heroBgImg} 
             alt="Corporate Background" 
             className="w-full h-full object-cover object-center transform scale-105"
             onError={(e) => {
@@ -152,7 +158,7 @@ const About = () => {
               <div className="lg:col-span-5 relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#C29D56]/40 h-[340px] sm:h-[420px] group">
                   <img 
-                    src="./src/assets/HARIKA PARADISE VIEW-7.jpeg" 
+                    src={siteViewImg} 
                     alt="Corporate & Project Site" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
@@ -220,7 +226,7 @@ const About = () => {
               <div className="lg:col-span-6">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#C29D56]/40 h-[260px] sm:h-[320px] lg:h-full w-full group">
                   <img 
-                    src="./src/assets/HARIKA PARADISE GATE VIEW.jpeg" 
+                    src={visionImg} 
                     alt="Our Vision" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
@@ -238,7 +244,7 @@ const About = () => {
               <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#C29D56]/40 h-[260px] sm:h-[320px] lg:h-full w-full group">
                   <img 
-                    src="./src/assets/01.jpeg" 
+                    src={missionImg} 
                     alt="Our Mission" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {

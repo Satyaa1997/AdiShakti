@@ -6,6 +6,11 @@ import {
   FileText, Layers, Sparkles, TrendingUp, Shield, ArrowUpRight 
 } from 'lucide-react';
 
+// Importing all images at the top for proper Vite bundler handling and Vercel deployment
+import heroBgImg from '../assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg';
+import plannedDevImg from '../assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg';
+import locationFocusImg from '../assets/04.jpeg';
+
 const WhyChoose = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#C29D56] selection:text-white overflow-x-hidden">
@@ -161,7 +166,7 @@ const WhyChoose = () => {
       <section className="relative bg-slate-950 text-white h-[440px] sm:h-[500px] lg:h-[540px] overflow-hidden flex items-end pb-12 sm:pb-16 border-b border-[#C29D56]/30">
         <div className="absolute inset-0 z-0">
           <img 
-            src="./src/assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg" 
+            src={heroBgImg} 
             alt="Why Choose Us Hero" 
             className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow brightness-110"
           />
@@ -240,7 +245,7 @@ const WhyChoose = () => {
               <div className="lg:col-span-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
                   <img 
-                    src="./src/assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg" 
+                    src={plannedDevImg} 
                     alt="Planned Development" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
@@ -345,7 +350,7 @@ const WhyChoose = () => {
               <div className="lg:col-span-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
                   <img 
-                    src="./src/assets/04.jpeg" 
+                    src={locationFocusImg} 
                     alt="Location Focus" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -10,14 +9,15 @@ import {
   X,
 } from 'lucide-react';
 
-import entranceRight from '../assets/04.jpeg';
-import landscape from '../assets/Landscape.jpg';
-import clubhouse from '../assets/Club House.jpg';
-import amphitheatre from '../assets/imagesamphitheatre.jfif';
-import fitnessTrack from '../assets/fitnessTrack.webp';
-import playArea from '../assets/Playarea.jpg';
-import layoutWest from '../assets/HARIKA PARADISE VIEW-6.jpeg';
-import layoutEast from '../assets/01.jpeg';
+// Importing all images at the top for proper Vite bundler handling and Vercel deployment
+import entranceRightImg from '../assets/04.jpeg';
+import landscapeImg from '../assets/Landscape.jpg';
+import clubhouseImg from '../assets/Club House.jpg';
+import amphitheatreImg from '../assets/imagesamphitheatre.jfif';
+import fitnessTrackImg from '../assets/fitnessTrack.webp';
+import playAreaImg from '../assets/Playarea.jpg';
+import layoutWestImg from '../assets/HARIKA PARADISE VIEW-6.jpeg';
+import layoutEastImg from '../assets/01.jpeg';
 
 // ============================================================
 // GALLERY DATA
@@ -31,7 +31,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'A welcoming entrance designed to create a premium first impression.',
-    image: entranceRight,
+    image: entranceRightImg,
   },
   {
     id: 'landscape',
@@ -40,7 +40,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'Beautifully planned open spaces surrounded by lush greenery, thoughtfully landscaped gardens and refreshing natural surroundings. The development is designed to create a peaceful and visually appealing environment where residents can enjoy open spaces, greenery and a comfortable lifestyle away from the hustle and bustle of the city.',
-    image: landscape,
+    image: landscapeImg,
   },
   {
     id: 'clubhouse',
@@ -49,7 +49,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'A thoughtfully planned clubhouse area for recreation and community living.',
-    image: clubhouse,
+    image: clubhouseImg,
   },
   {
     id: 'amphitheatre',
@@ -58,7 +58,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'An open community space designed for gatherings, events and leisure.',
-    image: amphitheatre,
+    image: amphitheatreImg,
   },
   {
     id: 'fitness-track',
@@ -67,7 +67,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'Dedicated spaces encouraging an active and healthy lifestyle.',
-    image: fitnessTrack,
+    image: fitnessTrackImg,
   },
   {
     id: 'play-area',
@@ -76,7 +76,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'A dedicated recreational space for children and families.',
-    image: playArea,
+    image: playAreaImg,
   },
   {
     id: 'layout-west',
@@ -85,7 +85,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'Project planning and layout overview of Harika Paradise.',
-    image: layoutWest,
+    image: layoutWestImg,
   },
   {
     id: 'layout-east',
@@ -94,7 +94,7 @@ const photos = [
     location: 'Harika Paradise',
     description:
       'A detailed visual representation of the planned development.',
-    image: layoutEast,
+    image: layoutEastImg,
   },
 ];
 
@@ -269,9 +269,9 @@ const Gallery = () => {
 
         <div className="absolute inset-0 z-0">
 
-          {/* FIXED: Hero uses entranceRight image */}
+          {/* Hero uses entranceRightImg image */}
           <img
-            src={entranceRight}
+            src={entranceRightImg}
             alt="Harika Paradise Gallery"
             className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow brightness-110"
           />
@@ -396,7 +396,6 @@ const Gallery = () => {
                   }`}
                 >
 
-                  {/* FIXED: Each card uses its own photo.image */}
                   <img
                     src={photo.image}
                     alt={photo.title}
@@ -599,7 +598,6 @@ const Gallery = () => {
 
             <div className="overflow-hidden rounded-2xl bg-black shadow-2xl border border-white/20">
 
-              {/* FIXED: Modal uses selectedPhoto.image */}
               <img
                 src={selectedPhoto.image}
                 alt={selectedPhoto.title}
