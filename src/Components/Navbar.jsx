@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, PhoneCall } from 'lucide-react';
 
 import logo from '../assets/AdiShakti-Logo.png';
@@ -14,6 +14,17 @@ const Navbar = () => {
     { name: 'Harika Paradise', path: '/harika-paradise' },
   ];
 
+  // Active link styling helper
+  const navLinkClass = ({ isActive }) =>
+    `font-medium text-sm transition-colors ${
+      isActive ? 'text-[#C29D56] font-bold border-b-2 border-[#C29D56] pb-1' : 'text-slate-700 hover:text-[#C29D56]'
+    };
+
+  const mobileNavLinkClass = ({ isActive }) =>
+    `block font-medium text-base py-1 transition-colors ${
+      isActive ? 'text-[#C29D56] font-bold pl-2 border-l-4 border-[#C29D56]' : 'text-slate-700 hover:text-[#C29D56]'
+    };
+
   return (
     <>
       {/* =========================================================
@@ -25,17 +36,13 @@ const Navbar = () => {
 
             {/* Social Icons - Left */}
             <div className="flex items-center gap-3">
-
               {/* Facebook */}
               <a
                 href="#"
                 aria-label="Facebook"
                 className="text-[#fdfbf7] hover:text-[#E1C48F] transition-colors duration-200"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-3.5 h-3.5 fill-current"
-                >
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
                   <path d="M14 8h3V5h-3c-2.8 0-5 2.2-5 5v2H6v3h3v6h3v-6h3l1-3h-4v-2c0-1.1.9-2 2-2Z" />
                 </svg>
               </a>
@@ -46,10 +53,7 @@ const Navbar = () => {
                 aria-label="Twitter"
                 className="text-[#f3f2f0] hover:text-[#E1C48F] transition-colors duration-200"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-3.5 h-3.5 fill-current"
-                >
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
                   <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.39L6.49 22H3.38l7.24-8.28L3 2h6.4l4.42 5.84L18.9 2Zm-1.1 17.7h1.73L8.48 4.18H6.62L17.8 19.7Z" />
                 </svg>
               </a>
@@ -65,25 +69,9 @@ const Navbar = () => {
                   className="w-3.5 h-3.5 fill-none stroke-current"
                   strokeWidth="1.8"
                 >
-                  <rect
-                    x="3"
-                    y="3"
-                    width="18"
-                    height="18"
-                    rx="5"
-                  />
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="4"
-                  />
-                  <circle
-                    cx="17.5"
-                    cy="6.5"
-                    r="1"
-                    fill="currentColor"
-                    stroke="none"
-                  />
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                 </svg>
               </a>
 
@@ -93,14 +81,10 @@ const Navbar = () => {
                 aria-label="LinkedIn"
                 className="text-[#eee9e1] hover:text-[#E1C48F] transition-colors duration-200"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-3.5 h-3.5 fill-current"
-                >
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
                   <path d="M6.5 8.5H3V21h3.5V8.5ZM4.75 3A2.05 2.05 0 1 0 4.75 7.1 2.05 2.05 0 0 0 4.75 3ZM21 13.8c0-3.77-2-5.52-4.68-5.52-2.16 0-3.13 1.19-3.67 2.03V8.5H9.15V21h3.5v-6.19c0-1.63.31-3.21 2.33-3.21 1.99 0 2.02 1.87 2.02 3.31V21H21v-7.2Z" />
                 </svg>
               </a>
-
             </div>
 
             {/* Contact Number - Right */}
@@ -121,7 +105,6 @@ const Navbar = () => {
       ========================================================= */}
       <nav className="bg-white shadow-md sticky top-0 z-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <div className="flex justify-between h-20 items-center">
 
             {/* Image Logo */}
@@ -138,19 +121,17 @@ const Navbar = () => {
             {/* Desktop Menu Items */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
 
-              <Link
-                to="/"
-                className="text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors"
-              >
+              <NavLink to="/" end className={({ isActive }) => 
+                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+              }>
                 Home
-              </Link>
+              </NavLink>
 
-              <Link
-                to="/about"
-                className="text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors"
-              >
+              <NavLink to="/about" className={({ isActive }) => 
+                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+              }>
                 About Us
-              </Link>
+              </NavLink>
 
               {/* Our Projects Dropdown */}
               <div
@@ -158,56 +139,56 @@ const Navbar = () => {
                 onMouseEnter={() => setDropdownOpen(true)}
                 onMouseLeave={() => setDropdownOpen(false)}
               >
-                <Link
+                <NavLink
                   to="/harika-paradise"
-                  className="flex items-center gap-1 text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors focus:outline-none"
+                  className={({ isActive }) => 
+                    `flex items-center gap-1 font-medium text-sm transition-colors focus:outline-none ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+                  }
                 >
                   Our Projects
-
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
                       dropdownOpen ? 'rotate-180' : ''
                     }`}
                   />
-                </Link>
+                </NavLink>
 
                 {/* Dropdown Menu */}
                 {dropdownOpen && (
                   <div className="absolute left-0 top-full w-48 bg-white border border-slate-100 rounded-lg shadow-lg py-2 z-50">
                     {projectItems.map((item, index) => (
-                      <Link
+                      <NavLink
                         key={index}
                         to={item.path}
                         onClick={() => setDropdownOpen(false)}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-[#C29D56]/10 hover:text-[#6B1312] transition-colors font-medium"
+                        className={({ isActive }) => 
+                          `block px-4 py-2 text-sm transition-colors font-medium ${isActive ? 'bg-[#C29D56]/10 text-[#6B1312] font-bold' : 'text-slate-700 hover:bg-[#C29D56]/10 hover:text-[#6B1312]'}`
+                        }
                       >
                         {item.name}
-                      </Link>
+                      </NavLink>
                     ))}
                   </div>
                 )}
               </div>
 
-              <Link
-                to="/why-choose"
-                className="text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors"
-              >
+              <NavLink to="/why-choose" className={({ isActive }) => 
+                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+              }>
                 Why Choose Us
-              </Link>
+              </NavLink>
 
-              <Link
-                to="/gallery"
-                className="text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors"
-              >
+              <NavLink to="/gallery" className={({ isActive }) => 
+                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+              }>
                 Gallery
-              </Link>
+              </NavLink>
 
-              <Link
-                to="/contact"
-                className="text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors"
-              >
+              <NavLink to="/contact" className={({ isActive }) => 
+                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+              }>
                 Contact Us
-              </Link>
+              </NavLink>
             </div>
 
             {/* Enquire Now CTA Button - Desktop */}
@@ -228,11 +209,7 @@ const Navbar = () => {
                 className="text-slate-700 hover:text-[#6B1312] focus:outline-none p-2 transition-transform active:scale-95"
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
               >
-                {isOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
 
@@ -245,32 +222,25 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-5 space-y-3 shadow-lg">
 
-            <Link
-              to="/"
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-700 hover:text-[#C29D56] font-medium text-base py-1"
-            >
+            <NavLink to="/" end onClick={() => setIsOpen(false)} className={({ isActive }) => 
+              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
+            }>
               Home
-            </Link>
+            </NavLink>
 
-            <Link
-              to="/about"
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-700 hover:text-[#C29D56] font-medium text-base py-1"
-            >
+            <NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => 
+              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
+            }>
               About Us
-            </Link>
+            </NavLink>
 
             {/* Mobile Projects Dropdown */}
             <div className="py-1">
               <button
-                onClick={() =>
-                  setMobileProjectsOpen(!mobileProjectsOpen)
-                }
+                onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
                 className="flex items-center justify-between w-full text-slate-700 hover:text-[#C29D56] font-medium text-base py-1 focus:outline-none"
               >
                 <span>Our Projects</span>
-
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
                     mobileProjectsOpen ? 'rotate-180' : ''
@@ -281,45 +251,41 @@ const Navbar = () => {
               {mobileProjectsOpen && (
                 <div className="pl-4 mt-2 space-y-2 border-l-2 border-[#C29D56]/30">
                   {projectItems.map((item, index) => (
-                    <Link
+                    <NavLink
                       key={index}
                       to={item.path}
                       onClick={() => {
                         setIsOpen(false);
                         setMobileProjectsOpen(false);
                       }}
-                      className="block py-1.5 text-sm text-slate-600 hover:text-[#6B1312] font-medium"
+                      className={({ isActive }) => 
+                        `block py-1.5 text-sm font-medium ${isActive ? 'text-[#6B1312] font-bold' : 'text-slate-600'}`
+                      }
                     >
                       {item.name}
-                    </Link>
+                    </NavLink>
                   ))}
                 </div>
               )}
             </div>
 
-            <Link
-              to="/why-choose"
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-700 hover:text-[#C29D56] font-medium text-base py-1"
-            >
+            <NavLink to="/why-choose" onClick={() => setIsOpen(false)} className={({ isActive }) => 
+              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
+            }>
               Why Choose Us
-            </Link>
+            </NavLink>
 
-            <Link
-              to="/gallery"
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-700 hover:text-[#C29D56] font-medium text-base py-1"
-            >
+            <NavLink to="/gallery" onClick={() => setIsOpen(false)} className={({ isActive }) => 
+              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
+            }>
               Gallery
-            </Link>
+            </NavLink>
 
-            <Link
-              to="/contact"
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-700 hover:text-[#C29D56] font-medium text-base py-1"
-            >
+            <NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => 
+              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
+            }>
               Contact Us
-            </Link>
+            </NavLink>
 
             {/* Enquire Now CTA - Mobile */}
             <div className="pt-2">
@@ -331,7 +297,6 @@ const Navbar = () => {
                 Enquire Now
               </a>
             </div>
-
           </div>
         )}
       </nav>
