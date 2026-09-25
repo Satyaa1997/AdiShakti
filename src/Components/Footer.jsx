@@ -6,6 +6,7 @@ import {
   Mail,
   ChevronRight,
 } from "lucide-react";
+import logo from "../assets/AdiShakti-Logo.png";
 
 const Footer = () => {
   return (
@@ -18,11 +19,11 @@ const Footer = () => {
           {/* Column 1: Brand Info & Logo */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <img
-                src="../assets/AdiShakti-Logo.png"
-                alt="Harika Paradise Logo"
-                className="h-20 sm:h-24 w-auto object-contain bg-white p-1.5 rounded-lg shadow-md"
-              />
+             <img
+               src={logo}
+               alt="Ādi Shakti Logo"
+               className="h-20 sm:h-24 w-auto object-contain bg-white p-1.5 rounded-lg shadow-md"
+             />
             </div>
 
             <p className="text-slate-200 text-sm leading-relaxed">
