@@ -203,7 +203,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                to="/contact-us"
+                to="/contact"
                 className="text-slate-700 hover:text-[#C29D56] font-medium text-sm transition-colors"
               >
                 Contact Us
