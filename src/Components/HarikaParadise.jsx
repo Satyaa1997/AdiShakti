@@ -6,6 +6,30 @@ import {
   Baby, SunMedium, Waves, Home, ArrowRight, Landmark, ZoomIn, ZoomOut, RotateCcw, CheckCircle2, Navigation 
 } from 'lucide-react';
 
+// Importing all images at the top for proper Vite bundler handling and Vercel deployment
+import heroGateImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import projOverviewImg from '../assets/01.jpeg';
+import sitePlanImg from '../assets/01.jpeg';
+
+import roadImg from '../assets/04.jpeg';
+import surroundingsImg from '../assets/01.jpeg';
+import clubHouseImg from '../assets/Club House.jpg';
+import landscapeImg from '../assets/Landscape.jpg';
+import playAreaImg from '../assets/Playarea.jpg';
+import streetlightImg from '../assets/Streetlight.jpg';
+import commercialImg from '../assets/Comercial.jpg';
+import entranceGateImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import waterSupplyImg from '../assets/Water Supply.jpg';
+import drainageImg from '../assets/Dranage.jfif';
+import entertainmentImg from '../assets/Entertainment.jpg';
+
+import galleryGateImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import galleryRoadsImg from '../assets/04.jpeg';
+import galleryLandscapingImg from '../assets/HARIKA PARADISE VIEW-5.jpeg';
+import galleryAmenitiesImg from '../assets/HARIKA PARADISE VIEW-6.jpeg';
+import galleryPlotViewImg from '../assets/HARIKA PARADISE PLOT VIEW-3.jpeg';
+import gallerySitePlanImg from '../assets/HARIKA PARADISE VIEW-7.jpeg';
+
 const HarikaParadise = () => {
   // Lightbox & Zoom state for site plan & gallery
   const [lightboxImg, setLightboxImg] = useState(null);
@@ -31,67 +55,67 @@ const HarikaParadise = () => {
       title: "Road Network", 
       desc: "Smooth wide internal pathways designed for effortless vehicle movement.", 
       icon: <Compass className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/04.jpeg" 
+      image: roadImg 
     },
     { 
       title: "Surroundings", 
       desc: "Serene, pollution-free natural environment for peaceful family living.", 
       icon: <Trees className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/01.jpeg" 
+      image: surroundingsImg 
     },
     { 
       title: "Club House", 
       desc: "Exclusive community leisure and social gathering hub for residents.", 
       icon: <Building2 className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Club House.jpg" 
+      image: clubHouseImg 
     },
     { 
       title: "Landscaping", 
       desc: "Bountiful green parks, open lawns, and beautifully manicured tracks.", 
       icon: <Sparkles className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Landscape.jpg" 
+      image: landscapeImg 
     },
     { 
       title: "Play Area", 
       desc: "Safe, dedicated recreational zones equipped for children's activities.", 
       icon: <Baby className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Playarea.jpg" 
+      image: playAreaImg 
     },
     { 
       title: "Street Lighting", 
       desc: "Advanced illuminated pathways ensuring secure night-time strolls.", 
       icon: <SunMedium className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Streetlight.jpg" 
+      image: streetlightImg 
     },
     { 
       title: "Commercial", 
       desc: "Daily need shops and commercial convenience right at your doorstep.", 
       icon: <Store className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Comercial.jpg" 
+      image: commercialImg 
     },
     { 
       title: "Entrance Gate", 
       desc: "Secure, majestic gated entry portal with 24/7 security surveillance.", 
       icon: <ShieldCheck className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/HARIKA PARADISE GATE VIEW.jpeg" 
+      image: entranceGateImg 
     },
     { 
       title: "Water Supply", 
       desc: "Reliable round-the-clock water supply provision across all plots.", 
       icon: <Waves className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Water Supply.jpg" 
+      image: waterSupplyImg 
     },
     { 
       title: "Drainage System", 
       desc: "Clean and robust underground sanitation and stormwater drainage.", 
       icon: <LayoutGrid className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Dranage.jfif" 
+      image: drainageImg 
     },
     { 
       title: "Entertainment", 
       desc: "Open-air gathering and cultural event arenas for community bonding.", 
       icon: <Home className="w-8 h-8 text-[#C29D56]" />,
-      image: "./src/assets/Entertainment.jpg" 
+      image: entertainmentImg 
     }
   ];
 
@@ -116,12 +140,12 @@ const HarikaParadise = () => {
 
   // Project Gallery Data with Categories
   const galleryPhotos = [
-    { category: "Entrance", src: "./src/assets/HARIKA PARADISE GATE VIEW.jpeg", alt: "Grand Entrance Gate" },
-    { category: "Roads", src: "./src/assets/04.jpeg", alt: "Planned Internal Roads" },
-    { category: "Landscaping", src: "./src/assets/HARIKA PARADISE VIEW-5.jpeg", alt: "Green Open Spaces" },
-    { category: "Amenities", src: "./src/assets/HARIKA PARADISE VIEW-6.jpeg", alt: "Clubhouse & Lifestyle" },
-    { category: "Site development", src: "./src/assets/HARIKA PARADISE PLOT VIEW-3.jpeg", alt: "Infrastructure Development" },
-    { category: "Site plan", src: "./src/assets/HARIKA PARADISE VIEW-7.jpeg", alt: "Master Layout Plan" }
+    { category: "Entrance", src: galleryGateImg, alt: "Grand Entrance Gate" },
+    { category: "Roads", src: galleryRoadsImg, alt: "Planned Internal Roads" },
+    { category: "Landscaping", src: galleryLandscapingImg, alt: "Green Open Spaces" },
+    { category: "Amenities", src: galleryAmenitiesImg, alt: "Clubhouse & Lifestyle" },
+    { category: "Site development", src: galleryPlotViewImg, alt: "Infrastructure Development" },
+    { category: "Site plan", src: gallerySitePlanImg, alt: "Master Layout Plan" }
   ];
 
   const filteredGallery = activeGalleryTab === 'All' 
@@ -232,7 +256,7 @@ const HarikaParadise = () => {
       <section className="relative bg-slate-950 text-white h-[380px] sm:h-[420px] lg:h-[460px] overflow-hidden flex items-end pb-10 sm:pb-14 border-b border-[#C29D56]/30">
         <div className="absolute inset-0 z-0">
           <img 
-            src="./src/assets/HARIKA PARADISE GATE VIEW.jpeg" 
+            src={heroGateImg} 
             alt="Harika Paradise Hero" 
             className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow"
           />
@@ -364,7 +388,7 @@ const HarikaParadise = () => {
               <div className="lg:col-span-6 relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[350px] group animate-float-slow">
                   <img 
-                    src="./src/assets/01.jpeg" 
+                    src={projOverviewImg} 
                     alt="Harika Paradise Overview" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
@@ -403,7 +427,7 @@ const HarikaParadise = () => {
               <div className="w-14 h-1 bg-[#C29D56] mx-auto rounded-full mt-1.5" />
             </div>
 
-            {/* Right-to-Left Infinite Sliding Marquee Carousel */}
+            {/* Right-to-Left Infinite Sliding Marquee */}
             <div className="w-full overflow-hidden py-4">
               <div className="animate-marquee flex gap-5 px-3">
                 {[...plotSizes, ...plotSizes].map((plot, idx) => (
@@ -411,7 +435,6 @@ const HarikaParadise = () => {
                     key={idx} 
                     className="w-[220px] h-[240px] rounded-[20px] bg-gradient-to-br from-[#f8f9fa] via-[#e9ecef] to-[#dee2e6] p-4 relative shadow-[0_15px_30px_rgba(0,0,0,0.1)] cursor-pointer transition-all duration-300 hover:scale-95 border border-slate-300 flex-shrink-0 flex flex-col justify-between overflow-hidden group"
                   >
-                    {/* Premium Ribbon Badge */}
                     <div className="absolute -top-2 -left-2 w-[110px] h-[110px] overflow-hidden pointer-events-none">
                       <span className="absolute top-[20px] -left-[30px] w-[130px] h-[28px] bg-gradient-to-r from-[#6B1312] via-[#C29D56] to-[#6B1312] transform -rotate-45 flex items-center justify-center text-white font-bold text-[9px] tracking-widest uppercase shadow-sm">
                         Premium
@@ -474,7 +497,7 @@ const HarikaParadise = () => {
               <div className="w-16 h-1 bg-[#6B1312] mx-auto rounded-full mt-2" />
             </div>
 
-            {/* Left-to-Right Infinite Sliding Marquee for Book Cover Flip Cards */}
+            {/* Left-to-Right Marquee for Book Cover Flip Cards */}
             <div className="w-full overflow-hidden py-4">
               <div className="animate-marquee-left flex gap-6 px-3">
                 {[...amenitiesList, ...amenitiesList].map((amenity, idx) => (
@@ -482,7 +505,6 @@ const HarikaParadise = () => {
                     key={idx} 
                     className="book-card"
                   >
-                    {/* Book Inside Content (Revealed when cover opens) */}
                     <div className="absolute inset-0 p-4 flex flex-col justify-between text-left z-0 bg-white rounded-2xl border border-slate-200">
                       <div className="space-y-1.5 pt-1">
                         <span className="text-[10px] font-extrabold text-[#6B1312] uppercase tracking-widest block">
@@ -507,7 +529,6 @@ const HarikaParadise = () => {
                       </div>
                     </div>
 
-                    {/* Book Cover (Flips open on hover without any text prompt) */}
                     <div className="book-cover">
                       <div className="absolute inset-0">
                         <img src={amenity.image} alt={amenity.title} className="w-full h-full object-cover brightness-105" />
@@ -563,18 +584,16 @@ const HarikaParadise = () => {
               <div className="w-14 h-1 bg-[#C29D56] mx-auto rounded-full mt-1.5" />
             </div>
 
-            {/* 2-Column Split Container */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-[#C29D56]/40 shadow-xl">
               
-              {/* Left Half: Site Plan Image with Zoom CTA */}
               <div className="lg:col-span-6 space-y-3">
                 <div className="relative rounded-xl overflow-hidden h-[240px] sm:h-[300px] border border-white/10 group cursor-pointer shadow-lg">
                   <img 
-                    src="./src/assets/01.jpeg" 
+                    src={sitePlanImg} 
                     alt="Site Plan Master Blueprint" 
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onClick={() => {
-                      setLightboxImg("./src/assets/01.jpeg");
+                      setLightboxImg(sitePlanImg);
                       setZoomLevel(1);
                     }}
                   />
@@ -588,7 +607,7 @@ const HarikaParadise = () => {
                 <div className="flex flex-wrap items-center justify-center gap-2.5">
                   <button
                     onClick={() => {
-                      setLightboxImg("./src/assets/01.jpeg");
+                      setLightboxImg(sitePlanImg);
                       setZoomLevel(1);
                     }}
                     className="inline-flex items-center gap-1.5 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-4 py-2 rounded-xl font-bold text-xs shadow-md transition-all"
@@ -609,7 +628,6 @@ const HarikaParadise = () => {
                 </div>
               </div>
 
-              {/* Right Half: Project Key Points & Highlights */}
               <div className="lg:col-span-6 space-y-3">
                 <div className="space-y-1">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-[#C29D56]">Key Highlights</span>
@@ -661,7 +679,6 @@ const HarikaParadise = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
               
-              {/* Left Column: Compact Connectivity Distance Cards */}
               <div className="lg:col-span-6 space-y-2.5">
                 {connectivityData.map((item, idx) => (
                   <div 
@@ -687,7 +704,6 @@ const HarikaParadise = () => {
                 ))}
               </div>
 
-              {/* Right Column: Embedded Interactive Map */}
               <div className="lg:col-span-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-md border-2 border-[#C29D56]/30 h-[260px] sm:h-[310px] bg-slate-200 flex items-center justify-center">
                   <iframe 
@@ -729,7 +745,6 @@ const HarikaParadise = () => {
               <div className="w-14 h-1 bg-[#C29D56] mx-auto rounded-full mt-1.5" />
             </div>
 
-            {/* Gallery Category Filter Tabs */}
             <div className="flex flex-wrap items-center justify-center gap-1.5 mb-8">
               {['All', 'Entrance', 'Roads', 'Landscaping', 'Amenities', 'Site development', 'Site plan'].map((tab, idx) => (
                 <button
@@ -746,7 +761,6 @@ const HarikaParadise = () => {
               ))}
             </div>
 
-            {/* Gallery Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredGallery.map((item, idx) => (
                 <div 
@@ -819,7 +833,6 @@ const HarikaParadise = () => {
       {lightboxImg && (
         <div className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4">
           
-          {/* Top Control Bar */}
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 z-50">
             <button
               onClick={handleZoomIn}
@@ -854,7 +867,6 @@ const HarikaParadise = () => {
             </button>
           </div>
 
-          {/* Zoomable Image Container */}
           <div className="w-full h-full flex items-center justify-center overflow-auto p-2 sm:p-10">
             <img 
               src={lightboxImg} 

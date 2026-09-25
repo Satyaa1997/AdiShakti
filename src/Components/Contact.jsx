@@ -209,6 +209,7 @@ const Contact = () => {
             <span className="block mt-1 bg-gradient-to-r from-[#FFF1C7] via-[#C29D56] to-[#FFF1C7] bg-clip-text text-transparent drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
               starts with a conversation.
             </span>
+
           </h1>
 
           {/* Description */}

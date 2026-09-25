@@ -2,31 +2,57 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, PhoneCall, Building2, MapPin, Maximize2, LayoutGrid, Trees, Sparkles, ChevronLeft, ChevronRight, Image as ImageIcon, MapPinHouse, Compass, Star, Quote, X, User, UserRound } from 'lucide-react';
 
+// Importing all images at the top for proper Vite bundler handling and Vercel deployment
+import slide1Img from '../assets/04.jpeg';
+import slide2Img from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import slide3Img from '../assets/HARIKA PARADISE VIEW-5.jpeg';
+import slide4Img from '../assets/HARIKA PARADISE VIEW-6.jpeg';
+import slide5Img from '../assets/HARIKA PARADISE VIEW-7.jpeg';
+
+import introImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import featProjImg from '../assets/01.jpeg';
+
+import why1Img from '../assets/Why1.png';
+import why2Img from '../assets/Why2.png';
+import why3Img from '../assets/Why3.png';
+import why4Img from '../assets/Why4.png';
+import why5Img from '../assets/Why5.png';
+import why6Img from '../assets/Why6.png';
+
+import gallery1Img from '../assets/01.jpeg';
+import gallery2Img from '../assets/HARIKA PARADISE PLOT VIEW-3.jpeg';
+import gallery3Img from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
+import gallery4Img from '../assets/HARIKA PARADISE VIEW-5.jpeg';
+import gallery5Img from '../assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg';
+import gallery6Img from '../assets/HARIKA PARADISE VIEW-6.jpeg';
+import gallery7Img from '../assets/HARIKA PARADISE VIEW-7.jpeg';
+import gallery8Img from '../assets/04.jpeg';
+
 const Home = () => {
-  // Hero Slider Images (Fixed paths matching gallery standard)
+  // Hero Slider Images (Using imported variables)
   const slides = [
     {
-      image: './src/assets/04.jpeg', 
+      image: slide1Img, 
       title: 'Building Spaces. Creating Possibilities.',
       description: 'A thoughtfully planned community offering organized infrastructure, green surroundings, and promising opportunities for comfortable living and long-term investment.',
     },
     {
-      image: './src/assets/HARIKA PARADISE GATE VIEW.jpeg',
+      image: slide2Img,
       title: 'Where Grandeur Welcomes You Home',
       description: 'Experience refined landscapes, timeless design, and everyday comfort coming together beautifully in a 10.38-acre gated community.',
     },
     {
-      image: './src/assets/HARIKA PARADISE VIEW-5.jpeg',
+      image: slide3Img,
       title: 'An Address of Enduring Prestige',
       description: 'Designed to meet the expectations of modern families with modern infrastructure, lush green parks, and high-end security.',
     },
     {
-      image: './src/assets/HARIKA PARADISE VIEW-6.jpeg',
+      image: slide4Img,
       title: 'Experience Elite Community Living',
       description: 'Thoughtfully structured layouts ensuring smooth internal roads, demarcation, and optimized utility lines for seamless living.',
     },
     {
-      image: './src/assets/HARIKA PARADISE VIEW-7.jpeg',
+      image: slide5Img,
       title: 'Your Dream Destination Awaits',
       description: 'Strategically situated on Satrikh Road with seamless connectivity, approved legal titles, and lush green surroundings.',
     }
@@ -38,16 +64,16 @@ const Home = () => {
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [lightboxImg, setLightboxImg] = useState(null);
 
-  // Custom Gallery Images
+  // Custom Gallery Images (Using imported variables)
   const galleryImages = [
-    { src: "./src/assets/01.jpeg", alt: "Harika Paradise Gate View" },
-    { src: "./src/assets/HARIKA PARADISE PLOT VIEW-3.jpeg", alt: "Harika Paradise Infrastructure" },
-    { src: "./src/assets/HARIKA PARADISE GATE VIEW.jpeg", alt: "Luxury Plot View" },
-    { src: "./src/assets/HARIKA PARADISE VIEW-5.jpeg", alt: "Green Landscape" },
-    { src: "./src/assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg", alt: "Modern Villa Design" },
-    { src: "./src/assets/HARIKA PARADISE VIEW-6.jpeg", alt: "Clubhouse Interior" },
-    { src: "./src/assets/HARIKA PARADISE VIEW-7.jpeg", alt: "Clubhouse Interior" },
-    { src: "./src/assets/04.jpeg", alt: "Clubhouse Interior" }
+    { src: gallery1Img, alt: "Harika Paradise Gate View" },
+    { src: gallery2Img, alt: "Harika Paradise Infrastructure" },
+    { src: gallery3Img, alt: "Luxury Plot View" },
+    { src: gallery4Img, alt: "Green Landscape" },
+    { src: gallery5Img, alt: "Modern Villa Design" },
+    { src: gallery6Img, alt: "Clubhouse Interior" },
+    { src: gallery7Img, alt: "Clubhouse Interior" },
+    { src: gallery8Img, alt: "Clubhouse Interior" }
   ];
   
   const [isSection2Visible, setIsSection2Visible] = useState(false);
@@ -268,37 +294,37 @@ const Home = () => {
     }
   ];
 
-  // Why Choose Us Data
+  // Why Choose Us Data (Using imported variables)
   const whyChooseData = [
     {
       title: "Strategic Location",
       desc: "Prime address situated on Satrikh Road, Lucknow, offering effortless connectivity to major city hubs and transit points.",
-      image: "./src/assets/Why1.png"
+      image: why1Img
     },
     {
       title: "Nagar Panchayat Approved",
       desc: "Complete legal security and government-approved plotted community ensuring absolute peace of mind for buyers.",
-      image: "./src/assets/Why2.png"
+      image: why2Img
     },
     {
       title: "10.38 Acres Gated Community",
       desc: "Sprawling across 10.38 acres of meticulously planned residential land designed for elite living and modern families.",
-      image: "./src/assets/Why3.png"
+      image: why3Img
     },
     {
       title: "Lush Green Surroundings",
       desc: "Embraced by beautifully landscaped parks and natural open spaces that inspire a peaceful and healthy lifestyle.",
-      image: "./src/assets/Why4.png"
+      image: why4Img
     },
     {
       title: "Modern Infrastructure",
       desc: "Equipped with wide internal roads, advanced drainage networks, and reliable utility setups for seamless living.",
-      image: "./src/assets/Why5.png"
+      image: why5Img
     },
     {
       title: "High Return Investment",
       desc: "A rapidly developing growth corridor ensuring strong property appreciation and high-yield long-term investment value.",
-      image: "./src/assets/Why6.png"
+      image: why6Img
     }
   ];
 
@@ -539,7 +565,7 @@ const Home = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="relative overflow-hidden rounded-2xl h-[280px] sm:h-[340px] border border-slate-200 shadow-sm">
                 <img 
-                  src="./src/assets/HARIKA PARADISE GATE VIEW.jpeg" 
+                  src={introImg} 
                   alt="Company Introduction" 
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
                 />
@@ -772,7 +798,7 @@ const Home = () => {
 
             <div className="lg:col-span-6 relative overflow-hidden rounded-2xl shadow-lg h-[280px] sm:h-[350px] order-1 lg:order-2 border border-white/10">
               <img 
-                src="./src/assets/01.jpeg" 
+                src={featProjImg} 
                 alt="Harika Paradise Featured Project" 
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
               />
