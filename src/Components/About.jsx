@@ -77,6 +77,7 @@ const About = () => {
 
       {/* ================= HERO BANNER ================= */}
       {/* ================= HERO BANNER ================= */}
+{/* ================= HERO BANNER ================= */}
 <section className="relative overflow-hidden min-h-[450px] sm:min-h-[530px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
 
   {/* Background Image */}
@@ -90,26 +91,11 @@ const About = () => {
     }}
   />
 
-  {/* Almost Invisible Overlay */}
+  {/* Dark Overlay */}
   <div className="absolute inset-0 bg-black/15 backdrop-blur-[1px] pointer-events-none" />
 
-  {/* Very Subtle Grid */}
-  <div
-    className="absolute inset-0 opacity-[0.06] pointer-events-none"
-    style={{
-      backgroundImage:
-        'radial-gradient(#C29D56 1.5px, transparent 1.5px)',
-      backgroundSize: '32px 32px',
-    }}
-  />
-
-  {/* Decorative Rings */}
-  <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-[#C29D56]/20 pointer-events-none" />
-
-  <div className="absolute -left-24 -bottom-10 h-60 w-60 rounded-full border border-[#C29D56]/10 pointer-events-none" />
-
   {/* Hero Content */}
-  <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20">
+  <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20 translate-y-6 sm:translate-y-0">
 
     {/* Badge */}
     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#C29D56]/60 bg-black/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#FFF1C7] backdrop-blur-[2px] shadow-[0_3px_12px_rgba(0,0,0,0.7)]">
@@ -119,9 +105,7 @@ const About = () => {
 
     {/* Main Heading */}
     <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
-
       Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.
-
     </h1>
 
     {/* Description */}
