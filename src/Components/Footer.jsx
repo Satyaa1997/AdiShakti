@@ -40,11 +40,11 @@ const Footer = () => {
                 <a
                   href="#"
                   aria-label="Facebook"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] hover:text-[#6B1312] flex items-center justify-center transition-all duration-300"
+                  className="group w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] flex items-center justify-center transition-all duration-300"
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-4 h-4 fill-current text-[#C29D56]"
+                    className="w-4 h-4 fill-current text-[#C29D56] group-hover:text-[#6B1312] transition-colors duration-300"
                   >
                     <path d="M14 8h3V5h-3c-2.8 0-5 2.2-5 5v2H6v3h3v6h3v-6h3l1-3h-4v-2c0-1.1.9-2 2-2Z" />
                   </svg>
@@ -53,14 +53,14 @@ const Footer = () => {
                 {/* Twitter / X */}
                 <a
                   href="#"
-                  aria-label="Twitter"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] hover:text-[#6B1312] flex items-center justify-center transition-all duration-300"
+                  aria-label="Twitter / X"
+                  className="group w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] flex items-center justify-center transition-all duration-300"
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-4 h-4 fill-current text-[#C29D56]"
+                    className="w-4 h-4 fill-current text-[#C29D56] group-hover:text-[#6B1312] transition-colors duration-300"
                   >
-                    <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.39L6.49 22H3.38l7.24-8.28L3 2h6.4l4.42 5.84L18.9 2Zm-1.1 17.7h1.73L8.48 4.18H6.62L17.8 19.7Z" />
+                    <path d="M18.244 2.25h3.308l-7.227 8.26L22.827 21.75h-6.623l-5.19-6.792-5.94 6.792H1.764l7.73-8.835L1.46 2.25H8.25l4.69 6.211 5.304-6.211Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
                   </svg>
                 </a>
 
@@ -68,11 +68,11 @@ const Footer = () => {
                 <a
                   href="#"
                   aria-label="Instagram"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] hover:text-[#6B1312] flex items-center justify-center transition-all duration-300"
+                  className="group w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] flex items-center justify-center transition-all duration-300"
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-4 h-4 fill-none stroke-current text-[#C29D56]"
+                    className="w-4 h-4 fill-none stroke-current text-[#C29D56] group-hover:text-[#6B1312] transition-colors duration-300"
                     strokeWidth="1.8"
                   >
                     <rect
@@ -101,11 +101,11 @@ const Footer = () => {
                 <a
                   href="#"
                   aria-label="LinkedIn"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] hover:text-[#6B1312] flex items-center justify-center transition-all duration-300"
+                  className="group w-9 h-9 rounded-full bg-white/10 hover:bg-[#C29D56] flex items-center justify-center transition-all duration-300"
                 >
                   <svg
                     viewBox="0 0 24 24"
-                    className="w-4 h-4 fill-current text-[#C29D56]"
+                    className="w-4 h-4 fill-current text-[#C29D56] group-hover:text-[#6B1312] transition-colors duration-300"
                   >
                     <path d="M6.5 8.5H3V21h3.5V8.5ZM4.75 3A2.05 2.05 0 1 0 4.75 7.1 2.05 2.05 0 0 0 4.75 3ZM21 13.8c0-3.77-2-5.52-4.68-5.52-2.16 0-3.13 1.19-3.67 2.03V8.5H9.15V21h3.5v-6.19c0-1.63.31-3.21 2.33-3.21 1.99 0 2.02 1.87 2.02 3.31V21H21v-7.2Z" />
                   </svg>
@@ -264,30 +264,30 @@ const Footer = () => {
     justify-content: center;
 
     margin-left: 7px;
-    padding: 4px 7px 4px 7px;
+    padding: 4px 6px;
 
+    width: 62px;
     min-width: 62px;
 
-    font-size: 8px;
+    font-size: 7px;
     line-height: 1;
     font-weight: 800;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
 
-    color: #ffffff;
+    /* Golden Text */
+    color: #C29D56;
 
+    /* Maroon Background */
     background: linear-gradient(
-      90deg,
-      #ef4444,
-      #f59e0b,
-      #10b981,
-      #06b6d4,
-      #8b5cf6,
-      #ec4899,
-      #ef4444
+      135deg,
+      #4a0606 0%,
+      #6b0d0d 45%,
+      #4a0606 100%
     );
 
-    background-size: 300% 100%;
+    /* Golden Border */
+    border: 1px solid #C29D56;
 
     /*
       Curved / Wavy Flag Shape
@@ -315,16 +315,17 @@ const Footer = () => {
     );
 
     box-shadow:
-      0 3px 10px rgba(0, 0, 0, 0.4);
+      0 3px 10px rgba(0, 0, 0, 0.4),
+      0 0 8px rgba(194, 157, 86, 0.25);
 
     white-space: nowrap;
 
     transform-origin: left center;
 
     animation:
-      flagWave 1.8s ease-in-out infinite,
-      flagColors 5s linear infinite;
+      flagWave 1.8s ease-in-out infinite;
   }
+
 
   /*
     Text
@@ -333,14 +334,17 @@ const Footer = () => {
     position: relative;
     z-index: 5;
 
+    color: #C29D56;
+
     text-shadow:
       0 1px 3px rgba(0, 0, 0, 0.65);
 
     animation: textWave 1.8s ease-in-out infinite;
   }
 
+
   /*
-    Small flag pole
+    Small Golden Flag Pole
   */
   .coming-soon-flag::before {
     content: "";
@@ -352,13 +356,14 @@ const Footer = () => {
     width: 2px;
     height: calc(100% - 4px);
 
-    background: rgba(255, 255, 255, 0.9);
+    background: #C29D56;
 
     border-radius: 999px;
   }
 
+
   /*
-    Wavy highlight on flag
+    Golden Moving Highlight
   */
   .coming-soon-flag::after {
     content: "";
@@ -369,9 +374,9 @@ const Footer = () => {
     background: linear-gradient(
       110deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.05) 25%,
-      rgba(255, 255, 255, 0.35) 45%,
-      rgba(255, 255, 255, 0.05) 65%,
+      rgba(194, 157, 86, 0.03) 25%,
+      rgba(194, 157, 86, 0.35) 45%,
+      rgba(194, 157, 86, 0.05) 65%,
       transparent 100%
     );
 
@@ -381,6 +386,7 @@ const Footer = () => {
 
     animation: flagShine 2.5s ease-in-out infinite;
   }
+
 
   /*
     Main Flag Wave
@@ -450,6 +456,7 @@ const Footer = () => {
     }
   }
 
+
   /*
     Text follows the movement
   */
@@ -472,33 +479,9 @@ const Footer = () => {
     }
   }
 
-  /*
-    Multicolor Gradient
-  */
-  @keyframes flagColors {
-    0% {
-      background-position: 0% 50%;
-    }
-
-    25% {
-      background-position: 50% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-
-    75% {
-      background-position: 50% 50%;
-    }
-
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 
   /*
-    Moving Shine
+    Moving Golden Shine
   */
   @keyframes flagShine {
     0% {
@@ -514,15 +497,18 @@ const Footer = () => {
     }
   }
 
+
   /*
     Mobile
   */
   @media (max-width: 640px) {
     .coming-soon-flag {
-      min-width: 72px;
-      padding: 4px 8px;
+      width: 58px;
+      min-width: 58px;
+      padding: 4px 5px;
 
-      font-size: 7px;
+      font-size: 6.5px;
+      letter-spacing: 0.02em;
     }
   }
 `}</style>

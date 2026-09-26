@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, PhoneCall } from 'lucide-react';
@@ -48,7 +47,10 @@ const Navbar = () => {
                 aria-label="Facebook"
                 className="text-[#fdfbf7] hover:text-[#E1C48F] transition-colors duration-200"
               >
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 fill-current"
+                >
                   <path d="M14 8h3V5h-3c-2.8 0-5 2.2-5 5v2H6v3h3v6h3v-6h3l1-3h-4v-2c0-1.1.9-2 2-2Z" />
                 </svg>
               </a>
@@ -59,7 +61,10 @@ const Navbar = () => {
                 aria-label="Twitter"
                 className="text-[#f3f2f0] hover:text-[#E1C48F] transition-colors duration-200"
               >
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 fill-current"
+                >
                   <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.39L6.49 22H3.38l7.24-8.28L3 2h6.4l4.42 5.84L18.9 2Zm-1.1 17.7h1.73L8.48 4.18H6.62L17.8 19.7Z" />
                 </svg>
               </a>
@@ -75,8 +80,18 @@ const Navbar = () => {
                   className="w-3.5 h-3.5 fill-none stroke-current"
                   strokeWidth="1.8"
                 >
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                  />
                   <circle
                     cx="17.5"
                     cy="6.5"
@@ -93,20 +108,44 @@ const Navbar = () => {
                 aria-label="LinkedIn"
                 className="text-[#eee9e1] hover:text-[#E1C48F] transition-colors duration-200"
               >
-                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 fill-current"
+                >
                   <path d="M6.5 8.5H3V21h3.5V8.5ZM4.75 3A2.05 2.05 0 1 0 4.75 7.1 2.05 2.05 0 0 0 4.75 3ZM21 13.8c0-3.77-2-5.52-4.68-5.52-2.16 0-3.13 1.19-3.67 2.03V8.5H9.15V21h3.5v-6.19c0-1.63.31-3.21 2.33-3.21 1.99 0 2.02 1.87 2.02 3.31V21H21v-7.2Z" />
                 </svg>
               </a>
             </div>
 
-            {/* Contact Number - Right */}
-            <a
-              href="tel:05224205350"
-              className="flex items-center gap-1.5 text-[#eee8dc] hover:text-[#E1C48F] text-xs sm:text-sm font-semibold transition-colors duration-200"
-            >
-              <PhoneCall className="w-3.5 h-3.5" />
-              <span>0522 4205350</span>
-            </a>
+            {/* Booking Open + Contact Number - Right */}
+            <div className="flex items-center gap-3">
+
+              {/* Booking Open */}
+              <div className="flex items-center gap-1.5 text-[#C29D56] text-xs sm:text-sm font-semibold">
+
+                {/* Static Golden Dot */}
+                <span className="inline-flex h-2.5 w-2.5 rounded-full bg-[#C29D56] shadow-[0_0_6px_rgba(194,157,86,0.9)]"></span>
+
+                {/* Blinking Text */}
+                <span className="animate-pulse">
+                  Booking open
+                </span>
+
+              </div>
+
+              {/* Divider */}
+              <span className="h-4 w-px bg-[#C29D56]/30"></span>
+
+              {/* Contact Number */}
+              <a
+                href="tel:05224205350"
+                className="flex items-center gap-1.5 text-[#eee8dc] hover:text-[#E1C48F] text-xs sm:text-sm font-semibold transition-colors duration-200"
+              >
+                <PhoneCall className="w-3.5 h-3.5" />
+                <span>0522 4205350</span>
+              </a>
+
+            </div>
 
           </div>
         </div>
@@ -200,6 +239,7 @@ const Navbar = () => {
               <NavLink to="/contact" className={navLinkClass}>
                 Contact Us
               </NavLink>
+
             </div>
 
             {/* Enquire Now CTA Button - Desktop */}
@@ -337,4 +377,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
