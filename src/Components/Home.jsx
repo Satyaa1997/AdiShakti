@@ -15,8 +15,8 @@ import featProjImg from '../assets/01.jpeg';
 import why1Img from '../assets/Why1.png';
 import why2Img from '../assets/Why2.png';
 import why3Img from '../assets/Why3.png';
-import why4Img from '../assets/Why4.png';
-import why5Img from '../assets/Why5.png';
+import why4Img from '../assets/Why5.png';
+import why5Img from '../assets/Why4.png';
 import why6Img from '../assets/Why6.png';
 
 import gallery1Img from '../assets/01.jpeg';

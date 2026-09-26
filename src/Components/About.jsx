@@ -76,37 +76,63 @@ const About = () => {
       `}</style>
 
       {/* ================= HERO BANNER ================= */}
-      <section className="relative bg-slate-950 text-white h-[420px] sm:h-[480px] lg:h-[540px] overflow-hidden flex items-end pb-12 sm:pb-16 border-b border-[#C29D56]/30">
-        
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroBgImg} 
-            alt="Corporate Background" 
-            className="w-full h-full object-cover object-center transform scale-105"
-            onError={(e) => {
-              e.target.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
-            }}
-          />
-        </div>
+      {/* ================= HERO BANNER ================= */}
+<section className="relative overflow-hidden min-h-[450px] sm:min-h-[530px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 z-10" />
+  {/* Background Image */}
+  <img
+    src={heroBgImg}
+    alt="Ādi Shakti Coloniser & Homebuilders"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+    onError={(e) => {
+      e.target.src =
+        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
+    }}
+  />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20">
-          <div className="max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#C29D56]/50 text-[#C29D56] text-xs font-bold uppercase tracking-widest shadow-lg">
-              <Award className="w-3.5 h-3.5 text-[#C29D56]" /> Corporate Enterprise Profile
-            </div>
-            
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight">
-              Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.
-            </h1>
-            
-            <p className="text-slate-200 text-xs sm:text-sm leading-relaxed drop-shadow-sm font-medium">
-              Engineering sustainable master communities, uncompromised legal clarity, and architectural reliability across Lucknow's finest corridors.
-            </p>
-          </div>
-        </div>
-      </section>
+  {/* Almost Invisible Overlay */}
+  <div className="absolute inset-0 bg-black/15 backdrop-blur-[1px] pointer-events-none" />
+
+  {/* Very Subtle Grid */}
+  <div
+    className="absolute inset-0 opacity-[0.06] pointer-events-none"
+    style={{
+      backgroundImage:
+        'radial-gradient(#C29D56 1.5px, transparent 1.5px)',
+      backgroundSize: '32px 32px',
+    }}
+  />
+
+  {/* Decorative Rings */}
+  <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full border border-[#C29D56]/20 pointer-events-none" />
+
+  <div className="absolute -left-24 -bottom-10 h-60 w-60 rounded-full border border-[#C29D56]/10 pointer-events-none" />
+
+  {/* Hero Content */}
+  <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20">
+
+    {/* Badge */}
+    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#C29D56]/60 bg-black/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#FFF1C7] backdrop-blur-[2px] shadow-[0_3px_12px_rgba(0,0,0,0.7)]">
+      <Award size={13} className="text-[#C29D56]" />
+      Corporate Enterprise Profile
+    </div>
+
+    {/* Main Heading */}
+    <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
+
+      Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.
+
+    </h1>
+
+    {/* Description */}
+    <p className="mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-relaxed text-white font-medium drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)]">
+      Building thoughtfully planned communities with strong foundations,
+      transparent processes, and a commitment to creating better living
+      environments across Lucknow and beyond.
+    </p>
+
+  </div>
+</section>
 
       {/* ================= SECTION 1: ABOUT COMPANY (VISIBLE LIGHT GEOMETRICAL BG) ================= */}
       <section ref={statsRef} className="py-12 sm:py-16 bg-slate-100 relative overflow-hidden light-geom-grid">

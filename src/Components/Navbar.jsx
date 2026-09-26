@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, PhoneCall } from 'lucide-react';
@@ -17,13 +18,17 @@ const Navbar = () => {
   // Active link styling helper
   const navLinkClass = ({ isActive }) =>
     `font-medium text-sm transition-colors ${
-      isActive ? 'text-[#C29D56] font-bold border-b-2 border-[#C29D56] pb-1' : 'text-slate-700 hover:text-[#C29D56]'
-    };
+      isActive
+        ? 'text-[#C29D56] font-bold border-b-2 border-[#C29D56] pb-1'
+        : 'text-slate-700 hover:text-[#C29D56]'
+    }`;
 
   const mobileNavLinkClass = ({ isActive }) =>
     `block font-medium text-base py-1 transition-colors ${
-      isActive ? 'text-[#C29D56] font-bold pl-2 border-l-4 border-[#C29D56]' : 'text-slate-700 hover:text-[#C29D56]'
-    };
+      isActive
+        ? 'text-[#C29D56] font-bold pl-2 border-l-4 border-[#C29D56]'
+        : 'text-slate-700 hover:text-[#C29D56]'
+    }`;
 
   return (
     <>
@@ -36,6 +41,7 @@ const Navbar = () => {
 
             {/* Social Icons - Left */}
             <div className="flex items-center gap-3">
+
               {/* Facebook */}
               <a
                 href="#"
@@ -71,7 +77,13 @@ const Navbar = () => {
                 >
                   <rect x="3" y="3" width="18" height="18" rx="5" />
                   <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="1"
+                    fill="currentColor"
+                    stroke="none"
+                  />
                 </svg>
               </a>
 
@@ -121,15 +133,11 @@ const Navbar = () => {
             {/* Desktop Menu Items */}
             <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
 
-              <NavLink to="/" end className={({ isActive }) => 
-                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
-              }>
+              <NavLink to="/" end className={navLinkClass}>
                 Home
               </NavLink>
 
-              <NavLink to="/about" className={({ isActive }) => 
-                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
-              }>
+              <NavLink to="/about" className={navLinkClass}>
                 About Us
               </NavLink>
 
@@ -141,11 +149,16 @@ const Navbar = () => {
               >
                 <NavLink
                   to="/harika-paradise"
-                  className={({ isActive }) => 
-                    `flex items-center gap-1 font-medium text-sm transition-colors focus:outline-none ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
+                  className={({ isActive }) =>
+                    `flex items-center gap-1 font-medium text-sm transition-colors focus:outline-none ${
+                      isActive
+                        ? 'text-[#C29D56] font-bold'
+                        : 'text-slate-700 hover:text-[#C29D56]'
+                    }`
                   }
                 >
                   Our Projects
+
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
                       dropdownOpen ? 'rotate-180' : ''
@@ -161,8 +174,12 @@ const Navbar = () => {
                         key={index}
                         to={item.path}
                         onClick={() => setDropdownOpen(false)}
-                        className={({ isActive }) => 
-                          `block px-4 py-2 text-sm transition-colors font-medium ${isActive ? 'bg-[#C29D56]/10 text-[#6B1312] font-bold' : 'text-slate-700 hover:bg-[#C29D56]/10 hover:text-[#6B1312]'}`
+                        className={({ isActive }) =>
+                          `block px-4 py-2 text-sm transition-colors font-medium ${
+                            isActive
+                              ? 'bg-[#C29D56]/10 text-[#6B1312] font-bold'
+                              : 'text-slate-700 hover:bg-[#C29D56]/10 hover:text-[#6B1312]'
+                          }`
                         }
                       >
                         {item.name}
@@ -172,21 +189,15 @@ const Navbar = () => {
                 )}
               </div>
 
-              <NavLink to="/why-choose" className={({ isActive }) => 
-                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
-              }>
+              <NavLink to="/why-choose" className={navLinkClass}>
                 Why Choose Us
               </NavLink>
 
-              <NavLink to="/gallery" className={({ isActive }) => 
-                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
-              }>
+              <NavLink to="/gallery" className={navLinkClass}>
                 Gallery
               </NavLink>
 
-              <NavLink to="/contact" className={({ isActive }) => 
-                `font-medium text-sm transition-colors ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700 hover:text-[#C29D56]'}`
-              }>
+              <NavLink to="/contact" className={navLinkClass}>
                 Contact Us
               </NavLink>
             </div>
@@ -209,7 +220,11 @@ const Navbar = () => {
                 className="text-slate-700 hover:text-[#6B1312] focus:outline-none p-2 transition-transform active:scale-95"
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
               >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </button>
             </div>
 
@@ -222,15 +237,20 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-5 space-y-3 shadow-lg">
 
-            <NavLink to="/" end onClick={() => setIsOpen(false)} className={({ isActive }) => 
-              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
-            }>
+            <NavLink
+              to="/"
+              end
+              onClick={() => setIsOpen(false)}
+              className={mobileNavLinkClass}
+            >
               Home
             </NavLink>
 
-            <NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => 
-              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
-            }>
+            <NavLink
+              to="/about"
+              onClick={() => setIsOpen(false)}
+              className={mobileNavLinkClass}
+            >
               About Us
             </NavLink>
 
@@ -241,6 +261,7 @@ const Navbar = () => {
                 className="flex items-center justify-between w-full text-slate-700 hover:text-[#C29D56] font-medium text-base py-1 focus:outline-none"
               >
                 <span>Our Projects</span>
+
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
                     mobileProjectsOpen ? 'rotate-180' : ''
@@ -258,8 +279,12 @@ const Navbar = () => {
                         setIsOpen(false);
                         setMobileProjectsOpen(false);
                       }}
-                      className={({ isActive }) => 
-                        `block py-1.5 text-sm font-medium ${isActive ? 'text-[#6B1312] font-bold' : 'text-slate-600'}`
+                      className={({ isActive }) =>
+                        `block py-1.5 text-sm font-medium ${
+                          isActive
+                            ? 'text-[#6B1312] font-bold'
+                            : 'text-slate-600'
+                        }`
                       }
                     >
                       {item.name}
@@ -269,21 +294,27 @@ const Navbar = () => {
               )}
             </div>
 
-            <NavLink to="/why-choose" onClick={() => setIsOpen(false)} className={({ isActive }) => 
-              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
-            }>
+            <NavLink
+              to="/why-choose"
+              onClick={() => setIsOpen(false)}
+              className={mobileNavLinkClass}
+            >
               Why Choose Us
             </NavLink>
 
-            <NavLink to="/gallery" onClick={() => setIsOpen(false)} className={({ isActive }) => 
-              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
-            }>
+            <NavLink
+              to="/gallery"
+              onClick={() => setIsOpen(false)}
+              className={mobileNavLinkClass}
+            >
               Gallery
             </NavLink>
 
-            <NavLink to="/contact" onClick={() => setIsOpen(false)} className={({ isActive }) => 
-              `block font-medium text-base py-1 ${isActive ? 'text-[#C29D56] font-bold' : 'text-slate-700'}`
-            }>
+            <NavLink
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className={mobileNavLinkClass}
+            >
               Contact Us
             </NavLink>
 
@@ -297,6 +328,7 @@ const Navbar = () => {
                 Enquire Now
               </a>
             </div>
+
           </div>
         )}
       </nav>
@@ -305,3 +337,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
