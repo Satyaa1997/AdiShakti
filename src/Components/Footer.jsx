@@ -259,9 +259,17 @@ const Footer = () => {
               Pvt. Ltd. All Rights Reserved.
             </p>
 
-            <p className="text-slate-400 text-center sm:text-right">
-              Developed by:- Auctech.
-            </p>
+          <p className="text-slate-400 text-center sm:text-right">
+                      Designed by:- Auctech.{' '}
+                      <a
+                        href="https://auctechitsolutions.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#C29D56] hover:text-white underline underline-offset-2 transition-colors"
+                      >
+                        https://auctechitsolutions.in/
+                      </a>
+                    </p>
 
           </div>
 
