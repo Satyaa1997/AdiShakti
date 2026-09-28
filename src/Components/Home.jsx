@@ -1244,99 +1244,238 @@ const Home = () => {
       </section>
 
       {/* ================= SECTION 6: GALLERY PREVIEW (DARK MAROON GEOMETRICAL BG) ================= */}
-      <section ref={section6Ref} className="py-14 relative bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-slate-200 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
+    <section
+  ref={section6Ref}
+  className="py-6 sm:py-8 relative bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-slate-200 overflow-hidden"
+>
+  {/* Background Pattern */}
+  <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
 
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
+  {/* Glow */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
 
-          <div className="py-2 sm:py-4">
-            <div className="mb-10 text-center">
-              <h2 className="text-white text-3xl font-extrabold tracking-tight pb-2">Our Gallery</h2>
-              <p className="text-slate-300 text-sm">Explore the essence of beauty and infrastructure in our community.</p>
-              <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
+  <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
+
+    <div className="py-1 sm:py-2">
+
+      {/* =========================
+          SECTION HEADER
+      ========================= */}
+      <div className="mb-5 sm:mb-6 text-center">
+
+        <span className="inline-block text-[#C29D56] text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-1.5">
+          Visual Tour
+        </span>
+
+        <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+          Our Gallery
+        </h2>
+
+        <p className="text-slate-300 text-[11px] sm:text-xs md:text-sm mt-1.5 max-w-xl mx-auto">
+          Explore the beauty, lifestyle and infrastructure of Harika Paradise.
+        </p>
+
+        <div className="w-14 h-0.5 bg-[#C29D56] mx-auto rounded-full mt-2" />
+
+      </div>
+
+
+      {/* =========================
+          GALLERY CAROUSEL
+      ========================= */}
+      <div className="max-w-5xl mx-auto">
+
+        <div className="relative">
+
+          {/* Main Image Container */}
+          <div
+            className="relative w-full h-[210px] sm:h-[280px] md:h-[340px] lg:h-[380px] rounded-xl sm:rounded-2xl overflow-hidden bg-black border border-[#C29D56]/30 shadow-2xl group"
+          >
+
+            {/* Image */}
+            <img
+              src={galleryImages[activeGalleryIndex].src}
+              alt={`Harika Paradise Gallery ${activeGalleryIndex + 1}`}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03] cursor-pointer"
+              onClick={() =>
+                setLightboxImg(galleryImages[activeGalleryIndex].src)
+              }
+            />
+
+            {/* Dark Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+
+
+            {/* =========================
+                PREVIOUS BUTTON
+            ========================= */}
+            <button
+              onClick={prevImage}
+              className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#6B1312] backdrop-blur-md border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            </button>
+
+
+            {/* =========================
+                NEXT BUTTON
+            ========================= */}
+            <button
+              onClick={nextImage}
+              className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#6B1312] backdrop-blur-md border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            </button>
+
+
+            {/* =========================
+                IMAGE COUNTER
+            ========================= */}
+            <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 bg-black/60 backdrop-blur-md border border-white/20 text-white px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-semibold">
+              {activeGalleryIndex + 1} / {galleryImages.length}
             </div>
 
-            <div className="flex flex-col xl:flex-row gap-6 items-center justify-center max-w-5xl mx-auto">
 
-              {/* Main Display Image with Prev / Next Buttons */}
-              <div className="relative w-full xl:w-[700px] h-[300px] sm:h-[380px] rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
-                <img
-                  src={galleryImages[activeGalleryIndex].src}
-                  alt="Active Gallery"
-                  className="w-full h-full object-cover cursor-pointer transition-transform duration-500 group-hover:scale-105"
-                  onClick={() => setLightboxImg(galleryImages[activeGalleryIndex].src)}
-                />
-
-                {/* Prev Button */}
-                <button
-                  onClick={prevImage}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-[#6B1312] text-white p-2 rounded-full backdrop-blur-md transition-all border border-white/20"
-                  aria-label="Previous Image"
-                >
-                  <ChevronLeft className="w-5 h-5 text-[#C29D56]" />
-                </button>
-
-                {/* Next Button */}
-                <button
-                  onClick={nextImage}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-[#6B1312] text-white p-2 rounded-full backdrop-blur-md transition-all border border-white/20"
-                  aria-label="Next Image"
-                >
-                  <ChevronRight className="w-5 h-5 text-[#C29D56]" />
-                </button>
-
-                <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-[#C29D56] px-3 py-1 rounded-lg text-[11px] font-bold border border-[#C29D56]/30 pointer-events-none">
-                  {activeGalleryIndex + 1} / {galleryImages.length} (Click to Expand)
-                </div>
-              </div>
-
-              {/* Thumbnails Scroller */}
-              <div
-                ref={thumbnailContainerRef}
-                className="w-full xl:w-[140px] flex xl:flex-col gap-3 justify-start xl:justify-center overflow-x-auto xl:overflow-y-auto no-scrollbar max-h-[380px] py-1 px-1"
-              >
-                {galleryImages.map((img, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => selectImage(idx)}
-                    className={`w-[90px] h-[65px] sm:w-[110px] sm:h-[75px] xl:w-full xl:h-[80px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-300 flex-shrink-0 ${activeGalleryIndex === idx ? 'border-[#C29D56] scale-105 shadow-md ring-2 ring-[#C29D56]/50' : 'border-white/20 opacity-70 hover:opacity-100'
-                      }`}
-                  >
-                    <img src={img.src} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
-                  </div>
-                ))}
-              </div>
-
+            {/* =========================
+                CLICK TO EXPAND
+            ========================= */}
+            <div className="absolute bottom-2.5 sm:bottom-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md border border-[#C29D56]/30 text-[#C29D56] px-2.5 sm:px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-semibold whitespace-nowrap pointer-events-none">
+              Click image to expand
             </div>
 
-            {/* View Full Gallery Navigation Button */}
-            <div className="text-center mt-10">
-              <Link
-                to="/gallery"
-                className="inline-flex items-center gap-2 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-7 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all group"
-              >
-                View Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+          </div>
+
+
+          {/* =========================
+              DOT NAVIGATION
+          ========================= */}
+          <div className="flex items-center justify-center gap-1.5 mt-3">
+
+            {galleryImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => selectImage(idx)}
+                aria-label={`Go to image ${idx + 1}`}
+                className={`rounded-full transition-all duration-300 cursor-pointer ${
+                  activeGalleryIndex === idx
+                    ? "w-6 h-1.5 bg-[#C29D56]"
+                    : "w-1.5 h-1.5 bg-white/30 hover:bg-white/60"
+                }`}
+              />
+            ))}
+
+          </div>
+
+
+          {/* =========================
+              IMAGE TITLE / INFO
+          ========================= */}
+          <div className="text-center mt-2">
+
+            <p className="text-[#C29D56] text-[11px] sm:text-xs font-semibold">
+              Harika Paradise
+            </p>
+
+            <p className="text-slate-400 text-[9px] sm:text-[10px] mt-0.5">
+              Image {activeGalleryIndex + 1} of {galleryImages.length}
+            </p>
+
           </div>
 
         </div>
 
-        {/* Lightbox Modal */}
-        {lightboxImg && (
-          <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
-            <button
-              onClick={() => setLightboxImg(null)}
-              className="absolute top-6 right-6 text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all"
-              aria-label="Close Lightbox"
-            >
-              <X className="w-8 h-8 text-[#C29D56]" />
-            </button>
-            <img src={lightboxImg} alt="Enlarged View" className="max-w-[90vw] max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-white/10" />
-          </div>
-        )}
-      </section>
+
+        {/* =========================
+            VIEW FULL GALLERY
+        ========================= */}
+        <div className="text-center mt-5 sm:mt-6">
+
+          <Link
+            to="/gallery"
+            className="inline-flex items-center gap-1.5 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-5 sm:px-6 py-2 sm:py-2.5 rounded-lg font-bold text-[11px] sm:text-xs shadow-md transition-all group"
+          >
+            View Full Gallery
+
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  {/* =====================================================
+      FULLSCREEN LIGHTBOX
+  ===================================================== */}
+  {lightboxImg && (
+    <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+
+      {/* Close */}
+      <button
+        onClick={() => setLightboxImg(null)}
+        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
+        aria-label="Close Lightbox"
+      >
+        <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+      </button>
+
+
+      {/* Previous Lightbox */}
+      <button
+        onClick={() => {
+          const newIndex =
+            (activeGalleryIndex - 1 + galleryImages.length) %
+            galleryImages.length;
+
+          setActiveGalleryIndex(newIndex);
+          setLightboxImg(galleryImages[newIndex].src);
+        }}
+        className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
+        aria-label="Previous Image"
+      >
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+      </button>
+
+
+      {/* Main Lightbox Image */}
+      <img
+        src={lightboxImg}
+        alt={`Harika Paradise Enlarged ${activeGalleryIndex + 1}`}
+        className="max-w-[88vw] sm:max-w-[85vw] max-h-[78vh] sm:max-h-[82vh] rounded-lg sm:rounded-xl object-contain shadow-2xl border border-white/10"
+      />
+
+
+      {/* Next Lightbox */}
+      <button
+        onClick={() => {
+          const newIndex =
+            (activeGalleryIndex + 1) % galleryImages.length;
+
+          setActiveGalleryIndex(newIndex);
+          setLightboxImg(galleryImages[newIndex].src);
+        }}
+        className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
+        aria-label="Next Image"
+      >
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+      </button>
+
+
+      {/* Lightbox Counter */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md border border-[#C29D56]/30 text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold">
+        {activeGalleryIndex + 1} / {galleryImages.length}
+      </div>
+
+    </div>
+  )}
+
+</section>
 
       {/* ================= FEEDBACK SECTION (LIGHT GEOMETRICAL BG) ================= */}
       <section

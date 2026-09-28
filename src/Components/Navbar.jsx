@@ -253,9 +253,9 @@ const Navbar = () => {
             <div className="hidden md:flex items-center">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] border border-[#C29D56]/30 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer"
+                className="bg-[#6B1312] hover:bg-[#520e0e] text-white border border-[#C29D56]/30 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer"
               >
-                <PhoneCall className="w-4 h-4 text-[#C29D56]" />
+                <PhoneCall className="w-4 h-4 text-white" />
                 Enquire Now
               </button>
             </div>
@@ -371,7 +371,7 @@ const Navbar = () => {
                   setIsOpen(false);
                   setIsModalOpen(true);
                 }}
-                className="w-full text-center bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] px-4 py-2.5 rounded-lg text-sm font-bold block shadow-sm transition-all cursor-pointer"
+                className="w-full text-center bg-[#6B1312] hover:bg-[#520e0e] text-white px-4 py-2.5 rounded-lg text-sm font-bold block shadow-sm transition-all cursor-pointer"
               >
                 Enquire Now
               </button>

@@ -227,10 +227,6 @@ const Contact = () => {
         {/* Hero Content */}
         <div className="relative z-10 mx-auto max-w-3xl px-5 sm:px-8 py-12 sm:py-16">
 
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#C29D56]/60 bg-black/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#FFF1C7] backdrop-blur-[2px] shadow-[0_3px_12px_rgba(0,0,0,0.7)]">
-            <Sparkles size={13} className="text-[#C29D56]" />
-            Get In Touch
-          </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
             Your next chapter

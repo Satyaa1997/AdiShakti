@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowUpRight,
@@ -9,7 +9,10 @@ import {
   X,
 } from 'lucide-react';
 
-// Importing all images at the top for proper Vite bundler handling and Vercel deployment
+// ============================================================
+// IMAGES
+// ============================================================
+
 import entranceRightImg from '../assets/04.jpeg';
 import landscapeImg from '../assets/Landscape.jpg';
 import clubhouseImg from '../assets/Club House.jpg';
@@ -28,72 +31,48 @@ const photos = [
     id: 'entrance-right',
     title: 'Grand Entrance',
     category: 'Entrance',
-    location: 'Harika Paradise',
-    description:
-      'A welcoming entrance designed to create a premium first impression.',
     image: entranceRightImg,
   },
   {
     id: 'landscape',
     title: 'Landscape & Greenery',
     category: 'Lifestyle',
-    location: 'Harika Paradise',
-    description:
-      'Beautifully planned open spaces surrounded by lush greenery, thoughtfully landscaped gardens and refreshing natural surroundings. The development is designed to create a peaceful and visually appealing environment where residents can enjoy open spaces, greenery and a comfortable lifestyle away from the hustle and bustle of the city.',
     image: landscapeImg,
   },
   {
     id: 'clubhouse',
     title: 'Clubhouse',
     category: 'Amenities',
-    location: 'Harika Paradise',
-    description:
-      'A thoughtfully planned clubhouse area for recreation and community living.',
     image: clubhouseImg,
   },
   {
     id: 'amphitheatre',
     title: 'Amphitheatre',
     category: 'Amenities',
-    location: 'Harika Paradise',
-    description:
-      'An open community space designed for gatherings, events and leisure.',
     image: amphitheatreImg,
   },
   {
     id: 'fitness-track',
     title: 'Fitness Track',
     category: 'Lifestyle',
-    location: 'Harika Paradise',
-    description:
-      'Dedicated spaces encouraging an active and healthy lifestyle.',
     image: fitnessTrackImg,
   },
   {
     id: 'play-area',
     title: 'Children Play Area',
     category: 'Amenities',
-    location: 'Harika Paradise',
-    description:
-      'A dedicated recreational space for children and families.',
     image: playAreaImg,
   },
   {
     id: 'layout-west',
     title: 'Master Plan',
     category: 'Master Plan',
-    location: 'Harika Paradise',
-    description:
-      'Project planning and layout overview of Harika Paradise.',
     image: layoutWestImg,
   },
   {
     id: 'layout-east',
     title: 'Project Layout',
     category: 'Master Plan',
-    location: 'Harika Paradise',
-    description:
-      'A detailed visual representation of the planned development.',
     image: layoutEastImg,
   },
 ];
@@ -118,8 +97,6 @@ const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const modalRef = useRef(null);
-
   // ==========================================================
   // FILTERED PHOTOS
   // ==========================================================
@@ -127,7 +104,9 @@ const Gallery = () => {
   const filteredPhotos =
     activeFilter === 'All'
       ? photos
-      : photos.filter((photo) => photo.category === activeFilter);
+      : photos.filter(
+          (photo) => photo.category === activeFilter
+        );
 
   // ==========================================================
   // OPEN MODAL
@@ -150,7 +129,7 @@ const Gallery = () => {
   // ==========================================================
 
   const showNext = () => {
-    if (!selectedPhoto || filteredPhotos.length === 0) return;
+    if (!selectedPhoto || filteredPhotos.length <= 1) return;
 
     const currentIndex = filteredPhotos.findIndex(
       (photo) => photo.id === selectedPhoto.id
@@ -169,7 +148,7 @@ const Gallery = () => {
   // ==========================================================
 
   const showPrevious = () => {
-    if (!selectedPhoto || filteredPhotos.length === 0) return;
+    if (!selectedPhoto || filteredPhotos.length <= 1) return;
 
     const currentIndex = filteredPhotos.findIndex(
       (photo) => photo.id === selectedPhoto.id
@@ -212,7 +191,7 @@ const Gallery = () => {
   }, [selectedPhoto, filteredPhotos]);
 
   // ==========================================================
-  // BODY SCROLL LOCK WHEN MODAL IS OPEN
+  // BODY SCROLL LOCK
   // ==========================================================
 
   useEffect(() => {
@@ -232,73 +211,59 @@ const Gallery = () => {
   // ==========================================================
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#C29D56] selection:text-white overflow-x-hidden">
-
-      {/* Custom Geometrical Grid Pattern CSS */}
-      <style>{`
-        .light-geom-grid {
-          background-image: radial-gradient(
-            rgba(194, 157, 86, 0.28) 1.5px,
-            transparent 1.5px
-          );
-          background-size: 24px 24px;
-        }
-
-        @keyframes pulseGlow {
-          0%, 100% {
-            opacity: 0.4;
-            transform: scale(1);
-          }
-
-          50% {
-            opacity: 0.8;
-            transform: scale(1.04);
-          }
-        }
-
-        .animate-pulse-glow {
-          animation: pulseGlow 5s ease-in-out infinite;
-        }
-      `}</style>
+    <main className="min-h-screen bg-slate-100 text-slate-900 font-sans overflow-x-hidden">
 
       {/* ======================================================
-          HERO SECTION
+          HERO
       ====================================================== */}
 
-      <section className="relative overflow-hidden bg-slate-950 text-white h-[380px] sm:h-[440px] lg:h-[480px] flex items-end pb-10 sm:pb-14 border-b border-[#C29D56]/30">
+      <section className="relative h-[300px] sm:h-[360px] lg:h-[410px] overflow-hidden bg-slate-950">
 
-        <div className="absolute inset-0 z-0">
+        {/* Background Image */}
 
-          {/* Hero uses entranceRightImg image */}
+        <div className="absolute inset-0">
+
           <img
             src={entranceRightImg}
             alt="Harika Paradise Gallery"
-            className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow brightness-110"
+            className="w-full h-full object-cover object-center"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 z-10" />
+          {/* Overlay */}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/20" />
 
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full z-20">
+        {/* Hero Content */}
 
-          <div className="max-w-2xl space-y-3">
+        <div className="relative z-10 mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 flex items-end pb-8 sm:pb-10">
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#C29D56]/50 text-[#C29D56] text-xs font-bold uppercase tracking-widest shadow-xl">
-              <Images size={16} />
-              Harika Paradise Gallery
-            </div>
+          <div className="max-w-2xl">
 
-            <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight">
-              Experience Harika Paradise
+            {/* Badge */}
+
+          
+
+            {/* Heading */}
+
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+
+              Explore Harika Paradise
+
               <span className="block text-[#C29D56]">
                 Through Our Gallery
               </span>
+
             </h1>
 
-            <p className="text-slate-200 text-xs sm:text-sm font-medium drop-shadow-sm max-w-xl leading-relaxed">
-              Explore the spaces, lifestyle, amenities and planned
-              development of Harika Paradise through our project gallery.
+            {/* Description */}
+
+            <p className="mt-2 text-slate-200 text-xs sm:text-sm max-w-xl leading-relaxed">
+
+              Explore the entrance, amenities, lifestyle and planned
+              development of Harika Paradise.
+
             </p>
 
           </div>
@@ -307,29 +272,41 @@ const Gallery = () => {
 
       </section>
 
+
       {/* ======================================================
           FILTER SECTION
       ====================================================== */}
 
-      <section className="py-10 sm:py-14 bg-slate-100 border-b border-slate-200 relative overflow-hidden light-geom-grid">
+      <section className="relative py-7 sm:py-9 bg-slate-100 border-b border-slate-200">
 
-        <div className="absolute top-0 left-0 w-80 h-80 bg-[#C29D56]/20 rounded-full filter blur-3xl pointer-events-none" />
+        {/* Background Pattern */}
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:24px_24px]" />
 
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-wrap items-center justify-between gap-5">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+            {/* Section Heading */}
 
             <div>
 
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3 py-1 rounded-full border border-[#C29D56]/30">
-                Explore Categories
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#C29D56]">
+
+                Visual Tour
+
               </span>
 
-              <h2 className="mt-2 text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+              <h2 className="mt-1 text-xl sm:text-2xl font-extrabold text-slate-900">
+
                 Project Gallery
+
               </h2>
 
             </div>
+
+
+            {/* Filters */}
 
             <div className="flex flex-wrap gap-2">
 
@@ -341,16 +318,20 @@ const Gallery = () => {
                   <button
                     key={filter}
                     type="button"
-                    onClick={() => setActiveFilter(filter)}
-                    className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                    onClick={() => {
+                      setActiveFilter(filter);
+                      setSelectedPhoto(null);
+                    }}
+                    className={`px-3.5 sm:px-4 py-2 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
                       isActive
-                        ? 'bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 shadow-md'
-                        : 'bg-white text-slate-700 border border-slate-200 hover:bg-[#6B1312] hover:text-white'
+                        ? 'bg-[#6B1312] text-[#C29D56] border-[#C29D56]/50 shadow-md'
+                        : 'bg-white text-slate-700 border-slate-200 hover:bg-[#6B1312] hover:text-white hover:border-[#6B1312]'
                     }`}
                   >
                     {filter}
                   </button>
                 );
+
               })}
 
             </div>
@@ -361,132 +342,113 @@ const Gallery = () => {
 
       </section>
 
+
       {/* ======================================================
-          GALLERY GRID
+          SIMPLE IMAGE GALLERY
       ====================================================== */}
 
-      <section className="py-12 sm:py-16 bg-slate-100 relative overflow-hidden light-geom-grid">
+      <section className="relative py-8 sm:py-12 lg:py-14 bg-slate-100">
 
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#6B1312]/10 rounded-full filter blur-3xl pointer-events-none" />
+        {/* Background Glow */}
+
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#6B1312]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* IMAGE GRID */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
 
             {filteredPhotos.map((photo, index) => (
 
-              <article
+              <button
                 key={photo.id}
-                className={`group overflow-hidden rounded-3xl bg-white shadow-xl border border-slate-200 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${
+                type="button"
+                onClick={() => openModal(photo)}
+                className={`group relative overflow-hidden rounded-2xl bg-black text-left border border-slate-200 shadow-md hover:shadow-xl transition-all duration-500 ${
                   index === 0
-                    ? 'sm:col-span-2 lg:col-span-2'
-                    : ''
+                    ? 'sm:col-span-2 lg:col-span-2 aspect-[16/9]'
+                    : 'aspect-[4/3]'
                 }`}
               >
 
                 {/* IMAGE */}
 
-                <button
-                  type="button"
-                  onClick={() => openModal(photo)}
-                  className={`relative block w-full overflow-hidden text-left ${
-                    index === 0
-                      ? 'aspect-[16/9]'
-                      : 'aspect-[4/3]'
-                  }`}
-                >
+                <img
+                  src={photo.image}
+                  alt={photo.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
 
-                  <img
-                    src={photo.image}
-                    alt={photo.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                {/* Hover Overlay */}
 
-                  {/* IMAGE OVERLAY */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-50 group-hover:opacity-90 transition-opacity duration-300" />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-95" />
 
-                  {/* CATEGORY */}
+                {/* Category */}
 
-                  <div className="absolute left-4 top-4">
+                <div className="absolute top-3 left-3">
 
-                    <span className="rounded-full border border-white/20 bg-black/40 px-3 py-1 text-[11px] font-bold text-[#C29D56] backdrop-blur-md uppercase tracking-wider">
-                      {photo.category}
-                    </span>
+                  <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
 
-                  </div>
+                    {photo.category}
 
-                  {/* EXPAND ICON */}
-
-                  <div className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56] border border-white/20">
-
-                    <Expand size={16} />
-
-                  </div>
-
-                  {/* BOTTOM TEXT */}
-
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-
-                    <div className="flex items-end justify-between gap-4">
-
-                      <div>
-
-                        <p className="mb-0.5 text-[10px] font-extrabold uppercase tracking-widest text-[#C29D56]">
-                          {photo.location}
-                        </p>
-
-                        <h3 className="text-lg font-extrabold text-white sm:text-xl tracking-tight">
-                          {photo.title}
-                        </h3>
-
-                      </div>
-
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/40 transition-transform duration-300 group-hover:rotate-45">
-
-                        <ArrowUpRight size={16} />
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                </button>
-
-                {/* DESCRIPTION */}
-
-                <div className="p-4 sm:p-5 bg-gradient-to-r from-slate-50 via-white to-slate-50">
-
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-600 font-medium">
-                    {photo.description}
-                  </p>
+                  </span>
 
                 </div>
 
-              </article>
+
+                {/* Expand Icon */}
+
+                <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+
+                  <Expand size={15} />
+
+                </div>
+
+
+                {/* Image Title */}
+
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+
+                  <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+
+                    {photo.title}
+
+                  </h3>
+
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-[#6B1312] border border-[#C29D56]/50 flex items-center justify-center text-[#C29D56]">
+
+                    <ArrowUpRight size={15} />
+
+                  </div>
+
+                </div>
+
+              </button>
 
             ))}
 
           </div>
 
+
           {/* EMPTY STATE */}
 
           {filteredPhotos.length === 0 && (
 
-            <div className="flex min-h-[300px] flex-col items-center justify-center rounded-3xl bg-white border border-slate-200 text-center p-8 shadow-sm">
+            <div className="min-h-[250px] flex flex-col items-center justify-center text-center">
 
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#6B1312]/10 text-[#6B1312]">
-                <Images size={24} />
-              </div>
+              <Images
+                size={35}
+                className="text-[#6B1312] mb-3"
+              />
 
-              <h3 className="text-lg font-extrabold text-slate-900">
+              <h3 className="text-lg font-bold text-slate-900">
                 No Images Found
               </h3>
 
-              <p className="mt-1 max-w-md text-xs sm:text-sm text-slate-600">
-                There are currently no gallery images available in this
-                category.
+              <p className="text-xs text-slate-500 mt-1">
+                No gallery images are available in this category.
               </p>
 
             </div>
@@ -497,48 +459,46 @@ const Gallery = () => {
 
       </section>
 
+
       {/* ======================================================
-          CTA SECTION
+          SIMPLE CTA
       ====================================================== */}
 
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
+      <section className="relative py-9 sm:py-12 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] border-t border-[#C29D56]/30 overflow-hidden">
 
-        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
+        {/* Pattern */}
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-10 pointer-events-none" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-          <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
 
-            <div className="max-w-2xl space-y-2">
+            <div>
 
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full">
+              <p className="text-[#C29D56] text-[10px] font-bold uppercase tracking-widest">
                 Harika Paradise
-              </span>
+              </p>
 
-              <h2 className="text-2xl sm:text-3xl font-black leading-tight text-white tracking-tight">
-                See the vision.
-                <span className="block text-slate-300">
-                  Discover the lifestyle.
-                </span>
+              <h2 className="mt-1 text-xl sm:text-2xl font-extrabold text-white">
+                Discover the project in person
               </h2>
 
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Explore Harika Paradise and discover a thoughtfully planned
-                destination designed for comfortable and connected living.
+              <p className="mt-1 text-xs sm:text-sm text-slate-300">
+                Schedule a site visit and explore Harika Paradise.
               </p>
 
             </div>
 
             <Link
               to="/contact"
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#C29D56] hover:bg-[#b08b47] px-7 py-3.5 text-xs sm:text-sm font-extrabold text-[#6B1312] shadow-2xl transition-all group"
+              className="inline-flex items-center gap-2 shrink-0 rounded-lg bg-[#C29D56] hover:bg-[#b08b47] px-5 py-2.5 text-xs sm:text-sm font-bold text-[#6B1312] transition-all shadow-lg group"
             >
+
               Enquire Now
 
               <ArrowUpRight
-                size={18}
+                size={16}
                 className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
               />
 
@@ -550,6 +510,7 @@ const Gallery = () => {
 
       </section>
 
+
       {/* ======================================================
           FULLSCREEN IMAGE MODAL
       ====================================================== */}
@@ -557,8 +518,7 @@ const Gallery = () => {
       {selectedPhoto && (
 
         <div
-          ref={modalRef}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 backdrop-blur-md sm:p-8"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
           onClick={(event) => {
             if (event.target === event.currentTarget) {
               closeModal();
@@ -566,16 +526,19 @@ const Gallery = () => {
           }}
         >
 
-          {/* CLOSE BUTTON */}
+          {/* CLOSE */}
 
           <button
             type="button"
             onClick={closeModal}
             aria-label="Close gallery"
-            className="absolute right-5 top-5 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/40 transition-colors hover:bg-[#520e0e] sm:right-8 sm:top-8 shadow-xl"
+            className="absolute top-3 right-3 sm:top-5 sm:right-5 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] border border-[#C29D56]/50 flex items-center justify-center transition-all"
           >
-            <X size={21} />
+
+            <X size={20} />
+
           </button>
+
 
           {/* PREVIOUS */}
 
@@ -585,46 +548,31 @@ const Gallery = () => {
               type="button"
               onClick={showPrevious}
               aria-label="Previous image"
-              className="absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white hover:text-slate-900 sm:left-8 border border-white/20"
+              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-[#6B1312] text-white border border-white/20 hover:border-[#C29D56] backdrop-blur-md flex items-center justify-center transition-all"
             >
-              <ChevronLeft size={22} className="text-[#C29D56]" />
+
+              <ChevronLeft
+                size={22}
+                className="text-[#C29D56]"
+              />
+
             </button>
 
           )}
 
-          {/* IMAGE CONTAINER */}
 
-          <div className="relative flex max-h-[90vh] max-w-6xl flex-col items-center">
+          {/* IMAGE */}
 
-            <div className="overflow-hidden rounded-2xl bg-black shadow-2xl border border-white/20">
+          <div className="relative max-w-6xl w-full flex items-center justify-center">
 
-              <img
-                src={selectedPhoto.image}
-                alt={selectedPhoto.title}
-                className="max-h-[72vh] w-auto max-w-[90vw] object-contain"
-              />
-
-            </div>
-
-            {/* MODAL INFORMATION */}
-
-            <div className="mt-5 max-w-2xl text-center space-y-1">
-
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full inline-block">
-                {selectedPhoto.category}
-              </span>
-
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                {selectedPhoto.title}
-              </h3>
-
-              <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
-                {selectedPhoto.description}
-              </p>
-
-            </div>
+            <img
+              src={selectedPhoto.image}
+              alt={selectedPhoto.title}
+              className="max-h-[88vh] max-w-[88vw] sm:max-w-[82vw] object-contain rounded-xl shadow-2xl border border-white/10"
+            />
 
           </div>
+
 
           {/* NEXT */}
 
@@ -634,12 +582,29 @@ const Gallery = () => {
               type="button"
               onClick={showNext}
               aria-label="Next image"
-              className="absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white hover:text-slate-900 sm:right-8 border border-white/20"
+              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-[#6B1312] text-white border border-white/20 hover:border-[#C29D56] backdrop-blur-md flex items-center justify-center transition-all"
             >
-              <ChevronRight size={22} className="text-[#C29D56]" />
+
+              <ChevronRight
+                size={22}
+                className="text-[#C29D56]"
+              />
+
             </button>
 
           )}
+
+
+          {/* IMAGE COUNTER */}
+
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md border border-[#C29D56]/40 text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold">
+
+            {filteredPhotos.findIndex(
+              (photo) => photo.id === selectedPhoto.id
+            ) + 1}{' '}
+            / {filteredPhotos.length}
+
+          </div>
 
         </div>
 
