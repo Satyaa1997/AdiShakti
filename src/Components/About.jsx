@@ -124,11 +124,8 @@ const About = () => {
         <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#6B1312]/10 rounded-full filter blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
+          <div className="relative">
             
-            <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
-            <div className="absolute -top-12 -right-12 w-32 h-32 border-2 border-[#C29D56]/30 rounded-full pointer-events-none" />
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
               
               <div className="lg:col-span-7 space-y-6">
@@ -197,10 +194,8 @@ const About = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C29D56]/15 rounded-full filter blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl space-y-12 sm:space-y-16 relative overflow-hidden">
+          <div className="space-y-12 sm:space-y-16 relative">
             
-            <div className="absolute -top-12 -right-12 w-32 h-32 border-2 border-[#C29D56]/20 rounded-full pointer-events-none" />
-
             {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full">
@@ -293,10 +288,8 @@ const About = () => {
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/20 rounded-full filter blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
+          <div className="relative">
             
-            <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
-
             <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
               <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3.5 py-1 rounded-full border border-[#C29D56]/30">
                 Methodology
@@ -365,10 +358,8 @@ const About = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl relative overflow-hidden">
+          <div className="relative">
             
-            <div className="absolute -top-12 -right-12 w-32 h-32 border border-[#C29D56]/20 rounded-full pointer-events-none" />
-
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               
               <div className="space-y-6">

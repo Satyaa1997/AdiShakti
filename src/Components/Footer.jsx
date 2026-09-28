@@ -5,6 +5,7 @@ import {
   Phone,
   Mail,
   ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import logo from "../assets/AdiShakti-Logo.png";
 
@@ -219,6 +220,7 @@ const Footer = () => {
                     D2/540, Vikalp Khand Gomti Nagar, Nearby Kathauta Jheel,
                     Lucknow. Pin 226010
                   </span>
+
                 </div>
 
                 <div className="flex items-center gap-2.5">
@@ -231,6 +233,17 @@ const Footer = () => {
                   <Mail className="w-4 h-4 text-[#C29D56] flex-shrink-0" />
 
                   <span>adishak0234@gmail.com</span>
+                </div>
+
+                {/* Go To Lead CRM Button */}
+                <div className="pt-2">
+                  <Link
+                    to="/lead-crm"
+                    className="inline-flex items-center justify-center gap-1.5 w-full bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-3.5 py-2.5 rounded-xl font-extrabold text-xs shadow-md transition-all duration-300 group"
+                  >
+                    <span>Go To Lead CRM</span>
+                    <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
                 </div>
 
               </div>
@@ -334,7 +347,7 @@ const Footer = () => {
     position: relative;
     z-index: 5;
 
-    color: #C29D56;
+    color: #ffffff;
 
     text-shadow:
       0 1px 3px rgba(0, 0, 0, 0.65);

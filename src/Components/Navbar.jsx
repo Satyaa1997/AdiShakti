@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, PhoneCall } from 'lucide-react';
+import { Menu, X, ChevronDown, PhoneCall, Mail, User, Send } from 'lucide-react';
 
 import logo from '../assets/AdiShakti-Logo.png';
 
@@ -8,6 +8,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
+  
+  // Popup Modal State
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
 
   // Projects list jo dropdown mein dikhegi
   const projectItems = [
@@ -28,6 +32,18 @@ const Navbar = () => {
         ? 'text-[#C29D56] font-bold pl-2 border-l-4 border-[#C29D56]'
         : 'text-slate-700 hover:text-[#C29D56]'
     }`;
+
+  // Handle Form Submission to Email
+  const handleSubmitEnquiry = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent("New Enquiry from Harika Paradise Website");
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+    );
+    window.location.href = `mailto:adishak0234@gmail.com?subject=${subject}&body=${body}`;
+    setIsModalOpen(false);
+    setFormData({ name: '', phone: '', email: '', message: '' });
+  };
 
   return (
     <>
@@ -122,15 +138,10 @@ const Navbar = () => {
 
               {/* Booking Open */}
               <div className="flex items-center gap-1.5 text-[#C29D56] text-xs sm:text-sm font-semibold">
-
-                {/* Static Golden Dot */}
                 <span className="inline-flex h-2.5 w-2.5 rounded-full bg-[#C29D56] shadow-[0_0_6px_rgba(194,157,86,0.9)]"></span>
-
-                {/* Blinking Text */}
                 <span className="animate-pulse">
                   Booking open
                 </span>
-
               </div>
 
               {/* Divider */}
@@ -228,10 +239,6 @@ const Navbar = () => {
                 )}
               </div>
 
-              <NavLink to="/why-choose" className={navLinkClass}>
-                Why Choose Us
-              </NavLink>
-
               <NavLink to="/gallery" className={navLinkClass}>
                 Gallery
               </NavLink>
@@ -242,15 +249,15 @@ const Navbar = () => {
 
             </div>
 
-            {/* Enquire Now CTA Button - Desktop */}
+            {/* Enquire Now CTA Button - Desktop (Triggers Popup Modal) */}
             <div className="hidden md:flex items-center">
-              <a
-                href="tel:05224205350"
-                className="bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] border border-[#C29D56]/30 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center gap-2"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] border border-[#C29D56]/30 px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer"
               >
                 <PhoneCall className="w-4 h-4 text-[#C29D56]" />
                 Enquire Now
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Toggle Button */}
@@ -301,7 +308,6 @@ const Navbar = () => {
                 className="flex items-center justify-between w-full text-slate-700 hover:text-[#C29D56] font-medium text-base py-1 focus:outline-none"
               >
                 <span>Our Projects</span>
-
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
                     mobileProjectsOpen ? 'rotate-180' : ''
@@ -360,18 +366,128 @@ const Navbar = () => {
 
             {/* Enquire Now CTA - Mobile */}
             <div className="pt-2">
-              <a
-                href="tel:05224205350"
-                onClick={() => setIsOpen(false)}
-                className="w-full text-center bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] px-4 py-2.5 rounded-lg text-sm font-bold block shadow-sm transition-all"
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setIsModalOpen(true);
+                }}
+                className="w-full text-center bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] px-4 py-2.5 rounded-lg text-sm font-bold block shadow-sm transition-all cursor-pointer"
               >
                 Enquire Now
-              </a>
+              </button>
             </div>
 
           </div>
         )}
       </nav>
+
+      {/* =========================================================
+          ENQUIRY POPUP MODAL FORM
+      ========================================================= */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border-2 border-[#C29D56]/30 animate-in fade-in zoom-in duration-200">
+            
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 p-2 rounded-full transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Header */}
+            <div className="text-center space-y-1 mb-6">
+              <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3 py-1 rounded-full border border-[#C29D56]/30">
+                Quick Assistance
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-[#6B1312] tracking-tight pt-2">
+                Enquire For Harika Paradise
+              </h3>
+              <p className="text-slate-600 text-xs">
+                Fill out the form below and our team will get back to you shortly via email.
+              </p>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmitEnquiry} className="space-y-4">
+              
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <User className="w-4 h-4" />
+                  </span>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your full name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#C29D56] focus:ring-1 focus:ring-[#C29D56]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <PhoneCall className="w-4 h-4" />
+                  </span>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="Enter your phone number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#C29D56] focus:ring-1 focus:ring-[#C29D56]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                    <Mail className="w-4 h-4" />
+                  </span>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full pl-9 pr-3 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#C29D56] focus:ring-1 focus:ring-[#C29D56]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Message / Requirements</label>
+                <textarea
+                  rows="3"
+                  placeholder="Mention plot size or any query..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full p-3 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#C29D56] focus:ring-1 focus:ring-[#C29D56]"
+                ></textarea>
+              </div>
+
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  className="w-full bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 border border-[#C29D56]/40 cursor-pointer"
+                >
+                  <Send className="w-4 h-4" /> Submit Enquiry
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      )}
     </>
   );
 };

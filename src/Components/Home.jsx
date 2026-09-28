@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, PhoneCall, Building2, MapPin, Maximize2, LayoutGrid, Trees, Sparkles, ChevronLeft, ChevronRight, Image as ImageIcon, MapPinHouse, Compass, Star, Quote, X, User, UserRound } from 'lucide-react';
+import { ArrowRight, PhoneCall, Building2, MapPin, Maximize2, LayoutGrid, Trees, Sparkles, ChevronLeft, ChevronRight, Image as ImageIcon, MapPinHouse, Compass, Star, Quote, X, User, UserRound, ShieldCheck, Landmark, FileText, Layers, TrendingUp, Shield, ArrowUpRight } from 'lucide-react';
 
 // Importing all images at the top for proper Vite bundler handling and Vercel deployment
 import slide1Img from '../assets/04.jpeg';
@@ -32,7 +32,7 @@ const Home = () => {
   // Hero Slider Images (Using imported variables)
   const slides = [
     {
-      image: slide1Img, 
+      image: slide1Img,
       title: 'Building Spaces. Creating Possibilities.',
       description: 'A thoughtfully planned community offering organized infrastructure, green surroundings, and promising opportunities for comfortable living and long-term investment.',
     },
@@ -59,7 +59,7 @@ const Home = () => {
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   // Gallery State & Lightbox
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [lightboxImg, setLightboxImg] = useState(null);
@@ -75,14 +75,14 @@ const Home = () => {
     { src: gallery7Img, alt: "Clubhouse Interior" },
     { src: gallery8Img, alt: "Clubhouse Interior" }
   ];
-  
+
   const [isSection2Visible, setIsSection2Visible] = useState(false);
   const [isSection3Visible, setIsSection3Visible] = useState(false);
   const [isSection5Visible, setIsSection5Visible] = useState(false);
   const [isSection6Visible, setIsSection6Visible] = useState(false);
   const [isSectionFeedbackVisible, setIsSectionFeedbackVisible] = useState(false);
   const [isSection7Visible, setIsSection7Visible] = useState(false);
-  
+
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
   const section5Ref = useRef(null);
@@ -110,7 +110,7 @@ const Home = () => {
         if (window.innerWidth < 768) {
           const cardWidth = container.querySelector('.snap-center')?.offsetWidth || 300;
           const maxScrollLeft = container.scrollWidth - container.clientWidth;
-          
+
           if (container.scrollLeft >= maxScrollLeft - 10) {
             container.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
@@ -132,7 +132,7 @@ const Home = () => {
         if (cardElement) {
           const cardWidth = cardElement.offsetWidth + 24;
           const maxScrollLeft = container.scrollWidth - container.clientWidth;
-          
+
           if (container.scrollLeft >= maxScrollLeft - 10) {
             container.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
@@ -154,7 +154,7 @@ const Home = () => {
         if (cardElement) {
           const cardWidth = cardElement.offsetWidth + 20;
           const maxScrollLeft = container.scrollWidth - container.clientWidth;
-          
+
           if (container.scrollLeft >= maxScrollLeft - 10) {
             container.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
@@ -376,7 +376,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 overflow-hidden font-sans selection:bg-[#C29D56] selection:text-white">
-      
+
       {/* Custom Geometrical Grid Pattern CSS for Light Sections */}
       <style>{`
         .light-geom-grid {
@@ -456,6 +456,123 @@ const Home = () => {
           transform: translate(-50%, -50%);
         }
 
+        /* Why Choose Us compact expandable cards */
+        .javier-card {
+          width: 100%;
+          max-width: 240px;
+          height: 270px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 10px;
+          background-color: #ffffff;
+          border-radius: 18px;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+          border: 1px solid #e2e8f0;
+          margin: 0 auto;
+        }
+
+        .javier-card::before {
+          content: "";
+          width: 240px;
+          height: 95px;
+          position: absolute;
+          top: 0;
+          border-top-left-radius: 18px;
+          border-top-right-radius: 18px;
+          border-bottom: 3px solid #fefefe;
+          background: linear-gradient(40deg, #120303 0%, #6B1312 50%, #C29D56 100%);
+          transition: all 0.5s ease;
+        }
+
+        .javier-card * { z-index: 1; }
+
+        .javier-image-box {
+          width: 65px;
+          height: 65px;
+          background-color: #6B1312;
+          border-radius: 50%;
+          border: 3px solid #fefefe;
+          margin-top: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #C29D56;
+          box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+          transition: all 0.5s ease;
+        }
+
+        .javier-card-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          padding: 0 16px;
+          transition: all 0.5s ease;
+        }
+
+        .javier-card-info span {
+          font-weight: 800;
+          font-size: 1.05rem;
+          color: #1e293b;
+          margin-top: 6px;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .javier-card-info p {
+          color: #64748b;
+          font-size: 0.77rem;
+          line-height: 1.45;
+        }
+
+        .javier-button {
+          text-decoration: none;
+          background-color: #6B1312;
+          color: white;
+          padding: 5px 14px;
+          border-radius: 6px;
+          border: 1px solid white;
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          transition: all 0.5s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 3px;
+        }
+
+        .javier-card:hover::before {
+          width: 240px;
+          height: 270px;
+          border-bottom: none;
+          border-bottom-left-radius: 18px;
+          border-bottom-right-radius: 18px;
+          transform: scale(0.96);
+        }
+
+        .javier-card:hover .javier-card-info { transform: translateY(-10px); }
+
+        .javier-card:hover .javier-card-info span,
+        .javier-card:hover .javier-card-info p { color: #ffffff; }
+
+        .javier-card:hover .javier-image-box {
+          transform: scale(1.5) translate(-30%, -25%);
+          background-color: #120303;
+          border-color: #C29D56;
+        }
+
+        .javier-button:hover {
+          background-color: #C29D56;
+          color: #120303;
+          transform: scale(1.08);
+        }
+
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
@@ -468,13 +585,12 @@ const Home = () => {
       {/* ================= SECTION 1: HERO SLIDER (CINEMATIC FADE & ZOOM STYLE) ================= */}
       <section className="relative w-full overflow-hidden bg-slate-900 
                           h-[400px] sm:h-[450px] md:h-[520px] lg:h-[calc(100vh-80px)]">
-        
+
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0'
-            }`}
+            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0'
+              }`}
           >
             <img
               src={slide.image}
@@ -502,7 +618,7 @@ const Home = () => {
                       to="/our-projects"
                       className="bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-3 py-1.5 rounded-md font-bold text-[11px] sm:text-xs shadow-md transition-all flex items-center gap-1 group"
                     >
-                      Explore Projects 
+                      Explore Projects
                       <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <Link
@@ -523,9 +639,8 @@ const Home = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`h-1.5 rounded-full transition-all ${
-                index === currentSlide ? 'w-5 bg-[#C29D56]' : 'w-1.5 bg-white/50 hover:bg-white'
-              }`}
+              className={`h-1.5 rounded-full transition-all ${index === currentSlide ? 'w-5 bg-[#C29D56]' : 'w-1.5 bg-white/50 hover:bg-white'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -538,12 +653,12 @@ const Home = () => {
         <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#6B1312]/10 rounded-full filter blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
+
           <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-10">
             <h2 className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C29D56] transition-opacity duration-500 ${isSection2Visible ? 'opacity-100' : 'opacity-0'}`}>
               Welcome to Harika Paradise
             </h2>
-            
+
             <h3 className="text-2xl sm:text-4xl font-bold text-slate-900 flex flex-wrap justify-center gap-x-2.5 gap-y-1">
               {headingWords2.map((word, index) => (
                 <span
@@ -559,15 +674,15 @@ const Home = () => {
             <div className={`w-20 h-1 bg-[#6B1312] mx-auto rounded-full mt-2 transition-all duration-700 ${isSection2Visible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
           </div>
 
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden mb-12">
+          <div className="relative mb-12">
             <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="relative overflow-hidden rounded-2xl h-[280px] sm:h-[340px] border border-slate-200 shadow-sm">
-                <img 
-                  src={introImg} 
-                  alt="Company Introduction" 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                <img
+                  src={introImg}
+                  alt="Company Introduction"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
@@ -597,80 +712,75 @@ const Home = () => {
           </div>
 
           {/* Uiverse Style Feature Cards Carousel */}
-          <div 
-            ref={cardsContainerRef} 
-            className="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-x-visible no-scrollbar snap-x snap-mandatory px-2 md:px-0 max-w-5xl mx-auto pb-4 md:pb-0 scroll-smooth"
+          <div
+            ref={cardsContainerRef}
+            className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:overflow-visible snap-x snap-mandatory px-2 md:px-0 pb-4 md:pb-0 no-scrollbar"
           >
             {featureCardsData.map((card, index) => (
-              <div 
-                key={index} 
-                className="relative flex flex-col gap-4 p-5 w-[280px] sm:w-[320px] md:w-full flex-shrink-0 snap-center bg-[#120303] rounded-2xl shadow-xl border border-[#C29D56]/30 overflow-hidden group hover:scale-[1.02] transition-all duration-500"
-                style={{
-                  backgroundImage: `radial-gradient(at 88% 40%, hsla(0, 0%, 0%, 1) 0px, transparent 85%),
-                                    radial-gradient(at 49% 30%, hsla(0, 0%, 0%, 1) 0px, transparent 85%),
-                                    radial-gradient(at 0% 64%, rgba(107, 19, 18, 0.4) 0px, transparent 85%),
-                                    radial-gradient(at 41% 94%, rgba(194, 157, 86, 0.3) 0px, transparent 85%)`
-                }}
+              <div
+                key={index}
+                className="group relative flex min-h-[320px] w-[260px] flex-shrink-0 snap-center cursor-pointer flex-col overflow-hidden rounded-[20px] bg-[linear-gradient(170deg,rgba(135,42,39,0.95)_0%,#6B1312_45%,#3D0908_100%)] shadow-[0_25px_50px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-[0.96] hover:shadow-[0_30px_60px_rgba(0,0,0,0.55)] sm:w-[290px] md:w-full"
               >
-                <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden opacity-40">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-40 uiverse-rotating-border" />
-                </div>
-
-                <div className="relative z-10 space-y-1">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56]">
+                {/* Ribbon */}
+                <span className="absolute left-[-10px] top-[-10px] z-20 flex h-[155px] w-[155px] items-center justify-center overflow-hidden">
+                  <span className="absolute flex h-10 w-[150%] -translate-y-5 rotate-[-45deg] items-center justify-center whitespace-nowrap bg-[linear-gradient(45deg,#A87F35_0%,#C29D56_50%,#E1C27A_100%)] text-[10px] font-extrabold uppercase tracking-[0.08em] text-[#6B1312] shadow-[0_5px_10px_rgba(0,0,0,0.3)]">
                     {card.subtitle}
                   </span>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white">
-                    {card.title}
-                  </h3>
+                </span>
+
+                {/* Card Content */}
+                <div className="relative z-10 flex h-full flex-1 flex-col p-6 pt-20">
+
+                  {/* Heading */}
+                  <div className="mb-5 pl-8">
+                    <h3 className="text-xl font-extrabold text-white sm:text-2xl">
+                      {card.title}
+                    </h3>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="mb-5 h-px w-full bg-white/20" />
+
+                  {/* Points */}
+                  <ul className="flex-1 space-y-3">
+                    {[card.desc1, card.desc2, card.desc3, card.desc4].map(
+                      (item, itemIndex) => (
+                        <li
+                          key={itemIndex}
+                          className="flex items-start gap-3 text-sm text-white/90"
+                        >
+                          {/* Check Icon */}
+                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#C29D56] text-[#6B1312]">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                          </span>
+
+                          <span>{item}</span>
+                        </li>
+                      )
+                    )}
+                  </ul>
+
+                  {/* Explore Button */}
+                  <Link
+                    to="/projects/harika-paradise"
+                    className="mt-7 inline-flex items-center justify-center gap-2 rounded-full border border-[#C29D56]/70 bg-[#C29D56] px-5 py-2.5 text-xs font-bold text-[#6B1312] shadow-lg transition-all duration-300 hover:border-white hover:bg-white hover:text-[#6B1312]"
+                  >
+                    Explore Highlights
+                    <ArrowRight size={15} />
+                  </Link>
                 </div>
-
-                <hr className="border-t border-[#C29D56]/30 my-1" />
-
-                <ul className="relative z-10 space-y-2.5">
-                  <li className="flex items-center gap-2.5 text-xs text-slate-200">
-                    <span className="flex items-center justify-center w-5 h-5 bg-[#C29D56] rounded-full text-[#120303] flex-shrink-0">
-                      <svg className="w-3 h-3 font-bold" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                        <path clipRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fillRule="evenodd"></path>
-                      </svg>
-                    </span>
-                    <span>{card.desc1}</span>
-                  </li>
-
-                  <li className="flex items-center gap-2.5 text-xs text-slate-200">
-                    <span className="flex items-center justify-center w-5 h-5 bg-[#C29D56] rounded-full text-[#120303] flex-shrink-0">
-                      <svg className="w-3 h-3 font-bold" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                        <path clipRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fillRule="evenodd"></path>
-                      </svg>
-                    </span>
-                    <span>{card.desc2}</span>
-                  </li>
-
-                  <li className="flex items-center gap-2.5 text-xs text-slate-200">
-                    <span className="flex items-center justify-center w-5 h-5 bg-[#C29D56] rounded-full text-[#120303] flex-shrink-0">
-                      <svg className="w-3 h-3 font-bold" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                        <path clipRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fillRule="evenodd"></path>
-                      </svg>
-                    </span>
-                    <span>{card.desc3}</span>
-                  </li>
-
-                  <li className="flex items-center gap-2.5 text-xs text-slate-200">
-                    <span className="flex items-center justify-center w-5 h-5 bg-[#C29D56] rounded-full text-[#120303] flex-shrink-0">
-                      <svg className="w-3 h-3 font-bold" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                        <path clipRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fillRule="evenodd"></path>
-                      </svg>
-                    </span>
-                    <span>{card.desc4}</span>
-                  </li>
-                </ul>
-
-                <Link 
-                  to="/projects/harika-paradise"
-                  className="relative z-15 mt-2 text-center py-2.5 px-4 bg-gradient-to-r from-[#6B1312] to-[#C29D56] hover:opacity-90 text-white font-bold text-xs rounded-full shadow-lg transition-all"
-                >
-                  Explore Highlights
-                </Link>
               </div>
             ))}
           </div>
@@ -679,218 +789,458 @@ const Home = () => {
       </section>
 
       {/* ================= SECTION 3: FEATURED PROJECT (DARK MAROON GEOMETRICAL BG) ================= */}
-      <section ref={section3Ref} className="py-12 sm:py-16 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-slate-200 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
+      {/* ================= FEATURED PROJECT ================= */}
+     <section
+        ref={section3Ref}
+        className="relative overflow-hidden bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] py-12 text-white sm:py-16"
+      >
+        {/* Background Dotted Pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="relative text-center max-w-3xl mx-auto py-6 px-4 mb-10 rounded-3xl overflow-hidden border border-[#C29D56]/40 shadow-xl bg-black/40 backdrop-blur-md">
-            <div className="relative z-10 space-y-2">
-              <span className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full inline-block transition-opacity duration-500 ${isSection3Visible ? 'opacity-100' : 'opacity-0'}`}>
-                Featured Project
-              </span>
-              
-              <h2 className="text-2xl sm:text-4xl font-extrabold text-white flex flex-wrap justify-center gap-x-2.5 gap-y-1">
-                {headingWords3.map((word, index) => (
-                  <span
-                    key={index}
-                    className={`rain-word ${isSection3Visible ? 'animate-rain-drop' : ''}`}
-                    style={{ animationDelay: `${index * 0.15}s` }}
-                  >
-                    {word}
-                  </span>
-                ))}
-              </h2>
+        {/* Background Effects */}
+        <div className="pointer-events-none absolute left-0 top-0 h-96 w-96 rounded-full bg-[#C29D56]/10 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#6B1312]/20 blur-3xl" />
 
-              <p className="text-slate-200 text-xs sm:text-sm font-medium">
-                A premium 10.38-acre residential plotted community designed for elite living.
-              </p>
-              <div className={`w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2 transition-all duration-700 ${isSection3Visible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
-            </div>
-          </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-          <div className="bg-black/40 backdrop-blur-md rounded-3xl p-5 sm:p-8 border border-[#C29D56]/40 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div className="lg:col-span-6 space-y-5 order-2 lg:order-1">
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  Harika Paradise
+          {/* Section Heading */}
+
+          {/* Main Content */}
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+
+            {/* LEFT — Content */}
+            <div
+              className={`order-2 lg:order-1 transition-all duration-700 ${isSection3Visible
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-10 opacity-0"
+                }`}
+            >
+              <div className="max-w-2xl">
+
+
+                <h3 className="text-xl font-extrabold leading-tight text-white sm:text-2xl lg:text-3xl">
+                  A premium 10.38-acre residential plotted community designed for
+                  elite living.
                 </h3>
-                <p className="text-slate-300 text-xs sm:text-sm mt-1.5 leading-relaxed">
-                  Experience a lifestyle of unmatched tranquility and elegance. Strategically located on Satrikh Road, Harika Paradise brings together modern infrastructure, lush green spaces, and complete legal security.
+
+                <p className="mt-4 text-sm leading-relaxed text-white/70">
+                  Experience a lifestyle of unmatched tranquility and elegance.
+                  Strategically located on Satrikh Road, Harika Paradise brings
+                  together modern infrastructure, lush green spaces, and complete
+                  legal security.
                 </p>
+
+                {/* Project Stats */}
+                <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/40 hover:bg-[#C29D56]/10">
+                    <div className="flex items-center gap-2">
+                      <Building2 className="h-4 w-4 text-[#C29D56]" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-white/60">
+                        Total Area
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-extrabold text-white">
+                      10.38 Acres
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/40 hover:bg-[#C29D56]/10">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-[#C29D56]" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-white/60">
+                        Property Type
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-extrabold text-white">
+                      Residential Plots
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/40 hover:bg-[#C29D56]/10">
+                    <div className="flex items-center gap-2">
+                      <LayoutGrid className="h-4 w-4 text-[#C29D56]" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-white/60">
+                        Plot Variety
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-extrabold text-white">
+                      Multiple Sizes
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/40 hover:bg-[#C29D56]/10">
+                    <div className="flex items-center gap-2">
+                      <Layers className="h-4 w-4 text-[#C29D56]" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-white/60">
+                        Infrastructure
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-extrabold text-white">
+                      Planned Roads
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/40 hover:bg-[#C29D56]/10">
+                    <div className="flex items-center gap-2">
+                      <Trees className="h-4 w-4 text-[#C29D56]" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-white/60">
+                        Environment
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-extrabold text-white">
+                      Green Spaces
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/40 hover:bg-[#C29D56]/10">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-[#C29D56]" />
+                      <span className="text-[10px] font-bold uppercase tracking-wide text-white/60">
+                        Community
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-extrabold text-white">
+                      Lifestyle Amenities
+                    </p>
+                  </div>
+
+                </div>
+
+                {/* CTA */}
+                <div className="mt-6">
+                  <Link
+                    to="/projects/harika-paradise"
+                    className="group inline-flex items-center gap-2 rounded-xl bg-[#C29D56] px-5 py-3 text-xs font-extrabold text-[#3a0a0a] shadow-lg transition-all duration-300 hover:bg-[#E1C27A] hover:shadow-[0_10px_30px_rgba(194,157,86,0.25)] sm:text-sm"
+                  >
+                    Explore Harika Paradise
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </div>
+
               </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C29D56] flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                    <Maximize2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-medium">Total Area</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">10.38 Acres</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C29D56] flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                    <Building2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-medium">Property Type</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">Residential Plots</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C29D56] flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                    <LayoutGrid className="w-4 h-4 text-[#6B1312]" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-medium">Plot Variety</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">Multiple Sizes</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C29D56] flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-medium">Infrastructure</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">Planned Roads</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C29D56] flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                    <Trees className="w-4 h-4 text-[#6B1312]" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-medium">Environment</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">Green Spaces</span>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-[#C29D56] flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-medium">Community</span>
-                    <span className="text-xs sm:text-sm font-bold text-white">Lifestyle Amenities</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  to="/projects/harika-paradise"
-                  className="inline-flex items-center justify-center gap-2 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-5 py-3 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all group w-full sm:w-auto"
-                >
-                  Explore Harika Paradise 
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#6B1312]" />
-                </Link>
-              </div>
-
             </div>
 
-            <div className="lg:col-span-6 relative overflow-hidden rounded-2xl shadow-lg h-[280px] sm:h-[350px] order-1 lg:order-2 border border-white/10">
-              <img 
-                src={featProjImg} 
-                alt="Harika Paradise Featured Project" 
-                className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute top-4 left-4 bg-[#6B1312] text-[#C29D56] font-bold text-xs px-3 py-1.5 rounded-lg shadow-md border border-[#C29D56]/40">
-                Featured Development
+            {/* RIGHT — IMAGE */}
+            <div
+              className={`order-1 lg:order-2 transition-all duration-700 ${isSection3Visible
+                ? "translate-x-0 opacity-100"
+                : "translate-x-10 opacity-0"
+                }`}
+            >
+              <div className="group relative mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-[#C29D56]/30 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.45)]">
+
+                {/* Gold Top Line */}
+                <div className="absolute left-0 right-0 top-0 z-10 h-1 bg-gradient-to-r from-transparent via-[#C29D56] to-transparent" />
+
+                <img
+                  src={featProjImg}
+                  alt="Harika Paradise Featured Project"
+                  className="h-[280px] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[350px] lg:h-[430px]"
+                />
+
+                {/* Image Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#120303]/80 via-transparent to-transparent" />
+
+                {/* Image Label */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="inline-flex items-center gap-2 rounded-lg border border-[#C29D56]/30 bg-black/50 px-3 py-2 backdrop-blur-md">
+                    <MapPin className="h-4 w-4 text-[#C29D56]" />
+                    <span className="text-xs font-bold text-white">
+                      Satrikh Road, Lucknow
+                    </span>
+                  </div>
+                </div>
+
               </div>
             </div>
 
           </div>
-
         </div>
       </section>
 
-      {/* ================= SECTION 5: WHY CHOOSE US (LIGHT GEOMETRICAL BG) ================= */}
-      <section ref={section5Ref} className="py-12 sm:py-16 bg-slate-100 border-t border-slate-200 relative overflow-hidden light-geom-grid">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/25 rounded-full filter blur-3xl pointer-events-none" />
+      {/* ================= WHY CHOOSE US: MERGED HOME SECTION ================= */}
+      <section id="why-choose-us" className="relative overflow-hidden">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl mb-12">
-            <div className="text-center max-w-3xl mx-auto space-y-2.5">
-              <h2 className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#926a29] transition-opacity duration-500 ${isSection5Visible ? 'opacity-100' : 'opacity-0'}`}>
-                Our Core Strengths
-              </h2>
-              
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900 flex flex-wrap justify-center gap-x-2.5 gap-y-1">
-                {headingWords5.map((word, index) => (
-                  <span
-                    key={index}
-                    className={`rain-word ${isSection5Visible ? 'animate-rain-drop' : ''}`}
-                    style={{ animationDelay: `${index * 0.15}s` }}
-                  >
-                    {word}
-                  </span>
-                ))}
-              </h3>
+        {/* PLANNED DEVELOPMENT */}
+        <div className="py-12 sm:py-16 bg-slate-100 relative overflow-hidden light-geom-grid">
+          <div className="absolute top-10 left-0 w-72 h-72 bg-[#C29D56]/25 rounded-full filter blur-3xl pointer-events-none" />
+          <div className="absolute bottom-10 right-0 w-72 h-72 bg-[#6B1312]/15 rounded-full filter blur-3xl pointer-events-none" />
 
-              <p className="text-slate-600 text-xs sm:text-sm font-medium">
-                Discover why families and investors trust Ādi Shakti Coloniser & Homebuilders.
-              </p>
-              <div className={`w-16 h-1 bg-[#6B1312] mx-auto rounded-full mt-2 transition-all duration-700 ${isSection5Visible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
-            </div>
-          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-6 space-y-4">
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                    Planned Development Rooted in Legal Integrity
+                  </h3>
+                </div>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  At Ādi Shakti Coloniser, we believe that true real estate value begins with absolute legal security and methodical land procurement. Every project is conceived after rigorous due diligence, clear title verifications, and compliance with local municipal bodies like Nagar Panchayat approvals.
+                </p>
 
-          <div className="relative max-w-6xl mx-auto px-2 sm:px-8">
-            <button 
-              onClick={() => scrollWhyChoose('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2.5 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
-              aria-label="Scroll Left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 hover:border-[#C29D56]/50 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-[#6B1312]/10 flex items-center justify-center text-[#6B1312] flex-shrink-0 mt-0.5">
+                      <ShieldCheck className="w-4 h-4 text-[#6B1312]" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">100% Clear Titles</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">Verified land ownership with hassle-free registry.</p>
+                    </div>
+                  </div>
 
-            <button 
-              onClick={() => scrollWhyChoose('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2.5 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
-              aria-label="Scroll Right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-
-            <div 
-              ref={whyChooseContainerRef}
-              className="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-2"
-            >
-              {whyChooseData.map((item, index) => (
-                <div
-                  key={index}
-                  className="why-card relative h-[320px] sm:h-[350px] rounded-3xl overflow-hidden shadow-md flex-shrink-0 snap-start w-[calc(100vw-3rem)] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] transition-all duration-500 hover:shadow-xl group border border-[#C29D56]/30 bg-slate-900"
-                >
-                  <img 
-                    src={item.image} 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                    alt={item.title} 
-                  />
-
-                  <div className="absolute inset-x-0 bottom-0 p-5 flex flex-col justify-end h-full z-10 space-y-2">
-                    <h3 className="text-white text-base sm:text-lg font-bold tracking-tight [text-shadow:_0_2px_8px_rgba(0,0,0,0.9)]">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-slate-100 text-xs sm:text-[13px] leading-relaxed [text-shadow:_0_1px_6px_rgba(0,0,0,0.9)] line-clamp-3">
-                      {item.desc}
-                    </p>
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 hover:border-[#C29D56]/50 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-[#C29D56]/15 flex items-center justify-center text-[#C29D56] flex-shrink-0 mt-0.5">
+                      <Landmark className="w-4 h-4 text-[#C29D56]" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">Approved Frameworks</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">Fully sanctioned layouts meeting municipal guidelines.</p>
+                    </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
+                  <img
+                    src={gallery5Img}
+                    alt="Planned Development"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* PROJECT PLANNING */}
+        <div className="py-14 sm:py-18 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] border-t border-[#C29D56]/30 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Comprehensive Project Planning
+              </h3>
+              <p className="text-slate-300 text-xs sm:text-sm">
+                Engineered for longevity, smooth transit, and sustainable community living. Hover over cards to explore.
+              </p>
+              <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
             </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+              <div className="javier-card">
+                <div className="javier-image-box"><Layers className="w-7 h-7 text-[#C29D56]" /></div>
+                <div className="javier-card-info">
+                  <span>Infrastructure</span>
+                  <p>Wide internal bitumen & concrete roads, underground stormwater drainage, and reliable electricity provisioning.</p>
+                </div>
+                <Link to="/contact" className="javier-button">Enquire <ArrowUpRight className="w-3.5 h-3.5" /></Link>
+              </div>
+
+              <div className="javier-card">
+                <div className="javier-image-box"><Trees className="w-7 h-7 text-[#C29D56]" /></div>
+                <div className="javier-card-info">
+                  <span>Green Spaces</span>
+                  <p>Thoughtfully allocated landscape parks, children play zones, and lush avenue tree plantation for serene living.</p>
+                </div>
+                <Link to="/contact" className="javier-button">Enquire <ArrowUpRight className="w-3.5 h-3.5" /></Link>
+              </div>
+
+              <div className="javier-card">
+                <div className="javier-image-box"><Shield className="w-7 h-7 text-[#C29D56]" /></div>
+                <div className="javier-card-info">
+                  <span>Gated Security</span>
+                  <p>Secure compound boundary walls, grand entrance portals with round-the-clock surveillance, and bright street lighting.</p>
+                </div>
+                <Link to="/contact" className="javier-button">Enquire <ArrowUpRight className="w-3.5 h-3.5" /></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* LOCATION FOCUS */}
+        <div className="py-12 sm:py-16 bg-slate-100 border-t border-slate-200 relative overflow-hidden light-geom-grid">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/25 rounded-full filter blur-3xl pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
+                  <img
+                    src={slide1Img}
+                    alt="Location Focus"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+
+              <div className="lg:col-span-6 space-y-4">
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                    Location Focus & High-Growth Approach
+                  </h3>
+                </div>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  We handpick land parcels along fast-developing urban corridors like Satrikh Road, Lucknow. Our location strategy ensures seamless connectivity to major highways, educational institutions, healthcare centers, and upcoming commercial hubs while keeping residents tucked away in peaceful surroundings.
+                </p>
+
+                <div className="space-y-2.5 pt-1">
+                  <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-[#C29D56]/50 transition-colors">
+                    <Compass className="w-4 h-4 text-[#C29D56]" />
+                    <span className="text-xs font-bold text-slate-800">Proximity to major arterial roads & ring roads (e.g., Kisan Path)</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-[#C29D56]/50 transition-colors">
+                    <TrendingUp className="w-4 h-4 text-[#6B1312]" />
+                    <span className="text-xs font-bold text-slate-800">High capital appreciation potential for investors</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        {/* CUSTOMER EXPERIENCE */}
+       <div className="py-14 sm:py-18 bg-slate-100 text-slate-900 border-t border-slate-200 relative overflow-hidden">
+
+      {/* Background Dotted Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
+
+      {/* Background Gradient Blur 1 */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/60 rounded-full filter blur-[120px] pointer-events-none" />
+
+      {/* Background Gradient Blur 2 */}
+      <div className="absolute bottom-5 right-5 w-72 h-72 bg-[#6B1312]/10 rounded-full filter blur-[90px] pointer-events-none" />
+
+      {/* Decorative SVG Line */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-20">
+        <svg
+          className="w-full h-40 max-w-6xl"
+          viewBox="0 0 1200 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M50 100C300 20 400 180 650 100C900 20 1000 180 1150 100"
+            stroke="#6B1312"
+            strokeWidth="2.5"
+            strokeDasharray="8 8"
+          />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
+
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#050404] tracking-tight">
+            Customer Experience & Process
+          </h3>
+
+          <p className="text-slate-600 text-xs sm:text-sm">
+            From your first query to final documentation, we ensure a transparent,
+            supportive journey.
+          </p>
+
+          <div className="w-16 h-1 bg-slate-300 mx-auto rounded-full mt-2" />
+        </div>
+
+        {/* Process Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+          {/* Card 01 */}
+          <div className="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-slate-400 hover:shadow-md transition-all duration-300">
+
+            <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-slate-400 transition-colors">
+              01
+            </span>
+
+            <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+              <PhoneCall className="w-4 h-4" />
+            </div>
+
+            <h4 className="text-sm font-extrabold text-[#6B1312]">
+              1. Enquiry & Consultation
+            </h4>
+
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Connect with our advisory team via phone or website. We understand
+              your budget, preferred size, and investment goals.
+            </p>
+          </div>
+
+          {/* Card 02 */}
+          <div className="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-slate-400 hover:shadow-md transition-all duration-300">
+
+            <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-slate-400 transition-colors">
+              02
+            </span>
+
+            <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+              <MapPin className="w-4 h-4" />
+            </div>
+
+            <h4 className="text-sm font-extrabold text-[#6B1312]">
+              2. Guided Site Visit
+            </h4>
+
+            <p className="text-xs text-slate-600 leading-relaxed">
+              We arrange complimentary site visits to Harika Paradise so you can
+              inspect development progress and surrounding infrastructure firsthand.
+            </p>
+          </div>
+
+          {/* Card 03 */}
+          <div className="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-slate-400 hover:shadow-md transition-all duration-300">
+
+            <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-slate-400 transition-colors">
+              03
+            </span>
+
+            <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+              <Building2 className="w-4 h-4" />
+            </div>
+
+            <h4 className="text-sm font-extrabold text-[#6B1312]">
+              3. Plot Selection
+            </h4>
+
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Choose your ideal plot from our master layout plan based on road
+              width, orientation, and dimensions matching your dream home blueprint.
+            </p>
+          </div>
+
+          {/* Card 04 */}
+          <div className="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-slate-400 hover:shadow-md transition-all duration-300">
+
+            <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-slate-400 transition-colors">
+              04
+            </span>
+
+            <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+              <FileText className="w-4 h-4" />
+            </div>
+
+            <h4 className="text-sm font-extrabold text-[#6B1312]">
+              4. Transparent Documentation
+            </h4>
+
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Complete legal verification, hassle-free registry, and transparent
+              paperwork backed by our expert legal consultants.
+            </p>
           </div>
 
         </div>
+      </div>
+    </div>
+
       </section>
 
       {/* ================= SECTION 6: GALLERY PREVIEW (DARK MAROON GEOMETRICAL BG) ================= */}
@@ -899,8 +1249,8 @@ const Home = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
-          
-          <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl">
+
+          <div className="py-2 sm:py-4">
             <div className="mb-10 text-center">
               <h2 className="text-white text-3xl font-extrabold tracking-tight pb-2">Our Gallery</h2>
               <p className="text-slate-300 text-sm">Explore the essence of beauty and infrastructure in our community.</p>
@@ -908,18 +1258,18 @@ const Home = () => {
             </div>
 
             <div className="flex flex-col xl:flex-row gap-6 items-center justify-center max-w-5xl mx-auto">
-              
+
               {/* Main Display Image with Prev / Next Buttons */}
               <div className="relative w-full xl:w-[700px] h-[300px] sm:h-[380px] rounded-2xl overflow-hidden shadow-lg border border-white/20 bg-black group">
-                <img 
-                  src={galleryImages[activeGalleryIndex].src} 
-                  alt="Active Gallery" 
-                  className="w-full h-full object-cover cursor-pointer transition-transform duration-500 group-hover:scale-105" 
+                <img
+                  src={galleryImages[activeGalleryIndex].src}
+                  alt="Active Gallery"
+                  className="w-full h-full object-cover cursor-pointer transition-transform duration-500 group-hover:scale-105"
                   onClick={() => setLightboxImg(galleryImages[activeGalleryIndex].src)}
                 />
 
                 {/* Prev Button */}
-                <button 
+                <button
                   onClick={prevImage}
                   className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-[#6B1312] text-white p-2 rounded-full backdrop-blur-md transition-all border border-white/20"
                   aria-label="Previous Image"
@@ -928,7 +1278,7 @@ const Home = () => {
                 </button>
 
                 {/* Next Button */}
-                <button 
+                <button
                   onClick={nextImage}
                   className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-[#6B1312] text-white p-2 rounded-full backdrop-blur-md transition-all border border-white/20"
                   aria-label="Next Image"
@@ -942,17 +1292,16 @@ const Home = () => {
               </div>
 
               {/* Thumbnails Scroller */}
-              <div 
+              <div
                 ref={thumbnailContainerRef}
                 className="w-full xl:w-[140px] flex xl:flex-col gap-3 justify-start xl:justify-center overflow-x-auto xl:overflow-y-auto no-scrollbar max-h-[380px] py-1 px-1"
               >
                 {galleryImages.map((img, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     onClick={() => selectImage(idx)}
-                    className={`w-[90px] h-[65px] sm:w-[110px] sm:h-[75px] xl:w-full xl:h-[80px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-300 flex-shrink-0 ${
-                      activeGalleryIndex === idx ? 'border-[#C29D56] scale-105 shadow-md ring-2 ring-[#C29D56]/50' : 'border-white/20 opacity-70 hover:opacity-100'
-                    }`}
+                    className={`w-[90px] h-[65px] sm:w-[110px] sm:h-[75px] xl:w-full xl:h-[80px] rounded-xl overflow-hidden cursor-pointer border-2 transition-all duration-300 flex-shrink-0 ${activeGalleryIndex === idx ? 'border-[#C29D56] scale-105 shadow-md ring-2 ring-[#C29D56]/50' : 'border-white/20 opacity-70 hover:opacity-100'
+                      }`}
                   >
                     <img src={img.src} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
                   </div>
@@ -977,7 +1326,7 @@ const Home = () => {
         {/* Lightbox Modal */}
         {lightboxImg && (
           <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
-            <button 
+            <button
               onClick={() => setLightboxImg(null)}
               className="absolute top-6 right-6 text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all"
               aria-label="Close Lightbox"
@@ -990,22 +1339,31 @@ const Home = () => {
       </section>
 
       {/* ================= FEEDBACK SECTION (LIGHT GEOMETRICAL BG) ================= */}
-      <section ref={sectionFeedbackRef} className="py-12 sm:py-16 bg-slate-100 border-t border-slate-200 relative overflow-hidden light-geom-grid">
+      <section
+        ref={sectionFeedbackRef}
+        className="py-12 sm:py-16 bg-slate-100 border-t border-slate-200 relative overflow-hidden light-geom-grid"
+      >
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/25 rounded-full filter blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl mb-10">
+
+          {/* Section Heading */}
+          <div className="mb-10">
             <div className="text-center max-w-3xl mx-auto space-y-2">
-              <h2 className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C29D56] transition-opacity duration-500 ${isSectionFeedbackVisible ? 'opacity-100' : 'opacity-0'}`}>
+
+              <h2
+                className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C29D56] transition-opacity duration-500 ${isSectionFeedbackVisible ? "opacity-100" : "opacity-0"
+                  }`}
+              >
                 Client Voices
               </h2>
-              
+
               <h3 className="text-xl sm:text-3xl font-extrabold text-slate-900 flex flex-wrap justify-center gap-x-2 gap-y-1">
                 {headingWordsFeedback.map((word, index) => (
                   <span
                     key={index}
-                    className={`rain-word ${isSectionFeedbackVisible ? 'animate-rain-drop' : ''}`}
+                    className={`rain-word ${isSectionFeedbackVisible ? "animate-rain-drop" : ""
+                      }`}
                     style={{ animationDelay: `${index * 0.15}s` }}
                   >
                     {word}
@@ -1016,64 +1374,110 @@ const Home = () => {
               <p className="text-slate-600 text-xs font-medium">
                 Hear what our valued plot owners and investors have to say about us.
               </p>
-              <div className={`w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5 transition-all duration-700 ${isSectionFeedbackVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`} />
+
+              <div
+                className={`w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5 transition-all duration-700 ${isSectionFeedbackVisible
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-50"
+                  }`}
+              />
             </div>
           </div>
 
-          <div className="relative max-w-5xl mx-auto px-2 sm:px-6">
-            <button 
-              onClick={() => scrollFeedback('left')}
+          {/* Feedback Cards */}
+          <div className="relative max-w-6xl mx-auto px-2 sm:px-6">
+
+            {/* Left Button */}
+            <button
+              onClick={() => scrollFeedback("left")}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
               aria-label="Scroll Left"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            <button 
-              onClick={() => scrollFeedback('right')}
+            {/* Right Button */}
+            <button
+              onClick={() => scrollFeedback("right")}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
               aria-label="Scroll Right"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
 
-            <div 
+            <div
               ref={feedbackContainerRef}
               className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-3 px-2"
             >
               {feedbackData.map((item, index) => (
-                <div 
-                  key={index} 
-                  className="feedback-card relative bg-white max-w-[260px] w-[260px] p-5 border border-slate-200 rounded-2xl shadow-sm flex-shrink-0 snap-start flex flex-col justify-between transition-all duration-300 hover:shadow-md hover:border-[#C29D56]/50 group"
+                <div
+                  key={index}
+                  className="
+              feedback-card
+              relative
+              bg-white
+              w-[260px]
+              max-w-[260px]
+              lg:w-[calc((100%_-_60px)/4)]
+              lg:max-w-none
+              p-5
+              border border-slate-200
+              rounded-2xl
+              shadow-sm
+              flex-shrink-0
+              snap-start
+              flex flex-col
+              justify-between
+              transition-all
+              duration-300
+              hover:shadow-md
+              hover:border-[#C29D56]/50
+              group
+            "
                 >
+
+                  {/* Quote Icon */}
                   <div className="absolute top-2.5 right-2.5 text-[#C29D56]">
                     <Quote className="w-4 h-4 opacity-40" />
                   </div>
 
+                  {/* Card Content */}
                   <div className="flex flex-col items-center text-center pt-1">
+
+                    {/* Profile Icon */}
                     <div className="w-14 h-14 mb-3 rounded-full bg-[#C29D56]/15 border-2 border-[#C29D56]/40 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
-                      {item.gender === 'female' ? (
+                      {item.gender === "female" ? (
                         <UserRound className="w-7 h-7 text-[#6B1312]" />
                       ) : (
                         <User className="w-7 h-7 text-[#6B1312]" />
                       )}
                     </div>
 
+                    {/* Name */}
                     <h5 className="mb-0.5 text-base font-bold tracking-tight text-slate-900">
                       {item.name}
                     </h5>
+
+                    {/* Role */}
                     <span className="text-[11px] font-semibold text-[#6B1312] bg-[#C29D56]/10 px-2.5 py-0.5 rounded-full">
                       {item.role}
                     </span>
+
+                    {/* Review */}
                     <p className="mt-2.5 text-[11px] text-slate-600 leading-relaxed italic line-clamp-3">
                       "{item.review}"
                     </p>
 
+                    {/* Stars */}
                     <div className="flex mt-3 gap-0.5 text-[#C29D56]">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-current" />
+                        <Star
+                          key={i}
+                          className="w-3 h-3 fill-current"
+                        />
                       ))}
                     </div>
+
                   </div>
                 </div>
               ))}
@@ -1084,41 +1488,34 @@ const Home = () => {
       </section>
 
       {/* ================= SECTION 7: LOCATION / CONTACT CTA (LIGHT GEOMETRICAL BG) ================= */}
-      <section ref={section7Ref} className="py-12 sm:py-16 bg-slate-100 border-t border-slate-200 shadow-[0_-10px_30px_rgba(0,0,0,0.03)] relative overflow-hidden light-geom-grid">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C29D56]/25 rounded-full filter blur-3xl pointer-events-none" />
+      <section ref={section7Ref} className="relative overflow-hidden border-t border-[#C29D56]/20 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] py-12 text-white shadow-[0_10px_30px_rgba(0,0,0,0.2)] sm:py-16">
+        <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-[#C29D56]/10 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-25 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden">
-            
-            <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
-
-            <div className="space-y-2 text-center lg:text-left max-w-2xl">
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3 py-1 rounded-full border border-[#C29D56]/30">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative flex flex-col items-center justify-between gap-6 lg:flex-row">
+            <div className="max-w-2xl space-y-2 text-center lg:text-left">
+              <span className="inline-flex rounded-full border border-[#C29D56]/40 bg-[#C29D56]/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-[#C29D56]">
                 Take The Next Step
               </span>
-              <h3 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight leading-snug">
+              <h3 className="text-xl font-black leading-snug tracking-tight text-white sm:text-3xl">
                 Looking for a Residential Plot?
               </h3>
-              <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
+              <p className="text-xs font-medium leading-relaxed text-white/70 sm:text-sm">
                 Explore Harika Paradise at Satrikh Road. Your dream destination for peace, modern infrastructure, and secure investment awaits.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3.5 flex-shrink-0">
-              <Link
-                to="/projects/harika-paradise"
-                className="bg-[#6B1312] hover:bg-[#520e0e] text-[#C29D56] border border-[#C29D56]/40 px-6 py-3.5 rounded-xl font-extrabold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2 group"
-              >
-                <Compass className="w-4 h-4 text-[#C29D56]" /> View Project
+              <Link to="/projects/harika-paradise" className="group flex items-center gap-2 rounded-xl border border-[#C29D56]/50 bg-[#C29D56] px-6 py-3.5 text-xs font-extrabold text-[#3a0a0a] shadow-lg transition-all duration-300 hover:bg-[#E1C27A] sm:text-sm">
+                <Compass className="h-4 w-4 text-[#3a0a0a] transition-transform duration-300 group-hover:rotate-12" />
+                View Project
               </Link>
-              <Link
-                to="/contact-us"
-                className="bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 px-6 py-3.5 rounded-xl font-extrabold text-xs sm:text-sm shadow-sm transition-all flex items-center gap-2"
-              >
-                <PhoneCall className="w-4 h-4 text-[#6B1312]" /> Contact Us
+              <Link to="/contact-us" className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-xs font-extrabold text-white shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/50 hover:bg-white/10 sm:text-sm">
+                <PhoneCall className="h-4 w-4 text-[#C29D56]" />
+                Contact Us
               </Link>
             </div>
-
           </div>
         </div>
       </section>
