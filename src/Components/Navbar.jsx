@@ -333,13 +333,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <NavLink
-              to="/why-choose"
-              onClick={() => setIsOpen(false)}
-              className={mobileNavLinkClass}
-            >
-              Why Choose Us
-            </NavLink>
+            
 
             <NavLink
               to="/gallery"
