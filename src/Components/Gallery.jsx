@@ -217,7 +217,7 @@ const Gallery = () => {
           HERO
       ====================================================== */}
 
-      <section className="relative h-[300px] sm:h-[360px] lg:h-[410px] overflow-hidden bg-slate-950">
+      <section className="relative h-[380px] sm:h-[460px] lg:h-[560px] overflow-hidden bg-slate-950">
 
         {/* Background Image */}
 

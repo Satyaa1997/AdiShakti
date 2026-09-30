@@ -1074,7 +1074,7 @@ const Home = () => {
               <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1 justify-items-center">
 
               <div className="javier-card">
                 <div className="javier-image-box">

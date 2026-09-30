@@ -74,9 +74,6 @@ const About = () => {
           background-size: 24px 24px;
         }
       `}</style>
-
-      {/* ================= HERO BANNER ================= */}
-      {/* ================= HERO BANNER ================= */}
       {/* ================= HERO BANNER ================= */}
       <section className="relative overflow-hidden min-h-[450px] sm:min-h-[530px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
 
@@ -138,18 +135,33 @@ const About = () => {
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-200">
-                  <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-[#C29D56]/60">
-                    <h4 className="text-3xl font-extrabold text-[#6B1312] tabular-nums">
-                      {percentCount}%
+
+                  {/* Approved Counter */}
+                  <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-[#C29D56]/60 min-w-0 overflow-hidden">
+                    <h4 className="text-3xl font-extrabold text-[#6B1312] tabular-nums whitespace-nowrap">
+                      <span className="inline-block min-w-[4ch] text-left">
+                        {percentCount}%
+                      </span>
                     </h4>
-                    <p className="text-xs text-slate-600 font-semibold mt-1">Approved & Verified Titles</p>
+
+                    <p className="text-xs text-slate-600 font-semibold mt-1">
+                      Approved & Verified Titles
+                    </p>
                   </div>
-                  <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-[#C29D56]/60">
-                    <h4 className="text-3xl font-extrabold text-[#6B1312] tabular-nums">
-                      {acresCount} Acres
+
+                  {/* Acres Counter */}
+                  <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-[#C29D56]/60 min-w-0 overflow-hidden">
+                    <h4 className="text-3xl font-extrabold text-[#6B1312] tabular-nums whitespace-nowrap">
+                      <span className="inline-block min-w-[7ch] text-left">
+                        {acresCount} Acres
+                      </span>
                     </h4>
-                    <p className="text-xs text-slate-600 font-semibold mt-1">Flagship Master Plan</p>
+
+                    <p className="text-xs text-slate-600 font-semibold mt-1">
+                      Flagship Master Plan
+                    </p>
                   </div>
+
                 </div>
               </div>
 

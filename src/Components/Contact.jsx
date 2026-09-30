@@ -7,7 +7,6 @@ import {
   MapPin,
   PhoneCall,
   Send,
-  Sparkles,
   ChevronDown,
   MessageSquare,
 } from 'lucide-react';
@@ -203,7 +202,7 @@ const Contact = () => {
       `}</style>
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative overflow-hidden min-h-[320px] sm:min-h-[380px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
+      <section className="relative overflow-hidden h-[380px] sm:h-[460px] lg:h-[560px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
 
         {/* Background Image */}
         <img
