@@ -138,7 +138,7 @@ const About = () => {
 
                   {/* Approved Counter */}
                   <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition-all hover:border-[#C29D56]/60 min-w-0 overflow-hidden">
-                    <h4 className="text-3xl font-extrabold text-[#6B1312] tabular-nums whitespace-nowrap">
+                    <h4 className="text-2xl font-extrabold text-[#6B1312] tabular-nums whitespace-nowrap">
                       <span className="inline-block min-w-[4ch] text-left">
                         {percentCount}%
                       </span>
