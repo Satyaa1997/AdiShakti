@@ -186,7 +186,7 @@ const Footer = () => {
 
                 <li>
                   <Link
-                    to="/Component/HarikaParadise"
+                    to="/harika-paradise"
                     className="group flex items-center gap-1.5 text-slate-200 hover:text-[#C29D56] transition-colors"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#C29D56] flex-shrink-0" />
@@ -241,7 +241,7 @@ const Footer = () => {
                     to="/lead-crm"
                     className="inline-flex items-center justify-center gap-1.5 w-full bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-3.5 py-2.5 rounded-xl font-extrabold text-xs shadow-md transition-all duration-300 group"
                   >
-                    <span>Go To Lead CRM</span>
+                    <span>Go To Real Estate CRM</span>
                     <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
