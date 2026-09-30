@@ -324,10 +324,6 @@ const Contact = () => {
 
               {/* Left Info Panel */}
               <div className="lg:col-span-5 space-y-4">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full">
-                  Here to help you
-                </span>
-
                 <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight text-white">
                   A personal approach.
                   <span className="block text-[#E1C48F]">
@@ -491,9 +487,6 @@ const Contact = () => {
 
             {/* Location Details */}
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xl space-y-4">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3.5 py-1 rounded-full border border-[#C29D56]/30">
-                Strategic Location
-              </span>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                 Closer to your next beginning.
@@ -538,9 +531,6 @@ const Contact = () => {
 
             {/* FAQ */}
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xl space-y-4">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3.5 py-1 rounded-full border border-[#C29D56]/30">
-                Got Questions?
-              </span>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                 Frequently Asked
@@ -585,35 +575,6 @@ const Contact = () => {
               </div>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FINAL CTA SECTION ================= */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div className="space-y-1.5 text-center sm:text-left">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E1C48F]">
-                Harika Paradise
-              </span>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-white">
-                Let’s take the next step together.
-              </h2>
-              <p className="text-xs text-slate-300">
-                Have questions about the project? Our team is ready to connect.
-              </p>
-            </div>
-
-            <a
-              href="tel:05224205350"
-              className="inline-flex h-11 shrink-0 items-center gap-2 rounded-xl bg-[#C29D56] hover:bg-[#d4ac5e] px-7 text-xs font-bold text-[#120303] shadow-lg transition"
-            >
-              <PhoneCall size={16} />
-              Talk to Our Team
-            </a>
           </div>
         </div>
       </section>

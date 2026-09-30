@@ -97,12 +97,6 @@ const About = () => {
   {/* Hero Content */}
   <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20 translate-y-6 sm:translate-y-0">
 
-    {/* Badge */}
-    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#C29D56]/60 bg-black/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#FFF1C7] backdrop-blur-[2px] shadow-[0_3px_12px_rgba(0,0,0,0.7)]">
-      <Award size={13} className="text-[#C29D56]" />
-      Corporate Enterprise Profile
-    </div>
-
     {/* Main Heading */}
     <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
       Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.
@@ -119,7 +113,7 @@ const About = () => {
 </section>
 
       {/* ================= SECTION 1: ABOUT COMPANY (VISIBLE LIGHT GEOMETRICAL BG) ================= */}
-      <section ref={statsRef} className="py-12 sm:py-16 bg-slate-100 relative overflow-hidden light-geom-grid">
+     <section ref={statsRef} className="py-12 sm:py-16 bg-white relative overflow-hidden light-geom-grid">
         <div className="absolute top-10 left-0 w-80 h-80 bg-[#C29D56]/15 rounded-full filter blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#6B1312]/10 rounded-full filter blur-3xl pointer-events-none" />
 
@@ -130,9 +124,6 @@ const About = () => {
               
               <div className="lg:col-span-7 space-y-6">
                 <div className="space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3.5 py-1 rounded-full border border-[#C29D56]/30">
-                    Who We Are
-                  </span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
                     Setting New Benchmarks in Organized Real Estate Development
                   </h2>
@@ -188,7 +179,7 @@ const About = () => {
       </section>
 
       {/* ================= SECTION 2: CORE PHILOSOPHY (GRADIENT MAROON BOX + GEOMETRICAL BG) ================= */}
-      <section className="py-14 lg:py-20 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white relative overflow-hidden border-t border-b border-[#C29D56]/30">
+      <section className="py-12 lg:py-15 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white relative overflow-hidden border-t border-b border-[#C29D56]/30">
         
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C29D56]/15 rounded-full filter blur-[140px] pointer-events-none" />
@@ -198,10 +189,7 @@ const About = () => {
             
             {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full">
-                Core Philosophy
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-4xl font-extrabold text-white tracking-tight">
                 Driven by Vision. Dedicated to Mission.
               </h2>
               <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
@@ -212,14 +200,13 @@ const About = () => {
               
               <div className="lg:col-span-6 flex flex-col justify-between space-y-3 py-1">
                 <div className="space-y-2.5">
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56]">Our Visionary Outlook</span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
                     Redefining Standards of Living & Structural Reliability
                   </h3>
                   <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
                     To be the most trusted and admired real estate development enterprise across Uttar Pradesh by consistently delivering world-class, thoughtfully planned communities. We aspire to set a benchmark in architectural reliability, green urban spaces, and uncompromised customer-first values that stand the test of time.
                   </p>
-                  <p className="text-slate-300 text-[11px] sm:text-xs leading-relaxed">
+                  <p className="text-slate-300  text-xs sm:text-sm leading-relaxed">
                     Our long-term goal is to shape modern residential corridors that bridge everyday comfort with high-yield financial appreciation for every family who puts their trust in our name.
                   </p>
                 </div>
@@ -268,7 +255,7 @@ const About = () => {
                   <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
                     To engineer secure, sustainable, and high-growth residential ecosystems through meticulous layout planning, flawless legal documentation, robust infrastructure networks, and compassionate customer service at every single step of ownership.
                   </p>
-                  <p className="text-slate-300 text-[11px] sm:text-xs leading-relaxed">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                     We are committed to fostering vibrant neighborhoods equipped with wide internal roads, advanced drainage systems, and green open spaces that nurture holistic community well-being.
                   </p>
                 </div>
@@ -284,16 +271,13 @@ const About = () => {
       </section>
 
       {/* ================= SECTION 3: OUR APPROACH (VISIBLE LIGHT GEOMETRICAL BG) ================= */}
-      <section className="py-12 sm:py-16 bg-slate-100 relative overflow-hidden light-geom-grid">
+      <section className="py-12 sm:py-14 bg-white relative overflow-hidden light-geom-grid">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/20 rounded-full filter blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
             
             <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3.5 py-1 rounded-full border border-[#C29D56]/30">
-                Methodology
-              </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Our Approach to Excellence
               </h2>
@@ -352,7 +336,7 @@ const About = () => {
       </section>
 
       {/* ================= SECTION 4: CORPORATE HEADQUARTERS & CONTACT (GRADIENT MAROON BOX + GEOMETRICAL BG) ================= */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
+      <section className="py-12 sm:py-14 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
         
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />

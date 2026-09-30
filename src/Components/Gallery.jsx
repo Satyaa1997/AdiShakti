@@ -105,8 +105,8 @@ const Gallery = () => {
     activeFilter === 'All'
       ? photos
       : photos.filter(
-          (photo) => photo.category === activeFilter
-        );
+        (photo) => photo.category === activeFilter
+      );
 
   // ==========================================================
   // OPEN MODAL
@@ -243,7 +243,7 @@ const Gallery = () => {
 
             {/* Badge */}
 
-          
+
 
             {/* Heading */}
 
@@ -277,7 +277,7 @@ const Gallery = () => {
           FILTER SECTION
       ====================================================== */}
 
-      <section className="relative py-7 sm:py-9 bg-slate-100 border-b border-slate-200">
+      <section className="relative py-7 sm:py-7 bg-slate-100 border-b border-slate-200">
 
         {/* Background Pattern */}
 
@@ -289,52 +289,17 @@ const Gallery = () => {
 
             {/* Section Heading */}
 
-            <div>
-
+            <div className="text-center w-full">
               <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#C29D56]">
-
                 Visual Tour
-
               </span>
 
               <h2 className="mt-1 text-xl sm:text-2xl font-extrabold text-slate-900">
-
                 Project Gallery
-
               </h2>
-
             </div>
 
 
-            {/* Filters */}
-
-            <div className="flex flex-wrap gap-2">
-
-              {filters.map((filter) => {
-
-                const isActive = activeFilter === filter;
-
-                return (
-                  <button
-                    key={filter}
-                    type="button"
-                    onClick={() => {
-                      setActiveFilter(filter);
-                      setSelectedPhoto(null);
-                    }}
-                    className={`px-3.5 sm:px-4 py-2 rounded-lg text-[10px] sm:text-xs font-bold uppercase tracking-wider border transition-all duration-300 ${
-                      isActive
-                        ? 'bg-[#6B1312] text-[#C29D56] border-[#C29D56]/50 shadow-md'
-                        : 'bg-white text-slate-700 border-slate-200 hover:bg-[#6B1312] hover:text-white hover:border-[#6B1312]'
-                    }`}
-                  >
-                    {filter}
-                  </button>
-                );
-
-              })}
-
-            </div>
 
           </div>
 
@@ -347,95 +312,292 @@ const Gallery = () => {
           SIMPLE IMAGE GALLERY
       ====================================================== */}
 
-      <section className="relative py-8 sm:py-12 lg:py-14 bg-slate-100">
+      {/* ======================================================
+    SIMPLE IMAGE GALLERY
+====================================================== */}
 
-        {/* Background Glow */}
+      <section className="relative py-8 sm:py-12 lg:py-14 bg-white overflow-hidden">
 
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#6B1312]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Background Pattern */}
+        <div
+          className="absolute inset-0 pointer-events-none bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]"
+        />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-          {/* IMAGE GRID */}
+          {filteredPhotos.length > 0 && (
+            <div className="space-y-6">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+              {/* ==================================================
+            ROW 1 — 3 : 6
+        ================================================== */}
+              {filteredPhotos.length >= 2 && (
+                <div className="grid grid-cols-1 md:grid-cols-9 gap-6">
 
-            {filteredPhotos.map((photo, index) => (
+                  {/* LEFT — 3 COLUMNS */}
+                  <button
+                    type="button"
+                    onClick={() => openModal(filteredPhotos[0])}
+                    className="group relative w-full md:h-[300px] md:col-span-3 overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <img
+                      src={filteredPhotos[0].image}
+                      alt={filteredPhotos[0].title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
 
-              <button
-                key={photo.id}
-                type="button"
-                onClick={() => openModal(photo)}
-                className={`group relative overflow-hidden rounded-2xl bg-black text-left border border-slate-200 shadow-md hover:shadow-xl transition-all duration-500 ${
-                  index === 0
-                    ? 'sm:col-span-2 lg:col-span-2 aspect-[16/9]'
-                    : 'aspect-[4/3]'
-                }`}
-              >
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
 
-                {/* IMAGE */}
+                    {/* Category */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                        {filteredPhotos[0].category}
+                      </span>
+                    </div>
 
-                <img
-                  src={photo.image}
-                  alt={photo.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                    {/* Expand */}
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                      <Expand size={15} />
+                    </div>
 
-                {/* Hover Overlay */}
+                    {/* Title */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                        {filteredPhotos[0].title}
+                      </h3>
+                    </div>
+                  </button>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-50 group-hover:opacity-90 transition-opacity duration-300" />
+                  {/* RIGHT — 6 COLUMNS */}
+                  <button
+                    type="button"
+                    onClick={() => openModal(filteredPhotos[1])}
+                    className="group relative w-full md:h-[300px] md:col-span-6 overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <img
+                      src={filteredPhotos[1].image}
+                      alt={filteredPhotos[1].title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
 
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
 
-                {/* Category */}
+                    {/* Category */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                        {filteredPhotos[1].category}
+                      </span>
+                    </div>
 
-                <div className="absolute top-3 left-3">
+                    {/* Expand */}
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                      <Expand size={15} />
+                    </div>
 
-                  <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
-
-                    {photo.category}
-
-                  </span>
+                    {/* Title */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                        {filteredPhotos[1].title}
+                      </h3>
+                    </div>
+                  </button>
 
                 </div>
+              )}
 
+              {/* ==================================================
+            ROW 2 — 6 : 6
+        ================================================== */}
+              {filteredPhotos.length >= 4 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                {/* Expand Icon */}
+                  {/* IMAGE 3 */}
+                  <button
+                    type="button"
+                    onClick={() => openModal(filteredPhotos[2])}
+                    className="group relative w-full md:h-[300px] overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <img
+                      src={filteredPhotos[2].image}
+                      alt={filteredPhotos[2].title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
 
-                <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
 
-                  <Expand size={15} />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                        {filteredPhotos[2].category}
+                      </span>
+                    </div>
+
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                      <Expand size={15} />
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                        {filteredPhotos[2].title}
+                      </h3>
+                    </div>
+                  </button>
+
+                  {/* IMAGE 4 */}
+                  <button
+                    type="button"
+                    onClick={() => openModal(filteredPhotos[3])}
+                    className="group relative w-full md:h-[300px] overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <img
+                      src={filteredPhotos[3].image}
+                      alt={filteredPhotos[3].title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                        {filteredPhotos[3].category}
+                      </span>
+                    </div>
+
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                      <Expand size={15} />
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                        {filteredPhotos[3].title}
+                      </h3>
+                    </div>
+                  </button>
 
                 </div>
+              )}
 
+              {/* ==================================================
+            ROW 3 — 6 : 3
+        ================================================== */}
+              {filteredPhotos.length >= 6 && (
+                <div className="grid grid-cols-1 md:grid-cols-9 gap-6">
 
-                {/* Image Title */}
+                  {/* LEFT — 6 COLUMNS */}
+                  <button
+                    type="button"
+                    onClick={() => openModal(filteredPhotos[4])}
+                    className="group relative w-full md:h-[300px] md:col-span-6 overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <img
+                      src={filteredPhotos[4].image}
+                      alt={filteredPhotos[4].title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
 
-                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
 
-                  <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                        {filteredPhotos[4].category}
+                      </span>
+                    </div>
 
-                    {photo.title}
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                      <Expand size={15} />
+                    </div>
 
-                  </h3>
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                        {filteredPhotos[4].title}
+                      </h3>
+                    </div>
+                  </button>
 
-                  <div className="shrink-0 w-8 h-8 rounded-full bg-[#6B1312] border border-[#C29D56]/50 flex items-center justify-center text-[#C29D56]">
+                  {/* RIGHT — 3 COLUMNS */}
+                  <button
+                    type="button"
+                    onClick={() => openModal(filteredPhotos[5])}
+                    className="group relative w-full md:h-[300px] md:col-span-3 overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                  >
+                    <img
+                      src={filteredPhotos[5].image}
+                      alt={filteredPhotos[5].title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
 
-                    <ArrowUpRight size={15} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
 
-                  </div>
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                        {filteredPhotos[5].category}
+                      </span>
+                    </div>
+
+                    <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                      <Expand size={15} />
+                    </div>
+
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                        {filteredPhotos[5].title}
+                      </h3>
+                    </div>
+                  </button>
 
                 </div>
+              )}
 
-              </button>
+              {/* ==================================================
+            REMAINING IMAGES
+        ================================================== */}
+              {filteredPhotos.length > 6 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            ))}
+                  {filteredPhotos.slice(6).map((photo) => (
+                    <button
+                      key={photo.id}
+                      type="button"
+                      onClick={() => openModal(photo)}
+                      className="group relative w-full h-[260px] overflow-hidden rounded-lg bg-slate-200 text-left border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                    >
+                      <img
+                        src={photo.image}
+                        alt={photo.title}
+                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
 
-          </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
 
+                      <div className="absolute top-3 left-3">
+                        <span className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[#C29D56] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                          {photo.category}
+                        </span>
+                      </div>
 
-          {/* EMPTY STATE */}
+                      <div className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-[#6B1312] group-hover:text-[#C29D56]">
+                        <Expand size={15} />
+                      </div>
 
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <h3 className="text-sm sm:text-base font-bold text-white drop-shadow-lg">
+                          {photo.title}
+                        </h3>
+                      </div>
+                    </button>
+                  ))}
+
+                </div>
+              )}
+
+            </div>
+          )}
+
+          {/* ==================================================
+        EMPTY STATE
+    ================================================== */}
           {filteredPhotos.length === 0 && (
-
             <div className="min-h-[250px] flex flex-col items-center justify-center text-center">
 
               <Images
@@ -452,11 +614,9 @@ const Gallery = () => {
               </p>
 
             </div>
-
           )}
 
         </div>
-
       </section>
 
 
