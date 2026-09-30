@@ -237,13 +237,15 @@ const Footer = () => {
 
                 {/* Go To Lead CRM Button */}
                 <div className="pt-2">
-                  <Link
-                    to="/lead-crm"
+                  <a
+                    href="https://adishakti.auctechitsolutions.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1.5 w-full bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-3.5 py-2.5 rounded-xl font-extrabold text-xs shadow-md transition-all duration-300 group"
                   >
                     <span>Go To Real Estate CRM</span>
                     <ExternalLink className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
+                  </a>
                 </div>
 
               </div>

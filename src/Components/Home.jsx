@@ -648,168 +648,165 @@ const Home = () => {
       </section>
 
       {/* ================= SECTION 2: COMPANY & PROJECT OVERVIEW (LIGHT GEOMETRICAL BG) ================= */}
-    <section
-  ref={section2Ref}
-  className="py-12 sm:py-16 bg-white relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]"
->
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-    <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-10">
-      <h2
-        className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C29D56] transition-opacity duration-500 ${
-          isSection2Visible ? 'opacity-100' : 'opacity-0'
-        }`}
+      <section
+        ref={section2Ref}
+        className="py-12 sm:py-16 bg-white relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]"
       >
-        Welcome to Harika Paradise
-      </h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-      <h3 className="text-2xl sm:text-4xl font-bold text-slate-900 flex flex-wrap justify-center gap-x-2.5 gap-y-1">
-        {headingWords2.map((word, index) => (
-          <span
-            key={index}
-            className={`rain-word ${
-              isSection2Visible ? 'animate-rain-drop' : ''
-            }`}
-            style={{ animationDelay: `${index * 0.15}s` }}
-          >
-            {word}
-          </span>
-        ))}
-      </h3>
-
-      <div
-        className={`w-20 h-1 bg-[#6B1312] mx-auto rounded-full mt-2 transition-all duration-700 ${
-          isSection2Visible
-            ? 'opacity-100 scale-100'
-            : 'opacity-0 scale-50'
-        }`}
-      />
-    </div>
-
-    <div className="relative mb-12">
-      <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div className="relative overflow-hidden rounded-2xl h-[280px] sm:h-[340px] border border-slate-200 shadow-sm bg-white">
-          <img
-            src={introImg}
-            alt="Company Introduction"
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-          />
-        </div>
-
-        <div className="space-y-3">
-          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
-            Building Trust, Delivering Excellence Across Generations
-          </h3>
-
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Harika Paradise is dedicated to creating thoughtfully planned spaces
-            that inspire better living. We combine elegant design, modern
-            infrastructure, and natural surroundings in every development. Our
-            commitment to quality ensures lasting comfort, safety, and long-term
-            value.
-          </p>
-
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            Transparency and customer satisfaction remain at the heart of
-            everything we do. Every detail is carefully designed to meet the
-            expectations of modern families.
-          </p>
-
-          <div className="pt-1">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 text-[#6B1312] font-bold text-xs sm:text-sm hover:text-[#C29D56] transition-colors"
+          <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-10">
+            <h2
+              className={`text-xs sm:text-sm font-bold uppercase tracking-widest text-[#C29D56] transition-opacity duration-500 ${isSection2Visible ? 'opacity-100' : 'opacity-0'
+                }`}
             >
-              Read More About Us
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              Welcome to Harika Paradise
+            </h2>
+
+            <h3 className="text-2xl sm:text-4xl font-bold text-slate-900 flex flex-wrap justify-center gap-x-2.5 gap-y-1">
+              {headingWords2.map((word, index) => (
+                <span
+                  key={index}
+                  className={`rain-word ${isSection2Visible ? 'animate-rain-drop' : ''
+                    }`}
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  {word}
+                </span>
+              ))}
+            </h3>
+
+            <div
+              className={`w-20 h-1 bg-[#6B1312] mx-auto rounded-full mt-2 transition-all duration-700 ${isSection2Visible
+                  ? 'opacity-100 scale-100'
+                  : 'opacity-0 scale-50'
+                }`}
+            />
           </div>
-        </div>
-      </div>
-    </div>
 
-    {/* Uiverse Style Feature Cards Carousel */}
-    <div
-      ref={cardsContainerRef}
-      className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:overflow-visible snap-x snap-mandatory px-2 md:px-0 pb-4 md:pb-0 no-scrollbar"
-    >
-      {featureCardsData.map((card, index) => (
-        <div
-          key={index}
-          className="group relative flex min-h-[320px] w-[260px] flex-shrink-0 snap-center cursor-pointer flex-col overflow-hidden rounded-[20px] bg-[linear-gradient(170deg,rgba(135,42,39,0.95)_0%,#6B1312_45%,#3D0908_100%)] shadow-[0_25px_50px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-[0.96] hover:shadow-[0_30px_60px_rgba(0,0,0,0.55)] sm:w-[290px] md:w-full"
-        >
-          {/* Ribbon */}
-          <span className="absolute left-[-10px] top-[-10px] z-20 flex h-[155px] w-[155px] items-center justify-center overflow-hidden">
-            <span className="absolute flex h-10 w-[150%] -translate-y-5 rotate-[-45deg] items-center justify-center whitespace-nowrap bg-[linear-gradient(45deg,#A87F35_0%,#C29D56_50%,#E1C27A_100%)] text-[10px] font-extrabold uppercase tracking-[0.08em] text-[#6B1312]">
-              {card.subtitle}
-            </span>
-          </span>
+          <div className="relative mb-12">
+            <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
 
-          {/* Card Content */}
-          <div className="relative z-10 flex h-full flex-1 flex-col p-6 pt-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="relative overflow-hidden rounded-2xl h-[280px] sm:h-[340px] border border-slate-200 shadow-sm bg-white">
+                <img
+                  src={introImg}
+                  alt="Company Introduction"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
 
-            {/* Heading */}
-            <div className="mb-5 pl-8">
-              <h3 className="text-xl font-extrabold text-white sm:text-2xl">
-                {card.title}
-              </h3>
-            </div>
+              <div className="space-y-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                  Building Trust, Delivering Excellence Across Generations
+                </h3>
 
-            {/* Divider */}
-            <div className="mb-5 h-px w-full bg-white/20" />
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  Harika Paradise is dedicated to creating thoughtfully planned spaces
+                  that inspire better living. We combine elegant design, modern
+                  infrastructure, and natural surroundings in every development. Our
+                  commitment to quality ensures lasting comfort, safety, and long-term
+                  value.
+                </p>
 
-            {/* Points */}
-            <ul className="flex-1 space-y-3">
-              {[card.desc1, card.desc2, card.desc3, card.desc4].map(
-                (item, itemIndex) => (
-                  <li
-                    key={itemIndex}
-                    className="flex items-start gap-3 text-sm text-white/90"
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  Transparency and customer satisfaction remain at the heart of
+                  everything we do. Every detail is carefully designed to meet the
+                  expectations of modern families.
+                </p>
+
+                <div className="pt-1">
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center gap-2 text-[#6B1312] font-bold text-xs sm:text-sm hover:text-[#C29D56] transition-colors"
                   >
-                    {/* Check Icon */}
-                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#C29D56] text-[#6B1312]">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="11"
-                        height="11"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M20 6L9 17l-5-5" />
-                      </svg>
-                    </span>
-
-                    <span>{item}</span>
-                  </li>
-                )
-              )}
-            </ul>
-
-            {/* Explore Button */}
-            <Link
-              to="/projects/harika-paradise"
-              className="mt-7 inline-flex items-center justify-center gap-2 rounded-full border border-[#C29D56]/70 bg-[#C29D56] px-5 py-2.5 text-xs font-bold text-[#6B1312] shadow-lg transition-all duration-300 hover:border-white hover:bg-white hover:text-[#6B1312]"
-            >
-              Explore Highlights
-              <ArrowRight size={15} />
-            </Link>
+                    Read More About Us
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
 
-  </div>
-</section>
+          {/* Uiverse Style Feature Cards Carousel */}
+          <div
+            ref={cardsContainerRef}
+            className="flex gap-6 overflow-x-auto md:grid md:grid-cols-3 md:overflow-visible snap-x snap-mandatory px-2 md:px-0 pb-4 md:pb-0 no-scrollbar"
+          >
+            {featureCardsData.map((card, index) => (
+              <div
+                key={index}
+                className="group relative flex min-h-[320px] w-[260px] flex-shrink-0 snap-center cursor-pointer flex-col overflow-hidden rounded-[20px] bg-[linear-gradient(170deg,rgba(135,42,39,0.95)_0%,#6B1312_45%,#3D0908_100%)] shadow-[0_25px_50px_rgba(0,0,0,0.45)] transition-all duration-300 hover:scale-[0.96] hover:shadow-[0_30px_60px_rgba(0,0,0,0.55)] sm:w-[290px] md:w-full"
+              >
+                {/* Ribbon */}
+                <span className="absolute left-[-10px] top-[-10px] z-20 flex h-[155px] w-[155px] items-center justify-center overflow-hidden">
+                  <span className="absolute flex h-10 w-[150%] -translate-y-5 rotate-[-45deg] items-center justify-center whitespace-nowrap bg-[linear-gradient(45deg,#A87F35_0%,#C29D56_50%,#E1C27A_100%)] text-[10px] font-extrabold uppercase tracking-[0.08em] text-[#6B1312]">
+                    {card.subtitle}
+                  </span>
+                </span>
+
+                {/* Card Content */}
+                <div className="relative z-10 flex h-full flex-1 flex-col p-6 pt-20">
+
+                  {/* Heading */}
+                  <div className="mb-5 pl-8">
+                    <h3 className="text-xl font-extrabold text-white sm:text-2xl">
+                      {card.title}
+                    </h3>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="mb-5 h-px w-full bg-white/20" />
+
+                  {/* Points */}
+                  <ul className="flex-1 space-y-3">
+                    {[card.desc1, card.desc2, card.desc3, card.desc4].map(
+                      (item, itemIndex) => (
+                        <li
+                          key={itemIndex}
+                          className="flex items-start gap-3 text-sm text-white/90"
+                        >
+                          {/* Check Icon */}
+                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#C29D56] text-[#6B1312]">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                          </span>
+
+                          <span>{item}</span>
+                        </li>
+                      )
+                    )}
+                  </ul>
+
+                  {/* Explore Button */}
+                  <Link
+                    to="/projects/harika-paradise"
+                    className="mt-7 inline-flex items-center justify-center gap-2 rounded-full border border-[#C29D56]/70 bg-[#C29D56] px-5 py-2.5 text-xs font-bold text-[#6B1312] shadow-lg transition-all duration-300 hover:border-white hover:bg-white hover:text-[#6B1312]"
+                  >
+                    Explore Highlights
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
 
       {/* ================= SECTION 3: FEATURED PROJECT (DARK MAROON GEOMETRICAL BG) ================= */}
       {/* ================= FEATURED PROJECT ================= */}
-     <section
+      <section
         ref={section3Ref}
         className="relative overflow-hidden bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] py-12 text-white sm:py-16"
       >
@@ -981,714 +978,696 @@ const Home = () => {
       {/* ================= WHY CHOOSE US: MERGED HOME SECTION ================= */}
       <section id="why-choose-us" className="relative overflow-hidden">
 
-  {/* ================= PLANNED DEVELOPMENT ================= */}
-  <div className="py-12 sm:py-16 bg-white relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
+        {/* ================= PLANNED DEVELOPMENT ================= */}
+        <div className="py-12 sm:py-16 bg-white relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
-        <div className="lg:col-span-6 space-y-4">
+              <div className="lg:col-span-6 space-y-4">
 
-          <div className="space-y-1.5">
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-              Planned Development Rooted in Legal Integrity
-            </h3>
-          </div>
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                    Planned Development Rooted in Legal Integrity
+                  </h3>
+                </div>
 
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            At Ādi Shakti Coloniser, we believe that true real estate value begins
-            with absolute legal security and methodical land procurement. Every
-            project is conceived after rigorous due diligence, clear title
-            verifications, and compliance with local municipal bodies like Nagar
-            Panchayat approvals.
-          </p>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  At Ādi Shakti Coloniser, we believe that true real estate value begins
+                  with absolute legal security and methodical land procurement. Every
+                  project is conceived after rigorous due diligence, clear title
+                  verifications, and compliance with local municipal bodies like Nagar
+                  Panchayat approvals.
+                </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 hover:border-[#C29D56]/50 transition-colors">
-              <div className="w-8 h-8 rounded-lg bg-[#6B1312]/10 flex items-center justify-center text-[#6B1312] flex-shrink-0 mt-0.5">
-                <ShieldCheck className="w-4 h-4 text-[#6B1312]" />
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 hover:border-[#C29D56]/50 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-[#6B1312]/10 flex items-center justify-center text-[#6B1312] flex-shrink-0 mt-0.5">
+                      <ShieldCheck className="w-4 h-4 text-[#6B1312]" />
+                    </div>
+
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">
+                        100% Clear Titles
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">
+                        Verified land ownership with hassle-free registry.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 hover:border-[#C29D56]/50 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-[#C29D56]/15 flex items-center justify-center text-[#C29D56] flex-shrink-0 mt-0.5">
+                      <Landmark className="w-4 h-4 text-[#C29D56]" />
+                    </div>
+
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">
+                        Approved Frameworks
+                      </h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">
+                        Fully sanctioned layouts meeting municipal guidelines.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">
-                  100% Clear Titles
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
+                  <img
+                    src={gallery5Img}
+                    alt="Planned Development"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        {/* ================= PROJECT PLANNING ================= */}
+        <div className="py-14 sm:py-18 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] border-t border-[#C29D56]/30 relative overflow-hidden">
+
+          <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
+
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                Comprehensive Project Planning
+              </h3>
+
+              <p className="text-slate-300 text-xs sm:text-sm">
+                Engineered for longevity, smooth transit, and sustainable community
+                living. Hover over cards to explore.
+              </p>
+
+              <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+
+              <div className="javier-card">
+                <div className="javier-image-box">
+                  <Layers className="w-7 h-7 text-[#C29D56]" />
+                </div>
+
+                <div className="javier-card-info">
+                  <span>Infrastructure</span>
+                  <p>
+                    Wide internal bitumen & concrete roads, underground stormwater
+                    drainage, and reliable electricity provisioning.
+                  </p>
+                </div>
+
+                <Link to="/contact" className="javier-button">
+                  Enquire
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+
+              <div className="javier-card">
+                <div className="javier-image-box">
+                  <Trees className="w-7 h-7 text-[#C29D56]" />
+                </div>
+
+                <div className="javier-card-info">
+                  <span>Green Spaces</span>
+                  <p>
+                    Thoughtfully allocated landscape parks, children play zones, and
+                    lush avenue tree plantation for serene living.
+                  </p>
+                </div>
+
+                <Link to="/contact" className="javier-button">
+                  Enquire
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+
+              <div className="javier-card">
+                <div className="javier-image-box">
+                  <Shield className="w-7 h-7 text-[#C29D56]" />
+                </div>
+
+                <div className="javier-card-info">
+                  <span>Gated Security</span>
+                  <p>
+                    Secure compound boundary walls, grand entrance portals with
+                    round-the-clock surveillance, and bright street lighting.
+                  </p>
+                </div>
+
+                <Link to="/contact" className="javier-button">
+                  Enquire
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        {/* ================= LOCATION FOCUS ================= */}
+        <div className="py-12 sm:py-16 bg-white border-t border-slate-200 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+              <div className="lg:col-span-6">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
+
+                  <img
+                    src={slide1Img}
+                    alt="Location Focus"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+
+
+              <div className="lg:col-span-6 space-y-4">
+
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                    Location Focus & High-Growth Approach
+                  </h3>
+                </div>
+
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  We handpick land parcels along fast-developing urban corridors like
+                  Satrikh Road, Lucknow. Our location strategy ensures seamless
+                  connectivity to major highways, educational institutions, healthcare
+                  centers, and upcoming commercial hubs while keeping residents tucked
+                  away in peaceful surroundings.
+                </p>
+
+                <div className="space-y-2.5 pt-1">
+
+                  <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-[#C29D56]/50 transition-colors">
+                    <Compass className="w-4 h-4 text-[#C29D56]" />
+                    <span className="text-xs font-bold text-slate-800">
+                      Proximity to major arterial roads & ring roads (e.g., Kisan Path)
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-[#C29D56]/50 transition-colors">
+                    <TrendingUp className="w-4 h-4 text-[#6B1312]" />
+                    <span className="text-xs font-bold text-slate-800">
+                      High capital appreciation potential for investors
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        {/* ================= CUSTOMER EXPERIENCE ================= */}
+        <div className="py-14 sm:py-18 bg-white text-slate-900 border-t border-slate-200 relative overflow-hidden">
+
+          {/* Golden Dotted Pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
+
+          {/* Decorative SVG Line */}
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10">
+            <svg
+              className="w-full h-40 max-w-6xl"
+              viewBox="0 0 1200 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M50 100C300 20 400 180 650 100C900 20 1000 180 1150 100"
+                stroke="#6B1312"
+                strokeWidth="2.5"
+                strokeDasharray="8 8"
+              />
+            </svg>
+          </div>
+
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            {/* Section Heading */}
+            <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#050404] tracking-tight">
+                Customer Experience & Process
+              </h3>
+
+              <p className="text-slate-600 text-xs sm:text-sm">
+                From your first query to final documentation, we ensure a transparent,
+                supportive journey.
+              </p>
+
+              <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
+
+            </div>
+
+
+            {/* Process Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+              {/* Card 01 */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
+
+                <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
+                  01
+                </span>
+
+                <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+                  <PhoneCall className="w-4 h-4" />
+                </div>
+
+                <h4 className="text-sm font-extrabold text-[#6B1312]">
+                  1. Enquiry & Consultation
                 </h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  Verified land ownership with hassle-free registry.
+
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Connect with our advisory team via phone or website. We understand
+                  your budget, preferred size, and investment goals.
                 </p>
               </div>
-            </div>
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-start gap-3 hover:border-[#C29D56]/50 transition-colors">
-              <div className="w-8 h-8 rounded-lg bg-[#C29D56]/15 flex items-center justify-center text-[#C29D56] flex-shrink-0 mt-0.5">
-                <Landmark className="w-4 h-4 text-[#C29D56]" />
-              </div>
 
-              <div>
-                <h4 className="text-xs font-bold text-slate-900">
-                  Approved Frameworks
+              {/* Card 02 */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
+
+                <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
+                  02
+                </span>
+
+                <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+                  <MapPin className="w-4 h-4" />
+                </div>
+
+                <h4 className="text-sm font-extrabold text-[#6B1312]">
+                  2. Guided Site Visit
                 </h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  Fully sanctioned layouts meeting municipal guidelines.
+
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  We arrange complimentary site visits to Harika Paradise so you can
+                  inspect development progress and surrounding infrastructure firsthand.
                 </p>
               </div>
+
+
+              {/* Card 03 */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
+
+                <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
+                  03
+                </span>
+
+                <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+                  <Building2 className="w-4 h-4" />
+                </div>
+
+                <h4 className="text-sm font-extrabold text-[#6B1312]">
+                  3. Plot Selection
+                </h4>
+
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Choose your ideal plot from our master layout plan based on road
+                  width, orientation, and dimensions matching your dream home blueprint.
+                </p>
+              </div>
+
+
+              {/* Card 04 */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
+
+                <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
+                  04
+                </span>
+
+                <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
+                  <FileText className="w-4 h-4" />
+                </div>
+
+                <h4 className="text-sm font-extrabold text-[#6B1312]">
+                  4. Transparent Documentation
+                </h4>
+
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Complete legal verification, hassle-free registry, and transparent
+                  paperwork backed by our expert legal consultants.
+                </p>
+              </div>
+
             </div>
-
           </div>
         </div>
 
-        <div className="lg:col-span-6">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
-            <img
-              src={gallery5Img}
-              alt="Planned Development"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  {/* ================= PROJECT PLANNING ================= */}
-  <div className="py-14 sm:py-18 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] border-t border-[#C29D56]/30 relative overflow-hidden">
-
-    <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
-
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
-
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-      <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-          Comprehensive Project Planning
-        </h3>
-
-        <p className="text-slate-300 text-xs sm:text-sm">
-          Engineered for longevity, smooth transit, and sustainable community
-          living. Hover over cards to explore.
-        </p>
-
-        <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-
-        <div className="javier-card">
-          <div className="javier-image-box">
-            <Layers className="w-7 h-7 text-[#C29D56]" />
-          </div>
-
-          <div className="javier-card-info">
-            <span>Infrastructure</span>
-            <p>
-              Wide internal bitumen & concrete roads, underground stormwater
-              drainage, and reliable electricity provisioning.
-            </p>
-          </div>
-
-          <Link to="/contact" className="javier-button">
-            Enquire
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-
-        <div className="javier-card">
-          <div className="javier-image-box">
-            <Trees className="w-7 h-7 text-[#C29D56]" />
-          </div>
-
-          <div className="javier-card-info">
-            <span>Green Spaces</span>
-            <p>
-              Thoughtfully allocated landscape parks, children play zones, and
-              lush avenue tree plantation for serene living.
-            </p>
-          </div>
-
-          <Link to="/contact" className="javier-button">
-            Enquire
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-
-        <div className="javier-card">
-          <div className="javier-image-box">
-            <Shield className="w-7 h-7 text-[#C29D56]" />
-          </div>
-
-          <div className="javier-card-info">
-            <span>Gated Security</span>
-            <p>
-              Secure compound boundary walls, grand entrance portals with
-              round-the-clock surveillance, and bright street lighting.
-            </p>
-          </div>
-
-          <Link to="/contact" className="javier-button">
-            Enquire
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  {/* ================= LOCATION FOCUS ================= */}
-  <div className="py-12 sm:py-16 bg-white border-t border-slate-200 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
-
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-
-        <div className="lg:col-span-6">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
-
-            <img
-              src={slide1Img}
-              alt="Location Focus"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          </div>
-        </div>
-
-
-        <div className="lg:col-span-6 space-y-4">
-
-          <div className="space-y-1.5">
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
-              Location Focus & High-Growth Approach
-            </h3>
-          </div>
-
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-            We handpick land parcels along fast-developing urban corridors like
-            Satrikh Road, Lucknow. Our location strategy ensures seamless
-            connectivity to major highways, educational institutions, healthcare
-            centers, and upcoming commercial hubs while keeping residents tucked
-            away in peaceful surroundings.
-          </p>
-
-          <div className="space-y-2.5 pt-1">
-
-            <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-[#C29D56]/50 transition-colors">
-              <Compass className="w-4 h-4 text-[#C29D56]" />
-              <span className="text-xs font-bold text-slate-800">
-                Proximity to major arterial roads & ring roads (e.g., Kisan Path)
-              </span>
-            </div>
-
-            <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm hover:border-[#C29D56]/50 transition-colors">
-              <TrendingUp className="w-4 h-4 text-[#6B1312]" />
-              <span className="text-xs font-bold text-slate-800">
-                High capital appreciation potential for investors
-              </span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-  {/* ================= CUSTOMER EXPERIENCE ================= */}
-  <div className="py-14 sm:py-18 bg-white text-slate-900 border-t border-slate-200 relative overflow-hidden">
-
-    {/* Golden Dotted Pattern */}
-    <div className="absolute inset-0 bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none" />
-
-    {/* Decorative SVG Line */}
-    <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10">
-      <svg
-        className="w-full h-40 max-w-6xl"
-        viewBox="0 0 1200 200"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M50 100C300 20 400 180 650 100C900 20 1000 180 1150 100"
-          stroke="#6B1312"
-          strokeWidth="2.5"
-          strokeDasharray="8 8"
-        />
-      </svg>
-    </div>
-
-
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-      {/* Section Heading */}
-      <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
-
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-[#050404] tracking-tight">
-          Customer Experience & Process
-        </h3>
-
-        <p className="text-slate-600 text-xs sm:text-sm">
-          From your first query to final documentation, we ensure a transparent,
-          supportive journey.
-        </p>
-
-        <div className="w-16 h-1 bg-[#C29D56] mx-auto rounded-full mt-2" />
-
-      </div>
-
-
-      {/* Process Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-        {/* Card 01 */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
-
-          <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
-            01
-          </span>
-
-          <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
-            <PhoneCall className="w-4 h-4" />
-          </div>
-
-          <h4 className="text-sm font-extrabold text-[#6B1312]">
-            1. Enquiry & Consultation
-          </h4>
-
-          <p className="text-xs text-slate-600 leading-relaxed">
-            Connect with our advisory team via phone or website. We understand
-            your budget, preferred size, and investment goals.
-          </p>
-        </div>
-
-
-        {/* Card 02 */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
-
-          <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
-            02
-          </span>
-
-          <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
-            <MapPin className="w-4 h-4" />
-          </div>
-
-          <h4 className="text-sm font-extrabold text-[#6B1312]">
-            2. Guided Site Visit
-          </h4>
-
-          <p className="text-xs text-slate-600 leading-relaxed">
-            We arrange complimentary site visits to Harika Paradise so you can
-            inspect development progress and surrounding infrastructure firsthand.
-          </p>
-        </div>
-
-
-        {/* Card 03 */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
-
-          <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
-            03
-          </span>
-
-          <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
-            <Building2 className="w-4 h-4" />
-          </div>
-
-          <h4 className="text-sm font-extrabold text-[#6B1312]">
-            3. Plot Selection
-          </h4>
-
-          <p className="text-xs text-slate-600 leading-relaxed">
-            Choose your ideal plot from our master layout plan based on road
-            width, orientation, and dimensions matching your dream home blueprint.
-          </p>
-        </div>
-
-
-        {/* Card 04 */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3 relative group hover:border-[#C29D56]/50 hover:shadow-md transition-all duration-300">
-
-          <span className="absolute top-3 right-3 text-2xl font-black text-[#6B1312]/15 group-hover:text-[#6B1312]/30 transition-colors">
-            04
-          </span>
-
-          <div className="w-9 h-9 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#6B1312] shadow-inner group-hover:bg-[#6B1312] group-hover:text-white transition-all duration-300">
-            <FileText className="w-4 h-4" />
-          </div>
-
-          <h4 className="text-sm font-extrabold text-[#6B1312]">
-            4. Transparent Documentation
-          </h4>
-
-          <p className="text-xs text-slate-600 leading-relaxed">
-            Complete legal verification, hassle-free registry, and transparent
-            paperwork backed by our expert legal consultants.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</section>
+      </section>
 
       {/* ================= SECTION 6: GALLERY PREVIEW (DARK MAROON GEOMETRICAL BG) ================= */}
-    <section
-  ref={section6Ref}
-  className="py-6 sm:py-8 relative bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-slate-200 overflow-hidden"
->
-  {/* Background Pattern */}
-  <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
+      <section
+        ref={section6Ref}
+        className="py-6 sm:py-8 relative bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-slate-200 overflow-hidden"
+      >
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
 
-  {/* Glow */}
-  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
+        {/* Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
 
-  <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
 
-    <div className="py-1 sm:py-2">
+          <div className="py-1 sm:py-2">
 
-      {/* =========================
+            {/* =========================
           SECTION HEADER
       ========================= */}
-      <div className="mb-5 sm:mb-6 text-center">
+            <div className="mb-5 sm:mb-6 text-center">
 
-        <span className="inline-block text-[#C29D56] text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-1.5">
-          Visual Tour
-        </span>
+              <span className="inline-block text-[#C29D56] text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-1.5">
+                Visual Tour
+              </span>
 
-        <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
-          Our Gallery
-        </h2>
+              <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
+                Our Gallery
+              </h2>
 
-        <p className="text-slate-300 text-[11px] sm:text-xs md:text-sm mt-1.5 max-w-xl mx-auto">
-          Explore the beauty, lifestyle and infrastructure of Harika Paradise.
-        </p>
+              <p className="text-slate-300 text-[11px] sm:text-xs md:text-sm mt-1.5 max-w-xl mx-auto">
+                Explore the beauty, lifestyle and infrastructure of Harika Paradise.
+              </p>
 
-        <div className="w-14 h-0.5 bg-[#C29D56] mx-auto rounded-full mt-2" />
+              <div className="w-14 h-0.5 bg-[#C29D56] mx-auto rounded-full mt-2" />
 
-      </div>
+            </div>
 
 
-      {/* =========================
+            {/* =========================
           GALLERY CAROUSEL
       ========================= */}
-      {/* =========================
+            {/* =========================
     GALLERY GRID
 ========================= */}
-<div className="max-w-7xl mx-auto px-0 sm:px-2">
+            <div className="max-w-7xl mx-auto px-0 sm:px-2">
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
 
-    {/* =========================
+                {/* =========================
         MAIN LARGE IMAGE
     ========================= */}
-    <div
-      className="w-full aspect-[14/13] cursor-pointer group"
-      onClick={() => {
-        setActiveGalleryIndex(0);
-        setLightboxImg(galleryImages[0].src);
-      }}
-    >
-      <div className="relative w-full h-full overflow-hidden rounded-lg sm:rounded-xl bg-black border border-[#C29D56]/30 shadow-xl">
+                <div
+                  className="w-full aspect-[14/13] cursor-pointer group"
+                  onClick={() => {
+                    setActiveGalleryIndex(0);
+                    setLightboxImg(galleryImages[0].src);
+                  }}
+                >
+                  <div className="relative w-full h-full overflow-hidden rounded-lg sm:rounded-xl bg-black border border-[#C29D56]/30 shadow-xl">
 
-        <img
-          src={galleryImages[0].src}
-          alt={`Harika Paradise Gallery 1`}
-          className="w-full h-full rounded-lg sm:rounded-xl object-cover object-top transition-transform duration-700 group-hover:scale-105"
-        />
+                    <img
+                      src={galleryImages[0].src}
+                      alt={`Harika Paradise Gallery 1`}
+                      className="w-full h-full rounded-lg sm:rounded-xl object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
 
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 px-4 py-2 rounded-lg text-xs font-bold shadow-lg">
-            Click to Expand
-          </span>
-        </div>
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 px-4 py-2 rounded-lg text-xs font-bold shadow-lg">
+                        Click to Expand
+                      </span>
+                    </div>
 
-        {/* Image Number */}
-        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md border border-white/20 text-white px-2.5 py-1 rounded-full text-[10px] font-semibold">
-          01
-        </div>
+                    {/* Image Number */}
+                    <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md border border-white/20 text-white px-2.5 py-1 rounded-full text-[10px] font-semibold">
+                      01
+                    </div>
 
-      </div>
-    </div>
+                  </div>
+                </div>
 
 
-    {/* =========================
+                {/* =========================
         FOUR SMALL IMAGES
     ========================= */}
-    <div className="grid grid-cols-2 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 gap-4 md:gap-6">
 
-      {galleryImages.slice(1, 5).map((image, idx) => {
+                  {galleryImages.slice(1, 5).map((image, idx) => {
 
-        const imageIndex = idx + 1;
+                    const imageIndex = idx + 1;
 
-        return (
-          <div
-            key={imageIndex}
-            className="w-full aspect-[14/13] cursor-pointer group"
-            onClick={() => {
-              setActiveGalleryIndex(imageIndex);
-              setLightboxImg(image.src);
-            }}
-          >
-            <div className="relative w-full h-full overflow-hidden rounded-lg sm:rounded-xl bg-black border border-[#C29D56]/30 shadow-lg">
+                    return (
+                      <div
+                        key={imageIndex}
+                        className="w-full aspect-[14/13] cursor-pointer group"
+                        onClick={() => {
+                          setActiveGalleryIndex(imageIndex);
+                          setLightboxImg(image.src);
+                        }}
+                      >
+                        <div className="relative w-full h-full overflow-hidden rounded-lg sm:rounded-xl bg-black border border-[#C29D56]/30 shadow-lg">
 
-              <img
-                src={image.src}
-                alt={`Harika Paradise Gallery ${imageIndex + 1}`}
-                className="w-full h-full rounded-lg sm:rounded-xl object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              />
+                          <img
+                            src={image.src}
+                            alt={`Harika Paradise Gallery ${imageIndex + 1}`}
+                            className="w-full h-full rounded-lg sm:rounded-xl object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                          />
 
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold shadow-lg">
-                  View
-                </span>
+                          {/* Hover Overlay */}
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span className="bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-bold shadow-lg">
+                              View
+                            </span>
+                          </div>
+
+                          {/* Image Number */}
+                          <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-md border border-white/20 text-white px-2 py-0.5 rounded-full text-[9px] font-semibold">
+                            {String(imageIndex + 1).padStart(2, "0")}
+                          </div>
+
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                </div>
+
               </div>
+             
 
-              {/* Image Number */}
-              <div className="absolute top-2 left-2 bg-black/60 backdrop-blur-md border border-white/20 text-white px-2 py-0.5 rounded-full text-[9px] font-semibold">
-                {String(imageIndex + 1).padStart(2, "0")}
+              {/* =========================
+      VIEW FULL GALLERY
+  ========================= */}
+              <div className="text-center mt-5 sm:mt-6">
+
+                <Link
+                  to="/gallery"
+                  className="inline-flex items-center gap-1.5 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-5 sm:px-6 py-2 sm:py-2.5 rounded-lg font-bold text-[11px] sm:text-xs shadow-md transition-all group"
+                >
+                  View Full Gallery
+
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
               </div>
 
             </div>
           </div>
-        );
-      })}
 
-    </div>
-
-  </div>
+        </div>
 
 
-  {/* =========================
-      GALLERY INFO
-  ========================= */}
-  <div className="text-center mt-5 sm:mt-6">
-
-    <p className="text-[#C29D56] text-[11px] sm:text-xs font-semibold">
-      Harika Paradise
-    </p>
-
-    <p className="text-slate-400 text-[9px] sm:text-[10px] mt-0.5">
-      Explore the beauty, lifestyle and infrastructure of Harika Paradise.
-    </p>
-
-  </div>
-
-
-  {/* =========================
-      VIEW FULL GALLERY
-  ========================= */}
-  <div className="text-center mt-5 sm:mt-6">
-
-    <Link
-      to="/gallery"
-      className="inline-flex items-center gap-1.5 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-5 sm:px-6 py-2 sm:py-2.5 rounded-lg font-bold text-[11px] sm:text-xs shadow-md transition-all group"
-    >
-      View Full Gallery
-
-      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-    </Link>
-
-  </div>
-
-</div>
-    </div>
-
-  </div>
-
-
-  {/* =====================================================
+        {/* =====================================================
       FULLSCREEN LIGHTBOX
   ===================================================== */}
-  {lightboxImg && (
-    <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
+        {lightboxImg && (
+          <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
 
-      {/* Close */}
-      <button
-        onClick={() => setLightboxImg(null)}
-        className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
-        aria-label="Close Lightbox"
-      >
-        <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-      </button>
-
-
-      {/* Previous Lightbox */}
-      <button
-        onClick={() => {
-          const newIndex =
-            (activeGalleryIndex - 1 + galleryImages.length) %
-            galleryImages.length;
-
-          setActiveGalleryIndex(newIndex);
-          setLightboxImg(galleryImages[newIndex].src);
-        }}
-        className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
-        aria-label="Previous Image"
-      >
-        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-      </button>
+            {/* Close */}
+            <button
+              onClick={() => setLightboxImg(null)}
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Close Lightbox"
+            >
+              <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            </button>
 
 
-      {/* Main Lightbox Image */}
-      <img
-        src={lightboxImg}
-        alt={`Harika Paradise Enlarged ${activeGalleryIndex + 1}`}
-        className="max-w-[88vw] sm:max-w-[85vw] max-h-[78vh] sm:max-h-[82vh] rounded-lg sm:rounded-xl object-contain shadow-2xl border border-white/10"
-      />
+            {/* Previous Lightbox */}
+            <button
+              onClick={() => {
+                const newIndex =
+                  (activeGalleryIndex - 1 + galleryImages.length) %
+                  galleryImages.length;
+
+                setActiveGalleryIndex(newIndex);
+                setLightboxImg(galleryImages[newIndex].src);
+              }}
+              className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            </button>
 
 
-      {/* Next Lightbox */}
-      <button
-        onClick={() => {
-          const newIndex =
-            (activeGalleryIndex + 1) % galleryImages.length;
-
-          setActiveGalleryIndex(newIndex);
-          setLightboxImg(galleryImages[newIndex].src);
-        }}
-        className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
-        aria-label="Next Image"
-      >
-        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-      </button>
+            {/* Main Lightbox Image */}
+            <img
+              src={lightboxImg}
+              alt={`Harika Paradise Enlarged ${activeGalleryIndex + 1}`}
+              className="max-w-[88vw] sm:max-w-[85vw] max-h-[78vh] sm:max-h-[82vh] rounded-lg sm:rounded-xl object-contain shadow-2xl border border-white/10"
+            />
 
 
-      {/* Lightbox Counter */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md border border-[#C29D56]/30 text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold">
-        {activeGalleryIndex + 1} / {galleryImages.length}
-      </div>
+            {/* Next Lightbox */}
+            <button
+              onClick={() => {
+                const newIndex =
+                  (activeGalleryIndex + 1) % galleryImages.length;
 
-    </div>
-  )}
+                setActiveGalleryIndex(newIndex);
+                setLightboxImg(galleryImages[newIndex].src);
+              }}
+              className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-[#6B1312] border border-white/20 hover:border-[#C29D56] flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            </button>
 
-</section>
+
+            {/* Lightbox Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md border border-[#C29D56]/30 text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold">
+              {activeGalleryIndex + 1} / {galleryImages.length}
+            </div>
+
+          </div>
+        )}
+
+      </section>
 
       {/* ================= FEEDBACK SECTION (LIGHT GEOMETRICAL BG) ================= */}
-     <section
-  ref={sectionFeedbackRef}
-  className="py-12 sm:py-16 bg-white border-t border-slate-200 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]"
->
-  {/* Decorative Glow */}
-  <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/10 rounded-full filter blur-3xl pointer-events-none" />
+      <section
+        ref={sectionFeedbackRef}
+        className="py-12 sm:py-16 bg-white border-t border-slate-200 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]"
+      >
+        {/* Decorative Glow */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/10 rounded-full filter blur-3xl pointer-events-none" />
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    {/* =========================
+          {/* =========================
         SECTION HEADING
     ========================= */}
-    <div className="mb-10">
-      <div className="text-center max-w-3xl mx-auto space-y-2">
+          <div className="mb-10">
+            <div className="text-center max-w-3xl mx-auto space-y-2">
 
-        <h3 className="text-xl sm:text-3xl font-extrabold text-slate-900 flex flex-wrap justify-center gap-x-2 gap-y-1">
-          {headingWordsFeedback.map((word, index) => (
-            <span
-              key={index}
-              className={`rain-word ${
-                isSectionFeedbackVisible
-                  ? "animate-rain-drop"
-                  : ""
-              }`}
-              style={{
-                animationDelay: `${index * 0.15}s`,
-              }}
-            >
-              {word}
-            </span>
-          ))}
-        </h3>
+              <h3 className="text-xl sm:text-3xl font-extrabold text-slate-900 flex flex-wrap justify-center gap-x-2 gap-y-1">
+                {headingWordsFeedback.map((word, index) => (
+                  <span
+                    key={index}
+                    className={`rain-word ${isSectionFeedbackVisible
+                        ? "animate-rain-drop"
+                        : ""
+                      }`}
+                    style={{
+                      animationDelay: `${index * 0.15}s`,
+                    }}
+                  >
+                    {word}
+                  </span>
+                ))}
+              </h3>
 
-        <p className="text-slate-600 text-xs font-medium">
-          Hear what our valued plot owners and investors have to say about us.
-        </p>
+              <p className="text-slate-600 text-xs font-medium">
+                Hear what our valued plot owners and investors have to say about us.
+              </p>
 
-        <div
-          className={`w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5 transition-all duration-700 ${
-            isSectionFeedbackVisible
-              ? "opacity-100 scale-100"
-              : "opacity-0 scale-50"
-          }`}
-        />
-      </div>
-    </div>
+              <div
+                className={`w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5 transition-all duration-700 ${isSectionFeedbackVisible
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-50"
+                  }`}
+              />
+            </div>
+          </div>
 
-    {/* =========================
+          {/* =========================
         FEEDBACK CARDS
     ========================= */}
-    <div className="relative max-w-6xl mx-auto px-2 sm:px-6">
+          <div className="relative max-w-6xl mx-auto px-2 sm:px-6">
 
-      {/* Left Button */}
-      <button
-        onClick={() => scrollFeedback("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
-        aria-label="Scroll Left"
-      >
-        <ChevronLeft className="w-4 h-4" />
-      </button>
+            {/* Left Button */}
+            <button
+              onClick={() => scrollFeedback("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
+              aria-label="Scroll Left"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
 
-      {/* Right Button */}
-      <button
-        onClick={() => scrollFeedback("right")}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
-        aria-label="Scroll Right"
-      >
-        <ChevronRight className="w-4 h-4" />
-      </button>
+            {/* Right Button */}
+            <button
+              onClick={() => scrollFeedback("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/95 hover:bg-[#6B1312] text-slate-700 hover:text-[#C29D56] p-2 rounded-full shadow-md border border-slate-200 transition-all hidden sm:flex items-center justify-center"
+              aria-label="Scroll Right"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
 
-      {/* =========================
+            {/* =========================
           FEEDBACK CARDS CONTAINER
       ========================= */}
-      <div
-        ref={feedbackContainerRef}
-        className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-3 px-2"
-      >
-        {feedbackData.map((item, index) => {
-
-          /* =========================
-             MALE IMAGES
-          ========================= */
-          const maleImages = [
-            "https://tse3.mm.bing.net/th/id/OIP.7UlLJKC6VjaK803Itd1McwAAAA?r=0&w=260&h=280&rs=1&pid=ImgDetMain&o=7&rm=3",
-            "https://cdn1.vectorstock.com/i/1000x1000/69/80/cartoon-man-elegant-human-resources-vector-10786980.jpg",
-          ];
-
-          /* =========================
-             FEMALE IMAGES
-          ========================= */
-          const femaleImages = [
-            "https://img.freepik.com/premium-vector/female-employee-avatar_505024-1176.jpg?w=2000",
-            "https://img.freepik.com/premium-photo/illustration-single-woman-american-cartoon-art-style-images-with-ai-generated_545052-628.jpg?w=2000",
-          ];
-
-          /* =========================
-             IMAGE BASED ON GENDER
-          ========================= */
-          const isFemale =
-            String(item.gender || "").toLowerCase() === "female";
-
-          const genderImageIndex = Math.floor(index / 2) % 2;
-
-          const profileImage = isFemale
-            ? femaleImages[genderImageIndex]
-            : maleImages[genderImageIndex];
-
-          return (
             <div
-              key={index}
-              className="
+              ref={feedbackContainerRef}
+              className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-3 px-2"
+            >
+              {feedbackData.map((item, index) => {
+
+                /* =========================
+                   MALE IMAGES
+                ========================= */
+                const maleImages = [
+                  "https://tse3.mm.bing.net/th/id/OIP.7UlLJKC6VjaK803Itd1McwAAAA?r=0&w=260&h=280&rs=1&pid=ImgDetMain&o=7&rm=3",
+                  "https://cdn1.vectorstock.com/i/1000x1000/69/80/cartoon-man-elegant-human-resources-vector-10786980.jpg",
+                ];
+
+                /* =========================
+                   FEMALE IMAGES
+                ========================= */
+                const femaleImages = [
+                  "https://img.freepik.com/premium-vector/female-employee-avatar_505024-1176.jpg?w=2000",
+                  "https://img.freepik.com/premium-photo/illustration-single-woman-american-cartoon-art-style-images-with-ai-generated_545052-628.jpg?w=2000",
+                ];
+
+                /* =========================
+                   IMAGE BASED ON GENDER
+                ========================= */
+                const isFemale =
+                  String(item.gender || "").toLowerCase() === "female";
+
+                const genderImageIndex = Math.floor(index / 2) % 2;
+
+                const profileImage = isFemale
+                  ? femaleImages[genderImageIndex]
+                  : maleImages[genderImageIndex];
+
+                return (
+                  <div
+                    key={index}
+                    className="
                 feedback-card
                 relative
                 bg-white
@@ -1712,64 +1691,64 @@ const Home = () => {
                 hover:border-[#C29D56]/50
                 group
               "
-            >
+                  >
 
-              {/* Quote Icon */}
-              <div className="absolute top-2.5 right-2.5 text-[#C29D56]">
-                <Quote className="w-4 h-4 opacity-40" />
-              </div>
+                    {/* Quote Icon */}
+                    <div className="absolute top-2.5 right-2.5 text-[#C29D56]">
+                      <Quote className="w-4 h-4 opacity-40" />
+                    </div>
 
-              {/* Card Content */}
-              <div className="flex flex-col items-center text-center pt-1">
+                    {/* Card Content */}
+                    <div className="flex flex-col items-center text-center pt-1">
 
-                {/* =========================
+                      {/* =========================
                     PROFILE IMAGE
                 ========================= */}
-                <div className="w-14 h-14 mb-3 rounded-full overflow-hidden bg-[#C29D56]/15 border-2 border-[#C29D56]/40 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
+                      <div className="w-14 h-14 mb-3 rounded-full overflow-hidden bg-[#C29D56]/15 border-2 border-[#C29D56]/40 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
 
-                  <img
-                    src={profileImage}
-                    alt={`${item.name} profile`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                        <img
+                          src={profileImage}
+                          alt={`${item.name} profile`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
 
-                </div>
+                      </div>
 
-                {/* Name */}
-                <h5 className="mb-0.5 text-base font-bold tracking-tight text-slate-900">
-                  {item.name}
-                </h5>
+                      {/* Name */}
+                      <h5 className="mb-0.5 text-base font-bold tracking-tight text-slate-900">
+                        {item.name}
+                      </h5>
 
-                {/* Role */}
-                <span className="text-[11px] font-semibold text-[#6B1312] bg-[#C29D56]/10 px-2.5 py-0.5 rounded-full">
-                  {item.role}
-                </span>
+                      {/* Role */}
+                      <span className="text-[11px] font-semibold text-[#6B1312] bg-[#C29D56]/10 px-2.5 py-0.5 rounded-full">
+                        {item.role}
+                      </span>
 
-                {/* Review */}
-                <p className="mt-2.5 text-[11px] text-slate-600 leading-relaxed italic line-clamp-3">
-                  "{item.review}"
-                </p>
+                      {/* Review */}
+                      <p className="mt-2.5 text-[11px] text-slate-600 leading-relaxed italic line-clamp-3">
+                        "{item.review}"
+                      </p>
 
-                {/* Stars */}
-                <div className="flex mt-3 gap-0.5 text-[#C29D56]">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-3 h-3 fill-current"
-                    />
-                  ))}
-                </div>
+                      {/* Stars */}
+                      <div className="flex mt-3 gap-0.5 text-[#C29D56]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-3 h-3 fill-current"
+                          />
+                        ))}
+                      </div>
 
-              </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
-    </div>
+          </div>
 
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* ================= SECTION 7: LOCATION / CONTACT CTA (LIGHT GEOMETRICAL BG) ================= */}
       <section ref={section7Ref} className="relative overflow-hidden border-t border-[#C29D56]/20 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] py-12 text-white shadow-[0_10px_30px_rgba(0,0,0,0.2)] sm:py-16">

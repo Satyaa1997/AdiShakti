@@ -301,9 +301,8 @@ const Contact = () => {
                 <button
                   key={idx}
                   onClick={() => setActiveCardIndex(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    activeCardIndex === idx ? 'w-6 bg-[#C29D56]' : 'w-2 bg-slate-300'
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${activeCardIndex === idx ? 'w-6 bg-[#C29D56]' : 'w-2 bg-slate-300'
+                    }`}
                   aria-label={`Go to card ${idx + 1}`}
                 />
               ))}
@@ -557,11 +556,10 @@ const Contact = () => {
                       </span>
                       <ChevronDown
                         size={16}
-                        className={`text-slate-400 transition-transform ${
-                          openFaq === index
+                        className={`text-slate-400 transition-transform ${openFaq === index
                             ? 'rotate-180 text-[#6B1312]'
                             : ''
-                        }`}
+                          }`}
                       />
                     </button>
 

@@ -21,7 +21,7 @@ const About = () => {
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          
+
           // Animate 0 to 100%
           let pStart = 0;
           const pEnd = 100;
@@ -66,7 +66,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#C29D56] selection:text-white overflow-x-hidden">
-      
+
       {/* Custom Geometrical Grid Pattern CSS for Light Sections */}
       <style>{`
         .light-geom-grid {
@@ -77,62 +77,62 @@ const About = () => {
 
       {/* ================= HERO BANNER ================= */}
       {/* ================= HERO BANNER ================= */}
-{/* ================= HERO BANNER ================= */}
-<section className="relative overflow-hidden min-h-[450px] sm:min-h-[530px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
+      {/* ================= HERO BANNER ================= */}
+      <section className="relative overflow-hidden min-h-[450px] sm:min-h-[530px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
 
-  {/* Background Image */}
-  <img
-    src={heroBgImg}
-    alt="Ādi Shakti Coloniser & Homebuilders"
-    className="absolute inset-0 w-full h-full object-cover object-center"
-    onError={(e) => {
-      e.target.src =
-        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
-    }}
-  />
+        {/* Background Image */}
+        <img
+          src={heroBgImg}
+          alt="Ādi Shakti Coloniser & Homebuilders"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          onError={(e) => {
+            e.target.src =
+              'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
+          }}
+        />
 
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-black/15 backdrop-blur-[1px] pointer-events-none" />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/15 backdrop-blur-[1px] pointer-events-none" />
 
-  {/* Hero Content */}
-  <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20 translate-y-6 sm:translate-y-0">
+        {/* Hero Content */}
+        <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20 translate-y-6 sm:translate-y-0">
 
-    {/* Main Heading */}
-    <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
-      Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.
-    </h1>
+          {/* Main Heading */}
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.95)]">
+            Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.
+          </h1>
 
-    {/* Description */}
-    <p className="mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-relaxed text-white font-medium drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)]">
-      Building thoughtfully planned communities with strong foundations,
-      transparent processes, and a commitment to creating better living
-      environments across Lucknow and beyond.
-    </p>
+          {/* Description */}
+          <p className="mt-4 mx-auto max-w-2xl text-xs sm:text-sm leading-relaxed text-white font-medium drop-shadow-[0_3px_8px_rgba(0,0,0,0.95)]">
+            Building thoughtfully planned communities with strong foundations,
+            transparent processes, and a commitment to creating better living
+            environments across Lucknow and beyond.
+          </p>
 
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* ================= SECTION 1: ABOUT COMPANY (VISIBLE LIGHT GEOMETRICAL BG) ================= */}
-     <section ref={statsRef} className="py-12 sm:py-16 bg-white relative overflow-hidden light-geom-grid">
+      <section ref={statsRef} className="py-12 sm:py-16 bg-white relative overflow-hidden light-geom-grid">
         <div className="absolute top-10 left-0 w-80 h-80 bg-[#C29D56]/15 rounded-full filter blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#6B1312]/10 rounded-full filter blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-              
+
               <div className="lg:col-span-7 space-y-6">
                 <div className="space-y-2">
                   <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
                     Setting New Benchmarks in Organized Real Estate Development
                   </h2>
                 </div>
-                
+
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   <strong className="text-slate-900">Ādi Shakti Coloniser & Homebuilders Pvt. Ltd.</strong> operates at the forefront of organized real estate. Headquartered in Gomti Nagar, Lucknow, our organization is structured around strategic land acquisition, robust infrastructural planning, and absolute legal transparency.
                 </p>
-                
+
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   With a rigorous focus on Nagar Panchayat approvals and high-growth locations like Satrikh Road, we ensure that every plotted community we build delivers secure living and exceptional long-term appreciation for families and investors.
                 </p>
@@ -155,9 +155,9 @@ const About = () => {
 
               <div className="lg:col-span-5 relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#C29D56]/40 h-[340px] sm:h-[420px] group">
-                  <img 
-                    src={siteViewImg} 
-                    alt="Corporate & Project Site" 
+                  <img
+                    src={siteViewImg}
+                    alt="Corporate & Project Site"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
                       e.target.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80';
@@ -180,13 +180,13 @@ const About = () => {
 
       {/* ================= SECTION 2: CORE PHILOSOPHY (GRADIENT MAROON BOX + GEOMETRICAL BG) ================= */}
       <section className="py-12 lg:py-15 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white relative overflow-hidden border-t border-b border-[#C29D56]/30">
-        
+
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C29D56]/15 rounded-full filter blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="space-y-12 sm:space-y-16 relative">
-            
+
             {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <h2 className="text-4xl sm:text-5xl md:text-4xl font-extrabold text-white tracking-tight">
@@ -197,7 +197,7 @@ const About = () => {
 
             {/* Row 1: Vision */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-              
+
               <div className="lg:col-span-6 flex flex-col justify-between space-y-3 py-1">
                 <div className="space-y-2.5">
                   <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug">
@@ -217,9 +217,9 @@ const About = () => {
 
               <div className="lg:col-span-6">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#C29D56]/40 h-[260px] sm:h-[320px] lg:h-full w-full group">
-                  <img 
-                    src={visionImg} 
-                    alt="Our Vision" 
+                  <img
+                    src={visionImg}
+                    alt="Our Vision"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
                       e.target.src = 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80';
@@ -232,12 +232,12 @@ const About = () => {
 
             {/* Row 2: Mission */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch pt-6 border-t border-white/10">
-              
+
               <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#C29D56]/40 h-[260px] sm:h-[320px] lg:h-full w-full group">
-                  <img 
-                    src={missionImg} 
-                    alt="Our Mission" 
+                  <img
+                    src={missionImg}
+                    alt="Our Mission"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
                       e.target.src = 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80';
@@ -276,7 +276,7 @@ const About = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
-            
+
             <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-12">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Our Approach to Excellence
@@ -288,7 +288,7 @@ const About = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              
+
               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3 hover:shadow-xl hover:border-[#C29D56]/60 transition-all group">
                 <div className="w-11 h-11 rounded-xl bg-[#6B1312] text-[#C29D56] flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
                   <Compass className="w-5 h-5 text-[#C29D56]" />
@@ -337,15 +337,15 @@ const About = () => {
 
       {/* ================= SECTION 4: CORPORATE HEADQUARTERS & CONTACT (GRADIENT MAROON BOX + GEOMETRICAL BG) ================= */}
       <section className="py-12 sm:py-14 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
-        
+
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              
+
               <div className="space-y-6">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 border border-[#C29D56]/40 px-3.5 py-1 rounded-full">
                   Get in Touch

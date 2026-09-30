@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
-  
+
   // Popup Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
@@ -20,17 +20,15 @@ const Navbar = () => {
 
   // Active link styling helper
   const navLinkClass = ({ isActive }) =>
-    `font-medium text-sm transition-colors ${
-      isActive
-        ? 'text-[#C29D56] font-bold border-b-2 border-[#C29D56] pb-1'
-        : 'text-slate-700 hover:text-[#C29D56]'
+    `font-medium text-sm transition-colors ${isActive
+      ? 'text-[#C29D56] font-bold border-b-2 border-[#C29D56] pb-1'
+      : 'text-slate-700 hover:text-[#C29D56]'
     }`;
 
   const mobileNavLinkClass = ({ isActive }) =>
-    `block font-medium text-base py-1 transition-colors ${
-      isActive
-        ? 'text-[#C29D56] font-bold pl-2 border-l-4 border-[#C29D56]'
-        : 'text-slate-700 hover:text-[#C29D56]'
+    `block font-medium text-base py-1 transition-colors ${isActive
+      ? 'text-[#C29D56] font-bold pl-2 border-l-4 border-[#C29D56]'
+      : 'text-slate-700 hover:text-[#C29D56]'
     }`;
 
   // Handle Form Submission to Email
@@ -200,19 +198,17 @@ const Navbar = () => {
                 <NavLink
                   to="/harika-paradise"
                   className={({ isActive }) =>
-                    `flex items-center gap-1 font-medium text-sm transition-colors focus:outline-none ${
-                      isActive
-                        ? 'text-[#C29D56] font-bold'
-                        : 'text-slate-700 hover:text-[#C29D56]'
+                    `flex items-center gap-1 font-medium text-sm transition-colors focus:outline-none ${isActive
+                      ? 'text-[#C29D56] font-bold'
+                      : 'text-slate-700 hover:text-[#C29D56]'
                     }`
                   }
                 >
                   Our Projects
 
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      dropdownOpen ? 'rotate-180' : ''
-                    }`}
+                    className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''
+                      }`}
                   />
                 </NavLink>
 
@@ -225,10 +221,9 @@ const Navbar = () => {
                         to={item.path}
                         onClick={() => setDropdownOpen(false)}
                         className={({ isActive }) =>
-                          `block px-4 py-2 text-sm transition-colors font-medium ${
-                            isActive
-                              ? 'bg-[#C29D56]/10 text-[#6B1312] font-bold'
-                              : 'text-slate-700 hover:bg-[#C29D56]/10 hover:text-[#6B1312]'
+                          `block px-4 py-2 text-sm transition-colors font-medium ${isActive
+                            ? 'bg-[#C29D56]/10 text-[#6B1312] font-bold'
+                            : 'text-slate-700 hover:bg-[#C29D56]/10 hover:text-[#6B1312]'
                           }`
                         }
                       >
@@ -309,9 +304,8 @@ const Navbar = () => {
               >
                 <span>Our Projects</span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    mobileProjectsOpen ? 'rotate-180' : ''
-                  }`}
+                  className={`w-4 h-4 transition-transform duration-200 ${mobileProjectsOpen ? 'rotate-180' : ''
+                    }`}
                 />
               </button>
 
@@ -326,10 +320,9 @@ const Navbar = () => {
                         setMobileProjectsOpen(false);
                       }}
                       className={({ isActive }) =>
-                        `block py-1.5 text-sm font-medium ${
-                          isActive
-                            ? 'text-[#6B1312] font-bold'
-                            : 'text-slate-600'
+                        `block py-1.5 text-sm font-medium ${isActive
+                          ? 'text-[#6B1312] font-bold'
+                          : 'text-slate-600'
                         }`
                       }
                     >
@@ -387,7 +380,7 @@ const Navbar = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border-2 border-[#C29D56]/30 animate-in fade-in zoom-in duration-200">
-            
+
             {/* Close Button */}
             <button
               onClick={() => setIsModalOpen(false)}
@@ -411,7 +404,7 @@ const Navbar = () => {
 
             {/* Form */}
             <form onSubmit={handleSubmitEnquiry} className="space-y-4">
-              
+
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
                 <div className="relative">

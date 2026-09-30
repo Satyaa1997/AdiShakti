@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Building2, MapPin, Maximize2, ShieldCheck, PhoneCall, 
-  Compass, Download, X, Trees, Sparkles, LayoutGrid, Store, 
-  Baby, SunMedium, Waves, Home, ArrowRight, Landmark, ZoomIn, ZoomOut, RotateCcw, CheckCircle2, Navigation 
+import {
+  Building2, MapPin, Maximize2, ShieldCheck, PhoneCall,
+  Compass, Download, X, Trees, Sparkles, LayoutGrid, Store,
+  Baby, SunMedium, Waves, Home, ArrowRight, Landmark, ZoomIn, ZoomOut, RotateCcw, CheckCircle2, Navigation
 } from 'lucide-react';
 
 // Importing all images at the top for proper Vite bundler handling and Vercel deployment
@@ -38,71 +38,71 @@ const HarikaParadise = () => {
 
   // 11 Unique Amenities Data with Unique Icons & Matching Images
   const amenitiesList = [
-    { 
-      title: "Road Network", 
-      desc: "Smooth wide internal pathways designed for effortless vehicle movement.", 
+    {
+      title: "Road Network",
+      desc: "Smooth wide internal pathways designed for effortless vehicle movement.",
       icon: <Compass className="w-8 h-8 text-[#C29D56]" />,
-      image: roadImg 
+      image: roadImg
     },
-    { 
-      title: "Surroundings", 
-      desc: "Serene, pollution-free natural environment for peaceful family living.", 
+    {
+      title: "Surroundings",
+      desc: "Serene, pollution-free natural environment for peaceful family living.",
       icon: <Trees className="w-8 h-8 text-[#C29D56]" />,
-      image: surroundingsImg 
+      image: surroundingsImg
     },
-    { 
-      title: "Club House", 
-      desc: "Exclusive community leisure and social gathering hub for residents.", 
+    {
+      title: "Club House",
+      desc: "Exclusive community leisure and social gathering hub for residents.",
       icon: <Building2 className="w-8 h-8 text-[#C29D56]" />,
-      image: clubHouseImg 
+      image: clubHouseImg
     },
-    { 
-      title: "Landscaping", 
-      desc: "Bountiful green parks, open lawns, and beautifully manicured tracks.", 
+    {
+      title: "Landscaping",
+      desc: "Bountiful green parks, open lawns, and beautifully manicured tracks.",
       icon: <Sparkles className="w-8 h-8 text-[#C29D56]" />,
-      image: landscapeImg 
+      image: landscapeImg
     },
-    { 
-      title: "Play Area", 
-      desc: "Safe, dedicated recreational zones equipped for children's activities.", 
+    {
+      title: "Play Area",
+      desc: "Safe, dedicated recreational zones equipped for children's activities.",
       icon: <Baby className="w-8 h-8 text-[#C29D56]" />,
-      image: playAreaImg 
+      image: playAreaImg
     },
-    { 
-      title: "Street Lighting", 
-      desc: "Advanced illuminated pathways ensuring secure night-time strolls.", 
+    {
+      title: "Street Lighting",
+      desc: "Advanced illuminated pathways ensuring secure night-time strolls.",
       icon: <SunMedium className="w-8 h-8 text-[#C29D56]" />,
-      image: streetlightImg 
+      image: streetlightImg
     },
-    { 
-      title: "Commercial", 
-      desc: "Daily need shops and commercial convenience right at your doorstep.", 
+    {
+      title: "Commercial",
+      desc: "Daily need shops and commercial convenience right at your doorstep.",
       icon: <Store className="w-8 h-8 text-[#C29D56]" />,
-      image: commercialImg 
+      image: commercialImg
     },
-    { 
-      title: "Entrance Gate", 
-      desc: "Secure, majestic gated entry portal with 24/7 security surveillance.", 
+    {
+      title: "Entrance Gate",
+      desc: "Secure, majestic gated entry portal with 24/7 security surveillance.",
       icon: <ShieldCheck className="w-8 h-8 text-[#C29D56]" />,
-      image: entranceGateImg 
+      image: entranceGateImg
     },
-    { 
-      title: "Water Supply", 
-      desc: "Reliable round-the-clock water supply provision across all plots.", 
+    {
+      title: "Water Supply",
+      desc: "Reliable round-the-clock water supply provision across all plots.",
       icon: <Waves className="w-8 h-8 text-[#C29D56]" />,
-      image: waterSupplyImg 
+      image: waterSupplyImg
     },
-    { 
-      title: "Drainage System", 
-      desc: "Clean and robust underground sanitation and stormwater drainage.", 
+    {
+      title: "Drainage System",
+      desc: "Clean and robust underground sanitation and stormwater drainage.",
       icon: <LayoutGrid className="w-8 h-8 text-[#C29D56]" />,
-      image: drainageImg 
+      image: drainageImg
     },
-    { 
-      title: "Entertainment", 
-      desc: "Open-air gathering and cultural event arenas for community bonding.", 
+    {
+      title: "Entertainment",
+      desc: "Open-air gathering and cultural event arenas for community bonding.",
       icon: <Home className="w-8 h-8 text-[#C29D56]" />,
-      image: entertainmentImg 
+      image: entertainmentImg
     }
   ];
 
@@ -135,8 +135,8 @@ const HarikaParadise = () => {
     { category: "Site plan", src: gallerySitePlanImg, alt: "Master Layout Plan" }
   ];
 
-  const filteredGallery = activeGalleryTab === 'All' 
-    ? galleryPhotos 
+  const filteredGallery = activeGalleryTab === 'All'
+    ? galleryPhotos
     : galleryPhotos.filter(item => item.category.toLowerCase() === activeGalleryTab.toLowerCase());
 
   // Handlers for zooming
@@ -146,7 +146,7 @@ const HarikaParadise = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-[#C29D56] selection:text-white overflow-x-hidden">
-      
+
       {/* Custom Geometrical Grid Pattern CSS for Light Sections */}
       <style>{`
         .light-geom-grid {
@@ -228,9 +228,9 @@ const HarikaParadise = () => {
       {/* ================= PROJECT HERO SECTION ================= */}
       <section className="relative bg-slate-950 text-white h-[380px] sm:h-[420px] lg:h-[460px] overflow-hidden flex items-end pb-10 sm:pb-14 border-b border-[#C29D56]/30">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroGateImg} 
-            alt="Harika Paradise Hero" 
+          <img
+            src={heroGateImg}
+            alt="Harika Paradise Hero"
             className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow"
           />
         </div>
@@ -238,11 +238,11 @@ const HarikaParadise = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20">
           <div className="max-w-2xl space-y-2">
-            
+
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight uppercase">
               Harika Paradise
             </h1>
-            
+
             <p className="text-slate-200 text-xs sm:text-sm font-medium drop-shadow-sm flex flex-wrap items-center gap-3">
               <span className="flex items-center gap-1 text-[#C29D56]"><MapPin className="w-3.5 h-3.5" /> Satrikh Road, Lucknow</span>
               <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
@@ -268,137 +268,137 @@ const HarikaParadise = () => {
       </section>
 
       {/* ================= 5.1 PROJECT OVERVIEW (LIGHT GEOMETRICAL BG) ================= */}
-     
-<section className="py-12 sm:py-16 bg-white relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div className="relative">
+      <section className="py-12 sm:py-16 bg-white relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative">
 
-        <div className="lg:col-span-6 space-y-4">
-          <div className="space-y-1.5">
-            <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
-              Harika Paradise — Master Planned Living
-            </h2>
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-          <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
-            Harika Paradise is a thoughtfully curated 10.38-acre plotted residential community situated on the high-growth Satrikh Road corridor in Lucknow. Designed for modern families seeking tranquility and absolute legal safety.
-          </p>
+              <div className="lg:col-span-6 space-y-4">
+                <div className="space-y-1.5">
+                  <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
+                    Harika Paradise — Master Planned Living
+                  </h2>
+                </div>
 
-          {/* Specification Grid Cards with Icons */}
-          <div className="grid grid-cols-2 gap-3 pt-1">
+                <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                  Harika Paradise is a thoughtfully curated 10.38-acre plotted residential community situated on the high-growth Satrikh Road corridor in Lucknow. Designed for modern families seeking tranquility and absolute legal safety.
+                </p>
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#6B1312]/5 flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                <Building2 className="w-4 h-4 text-[#6B1312]" />
-              </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase font-semibold">
-                  Project Name
-                </span>
-                <span className="text-xs font-bold text-slate-900">
-                  Harika Paradise
-                </span>
-              </div>
-            </div>
+                {/* Specification Grid Cards with Icons */}
+                <div className="grid grid-cols-2 gap-3 pt-1">
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#C29D56]/10 flex items-center justify-center text-[#C29D56] flex-shrink-0">
-                <Landmark className="w-4 h-4 text-[#C29D56]" />
-              </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase font-semibold">
-                  Presented By
-                </span>
-                <span className="text-xs font-bold text-[#6B1312]">
-                  Ādi Shakti Coloniser
-                </span>
-              </div>
-            </div>
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#6B1312]/5 flex items-center justify-center text-[#6B1312] flex-shrink-0">
+                      <Building2 className="w-4 h-4 text-[#6B1312]" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 uppercase font-semibold">
+                        Project Name
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">
+                        Harika Paradise
+                      </span>
+                    </div>
+                  </div>
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#6B1312]/5 flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                <ShieldCheck className="w-4 h-4 text-[#6B1312]" />
-              </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase font-semibold">
-                  Approved By
-                </span>
-                <span className="text-xs font-bold text-slate-900">
-                  Nagar Panchayat
-                </span>
-              </div>
-            </div>
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#C29D56]/10 flex items-center justify-center text-[#C29D56] flex-shrink-0">
+                      <Landmark className="w-4 h-4 text-[#C29D56]" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 uppercase font-semibold">
+                        Presented By
+                      </span>
+                      <span className="text-xs font-bold text-[#6B1312]">
+                        Ādi Shakti Coloniser
+                      </span>
+                    </div>
+                  </div>
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#C29D56]/10 flex items-center justify-center text-[#C29D56] flex-shrink-0">
-                <MapPin className="w-4 h-4 text-[#C29D56]" />
-              </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase font-semibold">
-                  Location
-                </span>
-                <span className="text-xs font-bold text-slate-900">
-                  Satrikh Road
-                </span>
-              </div>
-            </div>
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#6B1312]/5 flex items-center justify-center text-[#6B1312] flex-shrink-0">
+                      <ShieldCheck className="w-4 h-4 text-[#6B1312]" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 uppercase font-semibold">
+                        Approved By
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">
+                        Nagar Panchayat
+                      </span>
+                    </div>
+                  </div>
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#6B1312]/5 flex items-center justify-center text-[#6B1312] flex-shrink-0">
-                <Maximize2 className="w-4 h-4 text-[#6B1312]" />
-              </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase font-semibold">
-                  Total Area
-                </span>
-                <span className="text-xs font-bold text-slate-900">
-                  10.38 Acres
-                </span>
-              </div>
-            </div>
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#C29D56]/10 flex items-center justify-center text-[#C29D56] flex-shrink-0">
+                      <MapPin className="w-4 h-4 text-[#C29D56]" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 uppercase font-semibold">
+                        Location
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">
+                        Satrikh Road
+                      </span>
+                    </div>
+                  </div>
 
-            <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-[#C29D56]/10 flex items-center justify-center text-[#C29D56] flex-shrink-0">
-                <LayoutGrid className="w-4 h-4 text-[#C29D56]" />
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#6B1312]/5 flex items-center justify-center text-[#6B1312] flex-shrink-0">
+                      <Maximize2 className="w-4 h-4 text-[#6B1312]" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 uppercase font-semibold">
+                        Total Area
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">
+                        10.38 Acres
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-[#C29D56]/10 flex items-center justify-center text-[#C29D56] flex-shrink-0">
+                      <LayoutGrid className="w-4 h-4 text-[#C29D56]" />
+                    </div>
+                    <div>
+                      <span className="block text-[10px] text-slate-500 uppercase font-semibold">
+                        Unit Type
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">
+                        Residential Plots
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
               </div>
-              <div>
-                <span className="block text-[10px] text-slate-500 uppercase font-semibold">
-                  Unit Type
-                </span>
-                <span className="text-xs font-bold text-slate-900">
-                  Residential Plots
-                </span>
+
+              <div className="lg:col-span-6 relative">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[350px] group animate-float-slow">
+
+                  <img
+                    src={projOverviewImg}
+                    alt="Harika Paradise Overview"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+
+                  <div className="absolute top-3 right-3 bg-[#6B1312] text-[#C29D56] font-bold text-[11px] px-3 py-1 rounded-lg shadow-lg border border-[#C29D56]/40">
+                    Nagar Panchayat Approved
+                  </div>
+
+                </div>
               </div>
+
             </div>
 
           </div>
         </div>
 
-        <div className="lg:col-span-6 relative">
-          <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[350px] group animate-float-slow">
-
-            <img
-              src={projOverviewImg}
-              alt="Harika Paradise Overview"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-            />
-
-            <div className="absolute top-3 right-3 bg-[#6B1312] text-[#C29D56] font-bold text-[11px] px-3 py-1 rounded-lg shadow-lg border border-[#C29D56]/40">
-              Nagar Panchayat Approved
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-</section>
+      </section>
 
 
 
@@ -409,7 +409,7 @@ const HarikaParadise = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
-            
+
             <div className="text-center max-w-3xl mx-auto space-y-2.5 mb-8">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 World-Class Amenities
@@ -424,8 +424,8 @@ const HarikaParadise = () => {
             <div className="w-full overflow-hidden py-4">
               <div className="animate-marquee-left flex gap-6 px-3">
                 {[...amenitiesList, ...amenitiesList].map((amenity, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="book-card"
                   >
                     <div className="absolute inset-0 p-4 flex flex-col justify-between text-left z-0 bg-white rounded-2xl border border-slate-200">
@@ -485,110 +485,110 @@ const HarikaParadise = () => {
       </section>
 
       {/* ================= 5.3 SITE PLAN (LIGHT GEOMETRICAL BG) ================= */}
-   
-<section className="py-12 sm:py-14 bg-white text-slate-900 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div className="relative">
+      <section className="py-12 sm:py-14 bg-white text-slate-900 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
 
-      <div className="text-center max-w-2xl mx-auto space-y-1.5 mb-8">
-        <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight">
-          Project Site Plan
-        </h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative">
 
-        <p className="text-slate-700 text-xs sm:text-sm">
-          Inspect the comprehensive layout plan, road networks, and plot demarcations.
-        </p>
+            <div className="text-center max-w-2xl mx-auto space-y-1.5 mb-8">
+              <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight">
+                Project Site Plan
+              </h2>
 
-        <div className="w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5" />
-      </div>
+              <p className="text-slate-700 text-xs sm:text-sm">
+                Inspect the comprehensive layout plan, road networks, and plot demarcations.
+              </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative">
-
-        <div className="lg:col-span-6 space-y-3">
-
-          <div className="relative rounded-xl overflow-hidden h-[240px] sm:h-[300px] border border-slate-200 group cursor-pointer shadow-lg">
-            <img
-              src={sitePlanImg}
-              alt="Site Plan Master Blueprint"
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-              onClick={() => {
-                setLightboxImg(sitePlanImg);
-                setZoomLevel(1);
-              }}
-            />
-
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <span className="inline-flex items-center gap-1.5 bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 px-4 py-2 rounded-lg font-bold text-xs shadow-lg">
-                <ZoomIn className="w-4 h-4" />
-                Click to Zoom & View
-              </span>
+              <div className="w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5" />
             </div>
-          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative">
 
-            <button
-              onClick={() => {
-                setLightboxImg(sitePlanImg);
-                setZoomLevel(1);
-              }}
-              className="inline-flex items-center gap-1.5 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-4 py-2 rounded-xl font-bold text-xs shadow-md transition-all"
-            >
-              <ZoomIn className="w-3.5 h-3.5" />
-              View Full Screen & Zoom
-            </button>
+              <div className="lg:col-span-6 space-y-3">
 
-            <a
-              href="#download"
-              onClick={(e) => {
-                e.preventDefault();
-                alert("Site Plan PDF download initiated successfully!");
-              }}
-              className="inline-flex items-center gap-1.5 bg-[#6B1312] hover:bg-[#520e0e] text-white border border-[#C29D56]/40 px-4 py-2 rounded-xl font-bold text-xs shadow-md transition-all"
-            >
-              <Download className="w-3.5 h-3.5 text-[#C29D56]" />
-              Download Site Plan
-            </a>
+                <div className="relative rounded-xl overflow-hidden h-[240px] sm:h-[300px] border border-slate-200 group cursor-pointer shadow-lg">
+                  <img
+                    src={sitePlanImg}
+                    alt="Site Plan Master Blueprint"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    onClick={() => {
+                      setLightboxImg(sitePlanImg);
+                      setZoomLevel(1);
+                    }}
+                  />
 
-          </div>
-        </div>
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="inline-flex items-center gap-1.5 bg-[#6B1312] text-[#C29D56] border border-[#C29D56]/50 px-4 py-2 rounded-lg font-bold text-xs shadow-lg">
+                      <ZoomIn className="w-4 h-4" />
+                      Click to Zoom & View
+                    </span>
+                  </div>
+                </div>
 
-        <div className="lg:col-span-6 space-y-3">
+                <div className="flex flex-wrap items-center justify-center gap-2.5">
 
-          <div className="space-y-1">
-            <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-              Why Harika Paradise Master Plan Stands Out
-            </h3>
+                  <button
+                    onClick={() => {
+                      setLightboxImg(sitePlanImg);
+                      setZoomLevel(1);
+                    }}
+                    className="inline-flex items-center gap-1.5 bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-4 py-2 rounded-xl font-bold text-xs shadow-md transition-all"
+                  >
+                    <ZoomIn className="w-3.5 h-3.5" />
+                    View Full Screen & Zoom
+                  </button>
 
-            <p className="text-slate-700 text-xs leading-relaxed">
-              Every square foot of Harika Paradise is engineered to offer maximum ventilation, wide approach roads, and absolute transparency in plot demarcations.
-            </p>
-          </div>
+                  <a
+                    href="#download"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert("Site Plan PDF download initiated successfully!");
+                    }}
+                    className="inline-flex items-center gap-1.5 bg-[#6B1312] hover:bg-[#520e0e] text-white border border-[#C29D56]/40 px-4 py-2 rounded-xl font-bold text-xs shadow-md transition-all"
+                  >
+                    <Download className="w-3.5 h-3.5 text-[#C29D56]" />
+                    Download Site Plan
+                  </a>
 
-          <div className="space-y-2 pt-1">
-            {siteHighlights.map((point, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-2.5 bg-white p-2.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] hover:bg-slate-100/70 transition-colors"
-              >
-                <CheckCircle2 className="w-4 h-4 text-[#C29D56] flex-shrink-0 mt-0.5" />
-
-                <span className="text-xs font-semibold text-slate-700">
-                  {point}
-                </span>
+                </div>
               </div>
-            ))}
-          </div>
 
+              <div className="lg:col-span-6 space-y-3">
+
+                <div className="space-y-1">
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
+                    Why Harika Paradise Master Plan Stands Out
+                  </h3>
+
+                  <p className="text-slate-700 text-xs leading-relaxed">
+                    Every square foot of Harika Paradise is engineered to offer maximum ventilation, wide approach roads, and absolute transparency in plot demarcations.
+                  </p>
+                </div>
+
+                <div className="space-y-2 pt-1">
+                  {siteHighlights.map((point, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-2.5 bg-white p-2.5 rounded-xl border border-slate-200 shadow-[0_4px_18px_rgba(15,23,42,0.06)] hover:bg-slate-100/70 transition-colors"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[#C29D56] flex-shrink-0 mt-0.5" />
+
+                      <span className="text-xs font-semibold text-slate-700">
+                        {point}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
         </div>
 
-      </div>
-
-    </div>
-  </div>
-
-</section>
+      </section>
 
 
 
@@ -599,7 +599,7 @@ const HarikaParadise = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative">
-            
+
             <div className="text-center max-w-2xl mx-auto space-y-2 mb-8">
               <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
                 Satrikh Road, Lucknow Location Advantages
@@ -611,11 +611,11 @@ const HarikaParadise = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-              
+
               <div className="lg:col-span-6 space-y-2.5">
                 {connectivityData.map((item, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="flex items-center justify-between p-3.5 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition-all group"
                   >
                     <div className="flex items-center gap-3">
@@ -639,11 +639,11 @@ const HarikaParadise = () => {
 
               <div className="lg:col-span-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-md border-2 border-[#C29D56]/30 h-[260px] sm:h-[310px] bg-slate-800 flex items-center justify-center">
-                  <iframe 
+                  <iframe
                     title="Satrikh Road Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.458641477435!2d81.0478!3d26.8523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMlDCsDUxJzA4LjMiTiA4MsKwMDInNTEuMiJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" 
-                    className="w-full h-full border-0 filter contrast-105" 
-                    allowFullScreen="" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.458641477435!2d81.0478!3d26.8523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMlDCsDUxJzA4LjMiTiA4MsKwMDInNTEuMiJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
+                    className="w-full h-full border-0 filter contrast-105"
+                    allowFullScreen=""
                     loading="lazy"
                   />
                   <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-lg text-white text-[10px] font-bold border border-[#C29D56]/40">
@@ -659,49 +659,49 @@ const HarikaParadise = () => {
       </section>
 
       {/* ================= 5.5 PROJECT GALLERY (LIGHT GEOMETRICAL BG) ================= */}
-     <section className="py-12 sm:py-16 bg-white border-t border-slate-200 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
+      <section className="py-12 sm:py-16 bg-white border-t border-slate-200 relative overflow-hidden bg-[radial-gradient(rgba(194,157,86,0.28)_1.5px,transparent_1.5px)] [background-size:24px_24px]">
 
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div className="relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative">
 
-      {/* Section Heading */}
-      <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
-        <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          Project Gallery
-        </h2>
+            {/* Section Heading */}
+            <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
+              <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Project Gallery
+              </h2>
 
-        <div className="w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5" />
-      </div>
-
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredGallery.map((item, idx) => (
-          <div
-            key={idx}
-            onClick={() => {
-              setLightboxImg(item.src);
-              setZoomLevel(1);
-            }}
-            className="relative rounded-xl overflow-hidden shadow-sm h-[220px] cursor-pointer border border-slate-200 group bg-white"
-          >
-            <img
-              src={item.src}
-              alt={item.alt}
-              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-            />
-
-            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-3">
-              <span className="text-white bg-[#6B1312] border border-[#C29D56]/40 px-3 py-1.5 rounded-lg font-bold text-xs shadow-md">
-                {item.alt} (Expand & Zoom)
-              </span>
+              <div className="w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5" />
             </div>
-          </div>
-        ))}
-      </div>
 
-    </div>
-  </div>
-</section>
+            {/* Gallery Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredGallery.map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => {
+                    setLightboxImg(item.src);
+                    setZoomLevel(1);
+                  }}
+                  className="relative rounded-xl overflow-hidden shadow-sm h-[220px] cursor-pointer border border-slate-200 group bg-white"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-3">
+                    <span className="text-white bg-[#6B1312] border border-[#C29D56]/40 px-3 py-1.5 rounded-lg font-bold text-xs shadow-md">
+                      {item.alt} (Expand & Zoom)
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* ================= 5.6 ENQUIRY CTA (DARK MAROON GEOMETRICAL BG) ================= */}
       <section className="py-12 sm:py-16 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] border-t border-[#C29D56]/30 shadow-[0_-10px_30px_rgba(0,0,0,0.2)] relative overflow-hidden">
@@ -710,7 +710,7 @@ const HarikaParadise = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative">
-            
+
             <div className="space-y-2 text-center lg:text-left max-w-2xl">
               <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/20 px-3 py-1 rounded-full border border-[#C29D56]/40">
                 Take The Next Step
@@ -745,7 +745,7 @@ const HarikaParadise = () => {
       {/* Advanced Zoomable Lightbox Modal */}
       {lightboxImg && (
         <div className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center p-4">
-          
+
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2 z-50">
             <button
               onClick={handleZoomIn}
@@ -768,7 +768,7 @@ const HarikaParadise = () => {
             >
               <RotateCcw className="w-5 h-5 text-[#C29D56]" />
             </button>
-            <button 
+            <button
               onClick={() => {
                 setLightboxImg(null);
                 setZoomLevel(1);
@@ -781,11 +781,11 @@ const HarikaParadise = () => {
           </div>
 
           <div className="w-full h-full flex items-center justify-center overflow-auto p-2 sm:p-10">
-            <img 
-              src={lightboxImg} 
-              alt="Zoomable Master Plan" 
+            <img
+              src={lightboxImg}
+              alt="Zoomable Master Plan"
               style={{ transform: `scale(${zoomLevel})`, transition: 'transform 0.3s ease' }}
-              className="max-w-[90vw] max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-white/20 cursor-grab active:cursor-grabbing" 
+              className="max-w-[90vw] max-h-[85vh] rounded-2xl object-contain shadow-2xl border border-white/20 cursor-grab active:cursor-grabbing"
             />
           </div>
 

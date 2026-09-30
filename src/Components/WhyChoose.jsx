@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Building2, MapPin, ShieldCheck, PhoneCall, 
-  Compass, ArrowRight, Landmark, Trees, 
-  FileText, Layers, Sparkles, TrendingUp, Shield, ArrowUpRight 
+import {
+  Building2, MapPin, ShieldCheck, PhoneCall,
+  Compass, ArrowRight, Landmark, Trees,
+  FileText, Layers, Sparkles, TrendingUp, Shield, ArrowUpRight
 } from 'lucide-react';
 
 // Importing all images at the top for proper Vite bundler handling and Vercel deployment
@@ -14,7 +14,7 @@ import locationFocusImg from '../assets/04.jpeg';
 const WhyChoose = () => {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-[#C29D56] selection:text-white overflow-x-hidden">
-      
+
       {/* Custom Geometrical Grid Pattern CSS for Light Sections */}
       <style>{`
         .light-geom-grid {
@@ -165,9 +165,9 @@ const WhyChoose = () => {
       {/* ================= HERO SECTION ================= */}
       <section className="relative bg-slate-950 text-white h-[440px] sm:h-[500px] lg:h-[540px] overflow-hidden flex items-end pb-12 sm:pb-16 border-b border-[#C29D56]/30">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroBgImg} 
-            alt="Why Choose Us Hero" 
+          <img
+            src={heroBgImg}
+            alt="Why Choose Us Hero"
             className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow brightness-110"
           />
         </div>
@@ -178,11 +178,11 @@ const WhyChoose = () => {
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#C29D56]/50 text-[#C29D56] text-[10px] sm:text-[11px] font-bold uppercase tracking-widest shadow-xl">
               <Sparkles className="w-3 h-3 text-[#C29D56]" /> Ādi Shakti Coloniser & Homebuilders
             </div>
-            
+
             <h1 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white drop-shadow-lg leading-tight uppercase">
               Why Choose Us
             </h1>
-            
+
             <p className="text-slate-200 text-xs sm:text-sm font-medium drop-shadow-sm max-w-xl leading-relaxed">
               Built on a foundation of legal transparency, strategic location planning, and uncompromised structural engineering across Lucknow.
             </p>
@@ -198,13 +198,13 @@ const WhyChoose = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
-            
+
             {/* Geometric Accent Line */}
             <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
             <div className="absolute -top-12 -right-12 w-32 h-32 border-2 border-[#C29D56]/30 rounded-full pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              
+
               <div className="lg:col-span-6 space-y-4">
                 <div className="space-y-1.5">
                   <span className="text-[11px] font-bold uppercase tracking-widest text-[#C29D56] bg-[#C29D56]/10 px-3.5 py-1 rounded-full border border-[#C29D56]/30">
@@ -214,7 +214,7 @@ const WhyChoose = () => {
                     Planned Development Rooted in Legal Integrity
                   </h2>
                 </div>
-                
+
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   At Ādi Shakti Coloniser, we believe that true real estate value begins with absolute legal security and methodical land procurement. Every project is conceived after rigorous due diligence, clear title verifications, and compliance with local municipal bodies like Nagar Panchayat approvals.
                 </p>
@@ -244,9 +244,9 @@ const WhyChoose = () => {
 
               <div className="lg:col-span-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
-                  <img 
-                    src={plannedDevImg} 
-                    alt="Planned Development" 
+                  <img
+                    src={plannedDevImg}
+                    alt="Planned Development"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -261,14 +261,14 @@ const WhyChoose = () => {
 
       {/* ================= SECTION 2: PROJECT PLANNING (DARK MAROON GEOMETRICAL BG) ================= */}
       <section className="py-14 sm:py-18 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] border-t border-[#C29D56]/30 relative overflow-hidden">
-        
+
         {/* Glows & Cyber Grid */}
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl relative overflow-hidden">
-            
+
             <div className="absolute -top-12 -left-12 w-36 h-36 border border-[#C29D56]/20 rounded-full pointer-events-none" />
             <div className="absolute -bottom-12 -right-12 w-36 h-36 border border-[#C29D56]/20 rounded-full pointer-events-none" />
 
@@ -286,7 +286,7 @@ const WhyChoose = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center relative z-10">
-              
+
               {/* Card 1: Infrastructure */}
               <div className="javier-card">
                 <div className="javier-image-box">
@@ -341,17 +341,17 @@ const WhyChoose = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
-            
+
             <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
             <div className="absolute -bottom-10 -right-10 w-28 h-28 border border-[#C29D56]/20 rounded-full pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-              
+
               <div className="lg:col-span-6">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl border-2 border-[#C29D56]/30 h-[280px] sm:h-[340px] group">
-                  <img 
-                    src={locationFocusImg} 
-                    alt="Location Focus" 
+                  <img
+                    src={locationFocusImg}
+                    alt="Location Focus"
                     className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -367,7 +367,7 @@ const WhyChoose = () => {
                     Location Focus & High-Growth Approach
                   </h2>
                 </div>
-                
+
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   We handpick land parcels along fast-developing urban corridors like Satrikh Road, Lucknow. Our location strategy ensures seamless connectivity to major highways, educational institutions, healthcare centers, and upcoming commercial hubs while keeping residents tucked away in peaceful surroundings.
                 </p>
@@ -392,12 +392,12 @@ const WhyChoose = () => {
 
       {/* ================= SECTION 4: CUSTOMER EXPERIENCE (DARK MAROON GEOMETRICAL BG) ================= */}
       <section className="py-14 sm:py-18 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
-        
+
         {/* Decorative Background Glows & Circles */}
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
         <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C29D56]/15 rounded-full filter blur-[120px] pointer-events-none" />
         <div className="absolute bottom-5 right-5 w-72 h-72 bg-[#6B1312]/20 rounded-full filter blur-[90px] pointer-events-none" />
-        
+
         {/* Decorative SVG Flowing Connector Line across background */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-20">
           <svg className="w-full h-40 max-w-6xl" viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -407,7 +407,7 @@ const WhyChoose = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#C29D56]/40 shadow-2xl relative overflow-hidden">
-            
+
             {/* Corner Decorative Accent Rings */}
             <div className="absolute -top-12 -right-12 w-32 h-32 border-2 border-[#C29D56]/20 rounded-full pointer-events-none" />
             <div className="absolute -bottom-12 -left-12 w-32 h-32 border-2 border-[#C29D56]/20 rounded-full pointer-events-none" />
@@ -426,7 +426,7 @@ const WhyChoose = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
-              
+
               {/* Step 1 */}
               <div className="bg-white/5 backdrop-blur-md p-5 rounded-2xl border border-white/10 space-y-3 relative group hover:border-[#C29D56]/50 transition-all">
                 <span className="absolute top-3 right-3 text-2xl font-black text-[#C29D56]/30">01</span>
@@ -487,7 +487,7 @@ const WhyChoose = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-gradient-to-r from-slate-50 via-white to-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden">
-            
+
             <div className="absolute top-0 left-1/4 w-1/2 h-1 bg-gradient-to-r from-transparent via-[#C29D56]/50 to-transparent" />
 
             <div className="space-y-2 text-center lg:text-left max-w-2xl">
