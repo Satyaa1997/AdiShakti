@@ -10,6 +10,7 @@ import {
 import heroGateImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
 import projOverviewImg from '../assets/01.jpeg';
 import sitePlanImg from '../assets/01.jpeg';
+import harikaLogo from '../assets/Harika Logo.png';
 
 import roadImg from '../assets/04.jpeg';
 import surroundingsImg from '../assets/01.jpeg';
@@ -226,46 +227,70 @@ const HarikaParadise = () => {
       `}</style>
 
       {/* ================= PROJECT HERO SECTION ================= */}
-      <section className="relative bg-slate-950 text-white h-[380px] sm:h-[420px] lg:h-[460px] overflow-hidden flex items-end pb-10 sm:pb-14 border-b border-[#C29D56]/30">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroGateImg}
-            alt="Harika Paradise Hero"
-            className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 z-10" />
+     <section className="relative bg-slate-950 text-white h-[380px] sm:h-[420px] lg:h-[460px] overflow-hidden flex items-center justify-center border-b border-[#C29D56]/30">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20">
-          <div className="max-w-2xl space-y-2">
+  {/* Background Image */}
+  <div className="absolute inset-0 z-0">
+    <img
+      src={heroGateImg}
+      alt="Harika Paradise Hero"
+      className="w-full h-full object-cover object-center transform scale-105 animate-pulse-glow"
+    />
+  </div>
 
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight uppercase">
-              Harika Paradise
-            </h1>
+  {/* Blur + Dark Overlay */}
+  <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] z-10" />
 
-            <p className="text-slate-200 text-xs sm:text-sm font-medium drop-shadow-sm flex flex-wrap items-center gap-3">
-              <span className="flex items-center gap-1 text-[#C29D56]"><MapPin className="w-3.5 h-3.5" /> Satrikh Road, Lucknow</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
-              <span>10.38 Acres Gated Enclave</span>
-            </p>
+  {/* Bottom Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/40 z-10" />
 
-            <div className="flex flex-wrap items-center gap-2.5 pt-2">
-              <a
-                href="#amenities"
-                className="bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-4 py-2 rounded-xl font-bold text-xs shadow-xl transition-all flex items-center gap-1.5 group"
-              >
-                Explore Amenities <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <Link
-                to="/contact"
-                className="bg-[#6B1312] hover:bg-[#520e0e] text-white border border-[#C29D56]/40 px-4 py-2 rounded-xl font-bold text-xs shadow-xl transition-all flex items-center gap-1.5"
-              >
-                <PhoneCall className="w-3.5 h-3.5 text-[#C29D56]" /> Enquire Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+  {/* Center Content */}
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20">
+    <div className="max-w-2xl mx-auto flex flex-col items-center justify-center text-center space-y-3">
+
+      {/* Project Logo */}
+      <div className="mb-1">
+        <img
+          src={harikaLogo}
+          alt="Harika Paradise Logo"
+          className="w-28 sm:w-36 lg:w-44 h-auto object-contain drop-shadow-2xl"
+        />
+      </div>
+
+      {/* Location & Area */}
+      <p className="text-slate-100 text-xs sm:text-sm font-medium drop-shadow-lg flex flex-wrap items-center justify-center gap-3">
+        <span className="flex items-center gap-1 text-[#C29D56]">
+          <MapPin className="w-3.5 h-3.5" />
+          Satrikh Road, Lucknow
+        </span>
+
+        <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+
+        <span>10.38 Acres Gated Enclave</span>
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+        <a
+          href="#amenities"
+          className="bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-4 py-2 rounded-xl font-bold text-xs shadow-xl transition-all flex items-center gap-1.5 group"
+        >
+          Explore Amenities
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+        </a>
+
+        <Link
+          to="/contact"
+          className="bg-[#6B1312] hover:bg-[#520e0e] text-white border border-[#C29D56]/40 px-4 py-2 rounded-xl font-bold text-xs shadow-xl transition-all flex items-center gap-1.5"
+        >
+          <PhoneCall className="w-3.5 h-3.5 text-[#C29D56]" />
+          Enquire Now
+        </Link>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* ================= 5.1 PROJECT OVERVIEW (LIGHT GEOMETRICAL BG) ================= */}
 
