@@ -1507,7 +1507,7 @@ const ParticleHero = () => {
             -translate-y-2
             text-center
              sm:-translate-y-36
-             lg:-translate-y-44
+             lg:-translate-y-54
           "
         >
 
