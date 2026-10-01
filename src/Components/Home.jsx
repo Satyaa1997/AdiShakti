@@ -342,34 +342,164 @@ const ParticleHero = () => {
     }
 
     /* =====================================================
-        TEXT PARTICLES
+        TEXT PARTICLES (DETAILED HOUSE DRAWING)
     ===================================================== */
 
-  const textCanvas = document.createElement('canvas');
-    const textContext = textCanvas.getContext('2d', { willReadFrequently: true });
+    const textCanvas = document.createElement('canvas');
+    const textContext = textCanvas.getContext('2d', {
+      willReadFrequently: true,
+    });
+
     textCanvas.width = 1200;
     textCanvas.height = 1200;
-    textContext.clearRect(0, 0, textCanvas.width, textCanvas.height);
-    textContext.fillStyle = '#ffffff';
+
+    textContext.clearRect(
+      0,
+      0,
+      textCanvas.width,
+      textCanvas.height
+    );
+
     textContext.strokeStyle = '#ffffff';
-    textContext.lineWidth = 18; // घर की आउटलाइन की मोटाई
+    textContext.fillStyle = '#ffffff';
+    textContext.lineWidth = 28;
     textContext.lineJoin = 'round';
     textContext.lineCap = 'round';
 
-    // Home Path ड्रा करना (Canvas पर घर का शेप)
+    /* ================================
+       CHIMNEY
+    ================================ */
+
     textContext.beginPath();
-    // छत का त्रिकोण (Roof)
-    textContext.moveTo(600, 150);
-    textContext.lineTo(150, 500);
-    textContext.lineTo(1050, 500);
-    textContext.closePath();
-    textContext.fill(); // छत को सॉलिड भरने के लिए
+    textContext.moveTo(820, 300);
+    textContext.lineTo(820, 190);
+    textContext.lineTo(930, 190);
+    textContext.lineTo(930, 390);
+    textContext.stroke();
 
-    // घर की दीवारें और बेस (Body of the house)
-    textContext.fillRect(240, 500, 720, 550);
+    /* ================================
+       MAIN ROOF
+    ================================ */
 
-    // घर के अंदर दरवाजा (Door Cutout - इसे खाली दिखाने के लिए बैकग्राउंड कलर से काट सकते हैं या आउटलाइन दे सकते हैं)
-    textContext.clearRect(500, 720, 200, 330);
+    textContext.beginPath();
+    textContext.moveTo(120, 510);
+    textContext.lineTo(600, 110);
+    textContext.lineTo(1080, 510);
+    textContext.stroke();
+
+    /* Roof lower/detail line */
+
+    textContext.beginPath();
+    textContext.moveTo(205, 510);
+    textContext.lineTo(600, 185);
+    textContext.lineTo(995, 510);
+    textContext.stroke();
+
+    /* ================================
+       HOUSE WALLS
+    ================================ */
+
+    textContext.beginPath();
+    textContext.moveTo(220, 430);
+    textContext.lineTo(220, 1040);
+    textContext.lineTo(980, 1040);
+    textContext.lineTo(980, 430);
+    textContext.stroke();
+
+    /* ================================
+       FRONT DOOR
+    ================================ */
+
+    textContext.strokeRect(
+      505,
+      700,
+      190,
+      340
+    );
+
+    /* Door center design */
+
+    textContext.beginPath();
+    textContext.moveTo(600, 700);
+    textContext.lineTo(600, 1040);
+    textContext.stroke();
+
+    /* Door knob */
+
+    textContext.beginPath();
+    textContext.arc(
+      655,
+      875,
+      15,
+      0,
+      Math.PI * 2
+    );
+    textContext.fill();
+
+    /* ================================
+       LEFT WINDOW
+    ================================ */
+
+    textContext.strokeRect(
+      295,
+      585,
+      165,
+      180
+    );
+
+    textContext.beginPath();
+    textContext.moveTo(377.5, 585);
+    textContext.lineTo(377.5, 765);
+    textContext.moveTo(295, 675);
+    textContext.lineTo(460, 675);
+    textContext.stroke();
+
+    /* Left window sill */
+
+    textContext.beginPath();
+    textContext.moveTo(275, 785);
+    textContext.lineTo(480, 785);
+    textContext.stroke();
+
+    /* ================================
+       RIGHT WINDOW
+    ================================ */
+
+    textContext.strokeRect(
+      740,
+      585,
+      165,
+      180
+    );
+
+    textContext.beginPath();
+    textContext.moveTo(822.5, 585);
+    textContext.lineTo(822.5, 765);
+    textContext.moveTo(740, 675);
+    textContext.lineTo(905, 675);
+    textContext.stroke();
+
+    /* Right window sill */
+
+    textContext.beginPath();
+    textContext.moveTo(720, 785);
+    textContext.lineTo(925, 785);
+    textContext.stroke();
+
+    /* ================================
+       BASE AND DOOR STEPS
+    ================================ */
+
+    textContext.beginPath();
+    textContext.moveTo(170, 1040);
+    textContext.lineTo(1030, 1040);
+
+    textContext.moveTo(470, 1080);
+    textContext.lineTo(730, 1080);
+
+    textContext.moveTo(430, 1120);
+    textContext.lineTo(770, 1120);
+    textContext.stroke();
 
     const pixels =
       textContext.getImageData(
@@ -427,14 +557,11 @@ const ParticleHero = () => {
       const index = i * 3;
 
       textTargets[index] =
-        ((point.x /
-          textCanvas.width) -
-          0.5) *
-        6.5;
+        ((point.x / textCanvas.width) - 0.5) * 9.0;
 
-       textTargets[index + 1] =
-       (0.5 - point.y / textCanvas.height) *
-       6.0;
+      textTargets[index + 1] =
+        (0.5 - point.y / textCanvas.height) * 6.0;
+
       textTargets[index + 2] =
         (Math.random() - 0.5) *
         0.22;
@@ -780,16 +907,6 @@ const ParticleHero = () => {
           time * 0.22
         );
 
-      /*
-        Increased cursor movement.
-
-        Old:
-        0.28 / 0.20
-
-        New:
-        0.55 / 0.42
-      */
-
       const followX =
         pointer.active
           ? pointer.x * 0.55
@@ -880,13 +997,6 @@ const ParticleHero = () => {
               dy * dy
             );
 
-          /*
-            Interaction radius.
-
-            Bigger value =
-            mouse affects more particles.
-          */
-
           const radius = 3.65;
 
           const influence =
@@ -897,17 +1007,9 @@ const ParticleHero = () => {
               radius
             );
 
-          /*
-            Smooth falloff
-          */
-
           const smoothInfluence =
             influence *
             influence;
-
-          /*
-            Attraction
-          */
 
           x +=
             dx *
@@ -918,11 +1020,6 @@ const ParticleHero = () => {
             dy *
             smoothInfluence *
             0.42;
-
-          /*
-            Push particles outward
-            around cursor.
-          */
 
           if (
             distance > 0.001
@@ -941,13 +1038,6 @@ const ParticleHero = () => {
                 distance) *
               push;
           }
-
-          /*
-            Depth movement.
-
-            This creates the
-            3D floating effect.
-          */
 
           z +=
             smoothInfluence *
@@ -1395,14 +1485,6 @@ const ParticleHero = () => {
 
       {/* ==================================================
           HERO CONTENT
-          
-          MOVED UP
-          
-          OLD:
-          pb-7 sm:pb-10
-
-          NEW:
-          pb-20 sm:pb-24 lg:pb-28
       ================================================== */}
 
       <div
@@ -2904,8 +2986,8 @@ const Home = () => {
           <div className="py-1 sm:py-2">
 
             {/* =========================
-          SECTION HEADER
-      ========================= */}
+            SECTION HEADER
+        ========================= */}
             <div className="mb-5 sm:mb-6 text-center">
 
               <span className="inline-block text-[#C29D56] text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-1.5">
@@ -2926,8 +3008,8 @@ const Home = () => {
 
 
             {/* =========================
-          GALLERY CAROUSEL
-      ========================= */}
+            GALLERY CAROUSEL
+        ========================= */}
             {/* =========================
     GALLERY GRID
 ========================= */}
@@ -3018,8 +3100,8 @@ const Home = () => {
 
 
               {/* =========================
-      VIEW FULL GALLERY
-  ========================= */}
+    VIEW FULL GALLERY
+========================= */}
               <div className="text-center mt-5 sm:mt-6">
 
                 <Link
@@ -3040,8 +3122,8 @@ const Home = () => {
 
 
         {/* =====================================================
-      FULLSCREEN LIGHTBOX
-  ===================================================== */}
+    FULLSCREEN LIGHTBOX
+===================================================== */}
         {lightboxImg && (
           <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
 
@@ -3117,8 +3199,8 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           {/* =========================
-        SECTION HEADING
-    ========================= */}
+            SECTION HEADING
+        ========================= */}
           <div className="mb-10">
             <div className="text-center max-w-3xl mx-auto space-y-2">
 
@@ -3153,8 +3235,8 @@ const Home = () => {
           </div>
 
           {/* =========================
-        FEEDBACK CARDS
-    ========================= */}
+            FEEDBACK CARDS
+        ========================= */}
           <div className="relative max-w-6xl mx-auto px-2 sm:px-6">
 
             {/* Left Button */}
@@ -3176,8 +3258,8 @@ const Home = () => {
             </button>
 
             {/* =========================
-          FEEDBACK CARDS CONTAINER
-      ========================= */}
+                FEEDBACK CARDS CONTAINER
+            ========================= */}
             <div
               ref={feedbackContainerRef}
               className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth py-3 px-2"
@@ -3250,8 +3332,8 @@ const Home = () => {
                     <div className="flex flex-col items-center text-center pt-1">
 
                       {/* =========================
-                    PROFILE IMAGE
-                ========================= */}
+                        PROFILE IMAGE
+                    ========================= */}
                       <div className="w-14 h-14 mb-3 rounded-full overflow-hidden bg-[#C29D56]/15 border-2 border-[#C29D56]/40 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
 
                         <img
