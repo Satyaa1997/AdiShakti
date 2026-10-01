@@ -64,10 +64,10 @@ const ParticleHero = () => {
 
     const particleCount =
       window.innerWidth < 640
-        ? 1050
+        ? 1800
         : window.innerWidth < 1024
-          ? 1700
-          : 2600;
+          ? 2800
+          : 4200;
 
     const vertexSource = `
       attribute vec3 aPosition;
@@ -353,152 +353,148 @@ const ParticleHero = () => {
     textCanvas.width = 1200;
     textCanvas.height = 1200;
 
-    textContext.clearRect(
-      0,
-      0,
-      textCanvas.width,
-      textCanvas.height
-    );
+    textContext.clearRect(0, 0, 1200, 1200);
 
     textContext.strokeStyle = '#ffffff';
     textContext.fillStyle = '#ffffff';
-    textContext.lineWidth = 28;
+    textContext.lineWidth = 32;
     textContext.lineJoin = 'round';
     textContext.lineCap = 'round';
 
-    /* ================================
+    /* =========================
+       HOUSE OUTER STRUCTURE
+    ========================= */
+
+    textContext.beginPath();
+
+    /* Roof */
+    textContext.moveTo(110, 500);
+    textContext.lineTo(600, 130);
+    textContext.lineTo(1090, 500);
+
+    /* Right wall */
+    textContext.lineTo(970, 500);
+    textContext.lineTo(970, 1080);
+
+    /* House bottom */
+    textContext.lineTo(230, 1080);
+
+    /* Left wall */
+    textContext.lineTo(230, 500);
+
+    /* Close roof edge */
+    textContext.lineTo(110, 500);
+
+    textContext.stroke();
+
+    /* Roof lower architectural line */
+
+    textContext.beginPath();
+    textContext.moveTo(230, 500);
+    textContext.lineTo(600, 220);
+    textContext.lineTo(970, 500);
+    textContext.stroke();
+
+    /* =========================
        CHIMNEY
-    ================================ */
+    ========================= */
 
     textContext.beginPath();
-    textContext.moveTo(820, 300);
-    textContext.lineTo(820, 190);
-    textContext.lineTo(930, 190);
-    textContext.lineTo(930, 390);
+    textContext.moveTo(790, 275);
+    textContext.lineTo(790, 165);
+    textContext.lineTo(900, 165);
+    textContext.lineTo(900, 360);
     textContext.stroke();
 
-    /* ================================
-       MAIN ROOF
-    ================================ */
+    /* =========================
+       DOOR
+    ========================= */
 
     textContext.beginPath();
-    textContext.moveTo(120, 510);
-    textContext.lineTo(600, 110);
-    textContext.lineTo(1080, 510);
+    textContext.rect(510, 720, 180, 360);
     textContext.stroke();
 
-    /* Roof lower/detail line */
+    /* Door upper panel */
 
     textContext.beginPath();
-    textContext.moveTo(205, 510);
-    textContext.lineTo(600, 185);
-    textContext.lineTo(995, 510);
+    textContext.rect(545, 760, 110, 115);
     textContext.stroke();
 
-    /* ================================
-       HOUSE WALLS
-    ================================ */
+    /* Door lower panel */
 
     textContext.beginPath();
-    textContext.moveTo(220, 430);
-    textContext.lineTo(220, 1040);
-    textContext.lineTo(980, 1040);
-    textContext.lineTo(980, 430);
+    textContext.rect(545, 910, 110, 125);
     textContext.stroke();
 
-    /* ================================
-       FRONT DOOR
-    ================================ */
-
-    textContext.strokeRect(
-      505,
-      700,
-      190,
-      340
-    );
-
-    /* Door center design */
+    /* Door handle */
 
     textContext.beginPath();
-    textContext.moveTo(600, 700);
-    textContext.lineTo(600, 1040);
-    textContext.stroke();
-
-    /* Door knob */
-
-    textContext.beginPath();
-    textContext.arc(
-      655,
-      875,
-      15,
-      0,
-      Math.PI * 2
-    );
+    textContext.arc(650, 895, 14, 0, Math.PI * 2);
     textContext.fill();
 
-    /* ================================
+    /* =========================
        LEFT WINDOW
-    ================================ */
-
-    textContext.strokeRect(
-      295,
-      585,
-      165,
-      180
-    );
+    ========================= */
 
     textContext.beginPath();
-    textContext.moveTo(377.5, 585);
-    textContext.lineTo(377.5, 765);
-    textContext.moveTo(295, 675);
-    textContext.lineTo(460, 675);
+    textContext.rect(290, 590, 175, 190);
+    textContext.stroke();
+
+    /* Window divisions */
+
+    textContext.beginPath();
+    textContext.moveTo(377.5, 590);
+    textContext.lineTo(377.5, 780);
+
+    textContext.moveTo(290, 685);
+    textContext.lineTo(465, 685);
     textContext.stroke();
 
     /* Left window sill */
 
     textContext.beginPath();
-    textContext.moveTo(275, 785);
-    textContext.lineTo(480, 785);
+    textContext.moveTo(265, 805);
+    textContext.lineTo(490, 805);
     textContext.stroke();
 
-    /* ================================
+    /* =========================
        RIGHT WINDOW
-    ================================ */
-
-    textContext.strokeRect(
-      740,
-      585,
-      165,
-      180
-    );
+    ========================= */
 
     textContext.beginPath();
-    textContext.moveTo(822.5, 585);
-    textContext.lineTo(822.5, 765);
-    textContext.moveTo(740, 675);
-    textContext.lineTo(905, 675);
+    textContext.rect(735, 590, 175, 190);
+    textContext.stroke();
+
+    /* Window divisions */
+
+    textContext.beginPath();
+    textContext.moveTo(822.5, 590);
+    textContext.lineTo(822.5, 780);
+
+    textContext.moveTo(735, 685);
+    textContext.lineTo(910, 685);
     textContext.stroke();
 
     /* Right window sill */
 
     textContext.beginPath();
-    textContext.moveTo(720, 785);
-    textContext.lineTo(925, 785);
+    textContext.moveTo(710, 805);
+    textContext.lineTo(935, 805);
     textContext.stroke();
 
-    /* ================================
-       BASE AND DOOR STEPS
-    ================================ */
+    /* =========================
+       HOUSE BASE AND STEPS
+    ========================= */
 
     textContext.beginPath();
-    textContext.moveTo(170, 1040);
-    textContext.lineTo(1030, 1040);
+    textContext.moveTo(165, 1080);
+    textContext.lineTo(1035, 1080);
 
-    textContext.moveTo(470, 1080);
-    textContext.lineTo(730, 1080);
+    textContext.moveTo(475, 1110);
+    textContext.lineTo(725, 1110);
 
-    textContext.moveTo(430, 1120);
-    textContext.lineTo(770, 1120);
+    textContext.moveTo(430, 1140);
+    textContext.lineTo(770, 1140);
     textContext.stroke();
 
     const pixels =
@@ -557,10 +553,10 @@ const ParticleHero = () => {
       const index = i * 3;
 
       textTargets[index] =
-        ((point.x / textCanvas.width) - 0.5) * 9.0;
+        ((point.x / textCanvas.width) - 0.5) * 8.5;
 
       textTargets[index + 1] =
-        (0.5 - point.y / textCanvas.height) * 6.0;
+        (0.5 - point.y / textCanvas.height) * 5.35 - 0.1;
 
       textTargets[index + 2] =
         (Math.random() - 0.5) *
@@ -1245,10 +1241,14 @@ const ParticleHero = () => {
       <canvas
         ref={canvasRef}
         className="
+          pointer-events-none
           absolute
           inset-0
+          z-0
+          block
           h-full
           w-full
+          opacity-75
         "
         aria-hidden="true"
       />
@@ -1497,9 +1497,6 @@ const ParticleHero = () => {
           flex
           justify-center
           px-4
-          pb-20
-          sm:pb-24
-          lg:pb-28
         "
       >
         <div
@@ -1507,6 +1504,7 @@ const ParticleHero = () => {
             pointer-events-auto
             w-full
             max-w-3xl
+            -translate-y-2
             text-center
           "
         >
@@ -1887,10 +1885,11 @@ const Home = () => {
   // Manual scroll controls for Feedback
   const scrollFeedback = (direction) => {
     if (feedbackContainerRef.current) {
-      const container = feedbackContainerRef.current;
-      const cardElement = container.querySelector('.feedback-card');
+      const container = whyChooseContainerRef.current;
+      const container2 = feedbackContainerRef.current;
+      const cardElement = container2.querySelector('.feedback-card');
       const cardWidth = cardElement ? cardElement.offsetWidth + 20 : 280;
-      container.scrollBy({
+      container2.scrollBy({
         left: direction === 'left' ? -cardWidth : cardWidth,
         behavior: 'smooth'
       });
@@ -3400,8 +3399,8 @@ const Home = () => {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-3.5 flex-shrink-0">
-              <Link to="/projects/harika-paradise" className="group flex items-center gap-2 rounded-xl border border-[#C29D56]/50 bg-[#C29D56] px-6 py-3.5 text-xs font-extrabold text-[#3a0a0a] shadow-lg transition-all duration-300 hover:bg-[#E1C27A] sm:text-sm">
-                <Compass className="h-4 w-4 text-[#3a0a0a] transition-transform duration-300 group-hover:rotate-12" />
+              <Link to="/projects/harika-paradise" className="group flex items-center gap-2 rounded-xl border border-[#C29D56]/50 bg-[#C29D56] px-6 py-3.5 text-xs font-extrabold text-[#3a0a04] shadow-lg transition-all duration-300 hover:bg-[#E1C27A] sm:text-sm">
+                <Compass className="h-4 w-4 text-[#3a0a04] transition-transform duration-300 group-hover:rotate-12" />
                 View Project
               </Link>
               <Link to="/contact-us" className="flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-xs font-extrabold text-white shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-[#C29D56]/50 hover:bg-white/10 sm:text-sm">
