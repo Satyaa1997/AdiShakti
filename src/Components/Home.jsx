@@ -345,52 +345,31 @@ const ParticleHero = () => {
         TEXT PARTICLES
     ===================================================== */
 
-    const textCanvas =
-      document.createElement(
-        'canvas'
-      );
-
-    const textContext =
-      textCanvas.getContext(
-        '2d',
-        {
-          willReadFrequently: true,
-        }
-      );
-
+  const textCanvas = document.createElement('canvas');
+    const textContext = textCanvas.getContext('2d', { willReadFrequently: true });
     textCanvas.width = 1200;
-    textCanvas.height = 300;
+    textCanvas.height = 1200;
+    textContext.clearRect(0, 0, textCanvas.width, textCanvas.height);
+    textContext.fillStyle = '#ffffff';
+    textContext.strokeStyle = '#ffffff';
+    textContext.lineWidth = 18; // घर की आउटलाइन की मोटाई
+    textContext.lineJoin = 'round';
+    textContext.lineCap = 'round';
 
-    textContext.clearRect(
-      0,
-      0,
-      textCanvas.width,
-      textCanvas.height
-    );
+    // Home Path ड्रा करना (Canvas पर घर का शेप)
+    textContext.beginPath();
+    // छत का त्रिकोण (Roof)
+    textContext.moveTo(600, 150);
+    textContext.lineTo(150, 500);
+    textContext.lineTo(1050, 500);
+    textContext.closePath();
+    textContext.fill(); // छत को सॉलिड भरने के लिए
 
-    textContext.fillStyle =
-      '#ffffff';
+    // घर की दीवारें और बेस (Body of the house)
+    textContext.fillRect(240, 500, 720, 550);
 
-    textContext.textAlign =
-      'center';
-
-    textContext.textBaseline =
-      'middle';
-
-    textContext.font =
-      '900 128px Arial, Helvetica, sans-serif';
-
-    textContext.fillText(
-      'ADISHAKTI',
-      600,
-      105
-    );
-
-    textContext.fillText(
-      '.',
-      600,
-      220
-    );
+    // घर के अंदर दरवाजा (Door Cutout - इसे खाली दिखाने के लिए बैकग्राउंड कलर से काट सकते हैं या आउटलाइन दे सकते हैं)
+    textContext.clearRect(500, 720, 200, 330);
 
     const pixels =
       textContext.getImageData(
