@@ -1223,8 +1223,8 @@ const ParticleHero = () => {
       className="
         group
         relative
-        min-h-[460px]
-        h-[480px]
+        min-h-[380px]
+        h-[400px]
         sm:h-[calc(100vh-80px)]
         sm:min-h-[560px]
         sm:max-h-[900px]
@@ -1494,7 +1494,7 @@ const ParticleHero = () => {
           pointer-events-none
           absolute
           inset-x-0
-          bottom-4
+          bottom-2
           z-20
           flex
           justify-center
@@ -1508,8 +1508,8 @@ const ParticleHero = () => {
             w-full
             max-w-3xl
             text-center
-            translate-y-0
-            sm:-translate-y-36
+            -translate-y-4
+            sm:-translate-y-46
             lg:-translate-y-54
           "
         >
@@ -1518,13 +1518,13 @@ const ParticleHero = () => {
 
           <p
             className="
-              mb-2
-              text-[8px]
+              mb-0.5
+              text-[7px]
               font-semibold
               uppercase
-              tracking-[0.35em]
+              tracking-[0.3em]
               text-[#C29D56]
-              sm:mb-3
+              sm:mb-0
               sm:text-[10px]
               sm:tracking-[0.42em]
             "
@@ -1536,7 +1536,7 @@ const ParticleHero = () => {
 
           <h1
             className="
-              text-3xl
+              text-2xl
               font-black
               uppercase
               leading-none
@@ -1569,9 +1569,9 @@ const ParticleHero = () => {
           <p
             className="
               mx-auto
-              mt-2
+              mt-1
               max-w-xl
-              text-[10px]
+              text-[9px]
               leading-relaxed
               text-white/65
               sm:mt-4
@@ -1586,12 +1586,12 @@ const ParticleHero = () => {
 
           <div
             className="
-              mt-3
+              mt-2.5
               flex
               flex-wrap
               items-center
               justify-center
-              gap-2
+              gap-1.5
               sm:mt-5
               sm:gap-2.5
             "
@@ -1603,12 +1603,12 @@ const ParticleHero = () => {
                 group
                 inline-flex
                 items-center
-                gap-2
+                gap-1.5
                 rounded-md
                 bg-[#C29D56]
-                px-3.5
-                py-2
-                text-[9px]
+                px-3
+                py-1.5
+                text-[8px]
                 font-extrabold
                 uppercase
                 tracking-wide
@@ -1628,8 +1628,8 @@ const ParticleHero = () => {
 
               <ArrowRight
                 className="
-                  h-3
-                  w-3
+                  h-2.5
+                  w-2.5
                   transition-transform
                   duration-300
                   group-hover:translate-x-1
@@ -1645,14 +1645,14 @@ const ParticleHero = () => {
                 group
                 inline-flex
                 items-center
-                gap-2
+                gap-1.5
                 rounded-md
                 border
                 border-[#C29D56]/45
                 bg-black/25
-                px-3.5
-                py-2
-                text-[9px]
+                px-3
+                py-1.5
+                text-[8px]
                 font-extrabold
                 uppercase
                 tracking-wide
@@ -1671,8 +1671,8 @@ const ParticleHero = () => {
             >
               <PhoneCall
                 className="
-                  h-3
-                  w-3
+                  h-2.5
+                  w-2.5
                   text-[#C29D56]
                   transition-transform
                   duration-300
