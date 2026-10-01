@@ -1513,26 +1513,26 @@ const ParticleHero = () => {
             lg:-translate-y-54
           "
         >
-
-           <div className="mb-3 flex justify-center sm:mb-4">
-             <img
-               src={logoImg}
-               alt="Adi Shakti Logo"
-               className="
-                 h-16
-                 w-auto
-                 object-contain
-                 drop-shadow-[0_6px_20px_rgba(0,0,0,0.65)]
-                 sm:h-20
-                 lg:h-24
-               "
-             />
-           </div>         
+<div className="mb-1 flex justify-center">
+  <img
+    src={logoImg}
+    alt="Adi Shakti Logo"
+    className="
+      h-20
+      w-auto
+      object-contain
+      drop-shadow-[0_6px_20px_rgba(0,0,0,0.65)]
+      sm:h-28
+      lg:h-36
+    "
+  />
+</div>        
 
           {/* Small Heading */}
 
           <p
             className="
+              
               mb-0.5
               text-[7px]
               font-semibold
