@@ -1223,9 +1223,11 @@ const ParticleHero = () => {
       className="
         group
         relative
-        min-h-[560px]
-        h-[calc(100vh-80px)]
-        max-h-[900px]
+        min-h-[460px]
+        h-[480px]
+        sm:h-[calc(100vh-80px)]
+        sm:min-h-[560px]
+        sm:max-h-[900px]
         w-full
         overflow-hidden
         bg-[#030202]
@@ -1492,11 +1494,12 @@ const ParticleHero = () => {
           pointer-events-none
           absolute
           inset-x-0
-          bottom-0
+          bottom-4
           z-20
           flex
           justify-center
           px-4
+          sm:bottom-0
         "
       >
         <div
@@ -1504,10 +1507,10 @@ const ParticleHero = () => {
             pointer-events-auto
             w-full
             max-w-3xl
-            -translate-y-2
             text-center
-             sm:-translate-y-36
-             lg:-translate-y-54
+            translate-y-0
+            sm:-translate-y-36
+            lg:-translate-y-54
           "
         >
 
@@ -1515,13 +1518,15 @@ const ParticleHero = () => {
 
           <p
             className="
-              mb-3
-              text-[9px]
+              mb-2
+              text-[8px]
               font-semibold
               uppercase
-              tracking-[0.42em]
+              tracking-[0.35em]
               text-[#C29D56]
+              sm:mb-3
               sm:text-[10px]
+              sm:tracking-[0.42em]
             "
           >
             A New Dimension of Living
@@ -1531,7 +1536,7 @@ const ParticleHero = () => {
 
           <h1
             className="
-              text-4xl
+              text-3xl
               font-black
               uppercase
               leading-none
@@ -1564,11 +1569,12 @@ const ParticleHero = () => {
           <p
             className="
               mx-auto
-              mt-4
+              mt-2
               max-w-xl
-              text-[11px]
+              text-[10px]
               leading-relaxed
               text-white/65
+              sm:mt-4
               sm:text-sm
             "
           >
@@ -1580,12 +1586,14 @@ const ParticleHero = () => {
 
           <div
             className="
-              mt-5
+              mt-3
               flex
               flex-wrap
               items-center
               justify-center
-              gap-2.5
+              gap-2
+              sm:mt-5
+              sm:gap-2.5
             "
           >
 
@@ -1598,9 +1606,9 @@ const ParticleHero = () => {
                 gap-2
                 rounded-md
                 bg-[#C29D56]
-                px-4
-                py-2.5
-                text-[10px]
+                px-3.5
+                py-2
+                text-[9px]
                 font-extrabold
                 uppercase
                 tracking-wide
@@ -1612,6 +1620,7 @@ const ParticleHero = () => {
                 hover:bg-[#E1C27A]
                 hover:shadow-[0_12px_35px_rgba(194,157,86,0.35)]
                 sm:px-5
+                sm:py-2.5
                 sm:text-xs
               "
             >
@@ -1619,11 +1628,13 @@ const ParticleHero = () => {
 
               <ArrowRight
                 className="
-                  h-3.5
-                  w-3.5
+                  h-3
+                  w-3
                   transition-transform
                   duration-300
                   group-hover:translate-x-1
+                  sm:h-3.5
+                  sm:w-3.5
                 "
               />
             </Link>
@@ -1639,9 +1650,9 @@ const ParticleHero = () => {
                 border
                 border-[#C29D56]/45
                 bg-black/25
-                px-4
-                py-2.5
-                text-[10px]
+                px-3.5
+                py-2
+                text-[9px]
                 font-extrabold
                 uppercase
                 tracking-wide
@@ -1654,17 +1665,20 @@ const ParticleHero = () => {
                 hover:bg-[#6B1312]/70
                 hover:shadow-[0_10px_30px_rgba(194,157,86,0.18)]
                 sm:px-5
+                sm:py-2.5
                 sm:text-xs
               "
             >
               <PhoneCall
                 className="
-                  h-3.5
-                  w-3.5
+                  h-3
+                  w-3
                   text-[#C29D56]
                   transition-transform
                   duration-300
                   group-hover:rotate-12
+                  sm:h-3.5
+                  sm:w-3.5
                 "
               />
 
@@ -1682,12 +1696,14 @@ const ParticleHero = () => {
       <div
         className="
           absolute
-          bottom-4
+          bottom-2
           left-4
           z-20
-          flex
+          hidden
           items-center
           gap-2
+          sm:bottom-4
+          sm:flex
           sm:left-7
           lg:left-10
         "
