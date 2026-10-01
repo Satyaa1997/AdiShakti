@@ -1,12 +1,121 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Eye, Compass, Layers, Cpu, Smile, MapPin, Phone, Mail, ArrowRight, ShieldCheck, Building2, CheckCircle2, Award, Sparkles } from 'lucide-react';
+import * as THREE from 'three';
 
 // Importing all images at the top for proper Vite bundler handling and Vercel deployment
 import heroBgImg from '../assets/ADI SHAKTI GATE VIEW-NIGHT.jpeg';
 import siteViewImg from '../assets/HARIKA PARADISE VIEW-7.jpeg';
 import visionImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
 import missionImg from '../assets/01.jpeg';
+
+// 3D Pink Circular Coin Rain Animation Component for Vision/Mission Section
+function CoinRainBackground() {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const currentMount = mountRef.current;
+    if (!currentMount) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    
+    renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+    currentMount.appendChild(renderer.domElement);
+
+    const coinCount = 40;
+    const coins = [];
+    const geometry = new THREE.CylinderGeometry(1.0, 1.0, 0.15, 32);
+
+    for (let i = 0; i < coinCount; i++) {
+      // यहाँ रंगों को Pink थीम (Hot Pink, Deep Pink, Light Pink और Golden) में सेट किया गया है
+      const pinkColors = [0xff1493, 0xff69b4, 0xffb6c1, 0xC29D56];
+      const randomColor = pinkColors[Math.floor(Math.random() * pinkColors.length)];
+
+      const material = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(randomColor),
+        roughness: 0.1,
+        metalness: 0.85,
+        transparent: true,
+        opacity: 0.85,
+      });
+
+      const coin = new THREE.Mesh(geometry, material);
+
+      coin.position.x = (Math.random() - 0.5) * 40;
+      coin.position.y = Math.random() * 35 - 15;
+      coin.position.z = (Math.random() - 0.5) * 20;
+
+      coin.rotation.x = Math.random() * Math.PI;
+      coin.rotation.z = Math.random() * Math.PI;
+
+      coin.userData = {
+        speedY: 0.025 + Math.random() * 0.04,
+        rotX: (Math.random() - 0.5) * 0.03,
+        rotY: (Math.random() - 0.5) * 0.03,
+        rotZ: (Math.random() - 0.5) * 0.02,
+      };
+
+      scene.add(coin);
+      coins.push(coin);
+    }
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xff69b4, 2);
+    pointLight.position.set(10, 25, 15);
+    scene.add(pointLight);
+
+    camera.position.z = 22;
+
+    let animationFrameId;
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
+
+      coins.forEach((coin) => {
+        coin.position.y -= coin.userData.speedY;
+        
+        coin.rotation.x += coin.userData.rotX;
+        coin.rotation.y += coin.userData.rotY;
+        coin.rotation.z += coin.userData.rotZ;
+
+        if (coin.position.y < -18) {
+          coin.position.y = 18;
+          coin.position.x = (Math.random() - 0.5) * 40;
+        }
+      });
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    const handleResize = () => {
+      if (!currentMount) return;
+      camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
+      if (currentMount && renderer.domElement) {
+        currentMount.removeChild(renderer.domElement);
+      }
+    };
+  }, []);
+
+  return (
+    <div 
+      ref={mountRef} 
+      className="absolute inset-0 w-full h-full pointer-events-none z-10" 
+    />
+  );
+}
 
 const About = () => {
   // Counter Animation States
@@ -74,6 +183,7 @@ const About = () => {
           background-size: 24px 24px;
         }
       `}</style>
+      
       {/* ================= HERO BANNER ================= */}
       <section className="relative overflow-hidden min-h-[450px] sm:min-h-[530px] flex items-center bg-[#120303] text-center border-b border-[#C29D56]/30">
 
@@ -89,7 +199,7 @@ const About = () => {
         />
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/15 backdrop-blur-[1px] pointer-events-none" />
+        <div className="absolute inset-0 bg-black/45 backdrop-blur-[1px] pointer-events-none z-0" />
 
         {/* Hero Content */}
         <div className="relative z-10 mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-20 translate-y-6 sm:translate-y-0">
@@ -109,7 +219,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* ================= SECTION 1: ABOUT COMPANY (VISIBLE LIGHT GEOMETRICAL BG) ================= */}
+      {/* ================= SECTION 1: ABOUT COMPANY ================= */}
       <section ref={statsRef} className="py-12 sm:py-16 bg-white relative overflow-hidden light-geom-grid">
         <div className="absolute top-10 left-0 w-80 h-80 bg-[#C29D56]/15 rounded-full filter blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#6B1312]/10 rounded-full filter blur-3xl pointer-events-none" />
@@ -190,16 +300,18 @@ const About = () => {
         </div>
       </section>
 
-      {/* ================= SECTION 2: CORE PHILOSOPHY (GRADIENT MAROON BOX + GEOMETRICAL BG) ================= */}
+      {/* ================= SECTION 2: CORE PHILOSOPHY (WITH 3D PINK COIN RAIN EFFECT) ================= */}
       <section className="py-12 lg:py-15 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white relative overflow-hidden border-t border-b border-[#C29D56]/30">
 
-        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C29D56]/15 rounded-full filter blur-[140px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none z-0" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C29D56]/15 rounded-full filter blur-[140px] pointer-events-none z-0" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* 3D Pink Coin Rain Effect Component */}
+        <CoinRainBackground />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="space-y-12 sm:space-y-16 relative">
 
-            {/* Section Header */}
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <h2 className="text-4xl sm:text-5xl md:text-4xl font-extrabold text-white tracking-tight">
                 Driven by Vision. Dedicated to Mission.
@@ -218,7 +330,7 @@ const About = () => {
                   <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
                     To be the most trusted and admired real estate development enterprise across Uttar Pradesh by consistently delivering world-class, thoughtfully planned communities. We aspire to set a benchmark in architectural reliability, green urban spaces, and uncompromised customer-first values that stand the test of time.
                   </p>
-                  <p className="text-slate-300  text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                     Our long-term goal is to shape modern residential corridors that bridge everyday comfort with high-yield financial appreciation for every family who puts their trust in our name.
                   </p>
                 </div>
@@ -282,7 +394,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* ================= SECTION 3: OUR APPROACH (VISIBLE LIGHT GEOMETRICAL BG) ================= */}
+      {/* ================= SECTION 3: OUR APPROACH ================= */}
       <section className="py-12 sm:py-14 bg-white relative overflow-hidden light-geom-grid">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#C29D56]/20 rounded-full filter blur-3xl pointer-events-none" />
 
@@ -347,7 +459,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* ================= SECTION 4: CORPORATE HEADQUARTERS & CONTACT (GRADIENT MAROON BOX + GEOMETRICAL BG) ================= */}
+      {/* ================= SECTION 4: CORPORATE HEADQUARTERS & CONTACT ================= */}
       <section className="py-12 sm:py-14 bg-gradient-to-br from-[#120303] via-[#3a0a0a] to-[#250404] text-white border-t border-[#C29D56]/30 relative overflow-hidden">
 
         <div className="absolute inset-0 bg-[radial-gradient(#C29D56_1px,transparent_1px)] [background-size:30px_30px] opacity-15 pointer-events-none" />

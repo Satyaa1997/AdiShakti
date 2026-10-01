@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import slide1Img from '../assets/04.jpeg';
 import { Link } from 'react-router-dom';
 import { ArrowRight, PhoneCall, Building2, MapPin, Maximize2, LayoutGrid, Trees, Sparkles, ChevronLeft, ChevronRight, Image as ImageIcon, MapPinHouse, Compass, Star, Quote, X, User, UserRound, ShieldCheck, Landmark, FileText, Layers, TrendingUp, Shield, ArrowUpRight } from 'lucide-react';
 
 // Importing all images at the top for proper Vite bundler handling and Vercel deployment
-import slide1Img from '../assets/04.jpeg';
-import slide2Img from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
-import slide3Img from '../assets/HARIKA PARADISE VIEW-5.jpeg';
-import slide4Img from '../assets/HARIKA PARADISE VIEW-6.jpeg';
-import slide5Img from '../assets/HARIKA PARADISE VIEW-7.jpeg';
 
 import introImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
 import featProjImg from '../assets/01.jpeg';
@@ -28,38 +24,1695 @@ import gallery6Img from '../assets/HARIKA PARADISE VIEW-6.jpeg';
 import gallery7Img from '../assets/HARIKA PARADISE VIEW-7.jpeg';
 import gallery8Img from '../assets/04.jpeg';
 
-const Home = () => {
-  // Hero Slider Images (Using imported variables)
-  const slides = [
-    {
-      image: slide1Img,
-      title: 'Building Spaces. Creating Possibilities.',
-      description: 'A thoughtfully planned community offering organized infrastructure, green surroundings, and promising opportunities for comfortable living and long-term investment.',
-    },
-    {
-      image: slide2Img,
-      title: 'Where Grandeur Welcomes You Home',
-      description: 'Experience refined landscapes, timeless design, and everyday comfort coming together beautifully in a 10.38-acre gated community.',
-    },
-    {
-      image: slide3Img,
-      title: 'An Address of Enduring Prestige',
-      description: 'Designed to meet the expectations of modern families with modern infrastructure, lush green parks, and high-end security.',
-    },
-    {
-      image: slide4Img,
-      title: 'Experience Elite Community Living',
-      description: 'Thoughtfully structured layouts ensuring smooth internal roads, demarcation, and optimized utility lines for seamless living.',
-    },
-    {
-      image: slide5Img,
-      title: 'Your Dream Destination Awaits',
-      description: 'Strategically situated on Satrikh Road with seamless connectivity, approved legal titles, and lush green surroundings.',
+const ParticleHero = () => {
+  const canvasRef = useRef(null);
+  const heroRef = useRef(null);
+
+  const [tourMode, setTourMode] = useState(true);
+  const [webglSupported, setWebglSupported] = useState(true);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const hero = heroRef.current;
+
+    if (!canvas || !hero) return undefined;
+
+    let gl;
+
+    try {
+      gl = canvas.getContext('webgl', {
+        antialias: true,
+        alpha: false,
+        powerPreference: 'high-performance',
+      });
+    } catch (error) {
+      gl = null;
     }
-  ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+    if (!gl) {
+      setWebglSupported(false);
+      return undefined;
+    }
 
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const isTouchDevice = window.matchMedia(
+      '(pointer: coarse)'
+    ).matches;
+
+    const particleCount =
+      window.innerWidth < 640
+        ? 1050
+        : window.innerWidth < 1024
+          ? 1700
+          : 2600;
+
+    const vertexSource = `
+      attribute vec3 aPosition;
+      attribute float aSize;
+
+      uniform float uPointScale;
+      uniform float uPixelRatio;
+
+      varying float vDepth;
+
+      void main() {
+
+        float perspectiveDepth = max(
+          0.55,
+          5.0 - aPosition.z
+        );
+
+        vec2 clipPosition = vec2(
+          aPosition.x / 4.25,
+          aPosition.y / 2.35
+        );
+
+        gl_Position = vec4(
+          clipPosition,
+          clamp(
+            aPosition.z / 5.0,
+            -0.85,
+            0.85
+          ),
+          1.0
+        );
+
+        gl_PointSize =
+          aSize *
+          uPointScale *
+          uPixelRatio /
+          perspectiveDepth;
+
+        vDepth = perspectiveDepth;
+      }
+    `;
+
+    const fragmentSource = `
+      precision mediump float;
+
+      varying float vDepth;
+
+      void main() {
+
+        vec2 uv = gl_PointCoord - 0.5;
+
+        float distanceFromCenter = length(uv);
+
+        float soft =
+          1.0 -
+          smoothstep(
+           0.1,
+            0.48,
+            distanceFromCenter
+          );
+
+        if (soft <= 0.01) discard;
+
+        vec3 gold =
+          vec3(
+           0.95,
+            0.78,
+            0.42
+          );
+
+        vec3 warmWhite =
+          vec3(
+            1.0,
+            0.92,
+            0.72
+          );
+
+        float glow =
+          smoothstep(
+            1.6,
+            0.35,
+            vDepth
+          );
+
+        vec3 color =
+          mix(
+            gold,
+            warmWhite,
+            glow * 0.35
+          );
+
+        gl_FragColor =
+          vec4(
+           color * 1.5,
+            soft *
+            (0.95 + glow * 0.5)
+          );
+      }
+    `;
+
+    const compileShader = (type, source) => {
+      const shader = gl.createShader(type);
+
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+
+      if (
+        !gl.getShaderParameter(
+          shader,
+          gl.COMPILE_STATUS
+        )
+      ) {
+        gl.deleteShader(shader);
+        return null;
+      }
+
+      return shader;
+    };
+
+    const vertexShader = compileShader(
+      gl.VERTEX_SHADER,
+      vertexSource
+    );
+
+    const fragmentShader = compileShader(
+      gl.FRAGMENT_SHADER,
+      fragmentSource
+    );
+
+    if (!vertexShader || !fragmentShader) {
+      setWebglSupported(false);
+      return undefined;
+    }
+
+    const program = gl.createProgram();
+
+    gl.attachShader(
+      program,
+      vertexShader
+    );
+
+    gl.attachShader(
+      program,
+      fragmentShader
+    );
+
+    gl.linkProgram(program);
+
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
+
+    if (
+      !gl.getProgramParameter(
+        program,
+        gl.LINK_STATUS
+      )
+    ) {
+      setWebglSupported(false);
+      return undefined;
+    }
+
+    const positionLocation =
+      gl.getAttribLocation(
+        program,
+        'aPosition'
+      );
+
+    const sizeLocation =
+      gl.getAttribLocation(
+        program,
+        'aSize'
+      );
+
+    const pointScaleLocation =
+      gl.getUniformLocation(
+        program,
+        'uPointScale'
+      );
+
+    const pixelRatioLocation =
+      gl.getUniformLocation(
+        program,
+        'uPixelRatio'
+      );
+
+    const positions =
+      new Float32Array(
+        particleCount * 3
+      );
+
+    const sphereTargets =
+      new Float32Array(
+        particleCount * 3
+      );
+
+    const textTargets =
+      new Float32Array(
+        particleCount * 3
+      );
+
+    const sizes =
+      new Float32Array(
+        particleCount
+      );
+
+    /* =====================================================
+        SPHERE TARGETS
+    ===================================================== */
+
+    const goldenAngle =
+      Math.PI *
+      (3 - Math.sqrt(5));
+
+    for (
+      let i = 0;
+      i < particleCount;
+      i += 1
+    ) {
+      const y =
+        1 -
+        (i / (particleCount - 1)) *
+        2;
+
+      const radius =
+        Math.sqrt(
+          Math.max(
+            0,
+            1 - y * y
+          )
+        );
+
+      const theta =
+        goldenAngle * i;
+
+      const jitter =
+        0.96 +
+        Math.random() * 0.08;
+
+      const x =
+        Math.cos(theta) *
+        radius *
+        jitter;
+
+      const z =
+        Math.sin(theta) *
+        radius *
+        jitter;
+
+      const index = i * 3;
+
+      sphereTargets[index] =
+        x * 2.05;
+
+      sphereTargets[index + 1] =
+        y * 2.05;
+
+      sphereTargets[index + 2] =
+        z * 2.05;
+
+      positions[index] =
+        sphereTargets[index];
+
+      positions[index + 1] =
+        sphereTargets[index + 1];
+
+      positions[index + 2] =
+        sphereTargets[index + 2];
+
+      sizes[i] =
+        3.2 +
+        Math.random() * 3.8;
+    }
+
+    /* =====================================================
+        TEXT PARTICLES
+    ===================================================== */
+
+    const textCanvas =
+      document.createElement(
+        'canvas'
+      );
+
+    const textContext =
+      textCanvas.getContext(
+        '2d',
+        {
+          willReadFrequently: true,
+        }
+      );
+
+    textCanvas.width = 1200;
+    textCanvas.height = 300;
+
+    textContext.clearRect(
+      0,
+      0,
+      textCanvas.width,
+      textCanvas.height
+    );
+
+    textContext.fillStyle =
+      '#ffffff';
+
+    textContext.textAlign =
+      'center';
+
+    textContext.textBaseline =
+      'middle';
+
+    textContext.font =
+      '900 128px Arial, Helvetica, sans-serif';
+
+    textContext.fillText(
+      'ADISHAKTI',
+      600,
+      105
+    );
+
+    textContext.fillText(
+      '.',
+      600,
+      220
+    );
+
+    const pixels =
+      textContext.getImageData(
+        0,
+        0,
+        textCanvas.width,
+        textCanvas.height
+      ).data;
+
+    const textPoints = [];
+
+    const stride =
+      window.innerWidth < 640
+        ? 6
+        : 5;
+
+    for (
+      let y = 0;
+      y < textCanvas.height;
+      y += stride
+    ) {
+      for (
+        let x = 0;
+        x < textCanvas.width;
+        x += stride
+      ) {
+        const alpha =
+          pixels[
+          (y *
+            textCanvas.width +
+            x) *
+          4 +
+          3
+          ];
+
+        if (alpha > 80) {
+          textPoints.push({
+            x,
+            y,
+          });
+        }
+      }
+    }
+
+    for (
+      let i = 0;
+      i < particleCount;
+      i += 1
+    ) {
+      const point =
+        textPoints[
+        i % textPoints.length
+        ];
+
+      const index = i * 3;
+
+      textTargets[index] =
+        ((point.x /
+          textCanvas.width) -
+          0.5) *
+        6.5;
+
+      textTargets[index + 1] =
+        (0.5 -
+          point.y /
+          textCanvas.height) *
+        1.65;
+
+      textTargets[index + 2] =
+        (Math.random() - 0.5) *
+        0.22;
+    }
+
+    /* =====================================================
+        WEBGL BUFFERS
+    ===================================================== */
+
+    const positionBuffer =
+      gl.createBuffer();
+
+    const sizeBuffer =
+      gl.createBuffer();
+
+    gl.bindBuffer(
+      gl.ARRAY_BUFFER,
+      positionBuffer
+    );
+
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      positions,
+      gl.DYNAMIC_DRAW
+    );
+
+    gl.bindBuffer(
+      gl.ARRAY_BUFFER,
+      sizeBuffer
+    );
+
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      sizes,
+      gl.STATIC_DRAW
+    );
+
+    gl.useProgram(program);
+
+    gl.enable(gl.BLEND);
+
+    gl.blendFunc(
+      gl.SRC_ALPHA,
+      gl.ONE
+    );
+
+    gl.clearColor(
+      0.008,
+      0.005,
+      0.006,
+      1
+    );
+
+    /* =====================================================
+        POINTER STATE
+    ===================================================== */
+
+    const pointer = {
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
+      active: false,
+    };
+
+    let targetMode = 'sphere';
+    let currentMode = 0;
+
+    let autoStart =
+      performance.now() + 2600;
+
+    let lastTime =
+      performance.now();
+
+    let rafId;
+    let disposed = false;
+
+    /* =====================================================
+        RESIZE
+    ===================================================== */
+
+    const resize = () => {
+      const rect =
+        hero.getBoundingClientRect();
+
+      const pixelRatio =
+        Math.min(
+          window.devicePixelRatio || 1,
+          1.8
+        );
+
+      canvas.width =
+        Math.max(
+          1,
+          Math.floor(
+            rect.width *
+            pixelRatio
+          )
+        );
+
+      canvas.height =
+        Math.max(
+          1,
+          Math.floor(
+            rect.height *
+            pixelRatio
+          )
+        );
+
+      canvas.style.width =
+        `${rect.width}px`;
+
+      canvas.style.height =
+        `${rect.height}px`;
+
+      gl.viewport(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+
+      gl.useProgram(program);
+
+      gl.uniform1f(
+        pixelRatioLocation,
+        pixelRatio
+      );
+    };
+
+    /* =====================================================
+        MOUSE MOVE
+        STRONGER AUSTENSOR STYLE INTERACTION
+    ===================================================== */
+
+    const onPointerMove = (event) => {
+      const rect =
+        hero.getBoundingClientRect();
+
+      const normalizedX =
+        ((event.clientX -
+          rect.left) /
+          rect.width) *
+        2 -
+        1;
+
+      const normalizedY =
+        -(
+          ((event.clientY -
+            rect.top) /
+            rect.height) *
+          2 -
+          1
+        );
+
+      pointer.targetX =
+        normalizedX;
+
+      pointer.targetY =
+        normalizedY;
+
+      pointer.active = true;
+
+      /* Cursor position for glow */
+      hero.style.setProperty(
+        '--cursor-x',
+        `${event.clientX - rect.left}px`
+      );
+
+      hero.style.setProperty(
+        '--cursor-y',
+        `${event.clientY - rect.top}px`
+      );
+    };
+
+    const onPointerLeave = () => {
+      pointer.active = false;
+    };
+
+    /* =====================================================
+        TOUCH
+    ===================================================== */
+
+    const onTouchMove = (event) => {
+      const touch =
+        event.touches[0];
+
+      if (!touch) return;
+
+      const rect =
+        hero.getBoundingClientRect();
+
+      const normalizedX =
+        ((touch.clientX -
+          rect.left) /
+          rect.width) *
+        2 -
+        1;
+
+      const normalizedY =
+        -(
+          ((touch.clientY -
+            rect.top) /
+            rect.height) *
+          2 -
+          1
+        );
+
+      pointer.targetX =
+        normalizedX;
+
+      pointer.targetY =
+        normalizedY;
+
+      pointer.active = true;
+    };
+
+    const setMode = (mode) => {
+      targetMode = mode;
+
+      if (mode === 'sphere') {
+        autoStart =
+          performance.now() +
+          9999999;
+      }
+    };
+
+    hero.__setParticleMode =
+      setMode;
+
+    window.addEventListener(
+      'resize',
+      resize
+    );
+
+    hero.addEventListener(
+      'pointermove',
+      onPointerMove
+    );
+
+    hero.addEventListener(
+      'pointerleave',
+      onPointerLeave
+    );
+
+    hero.addEventListener(
+      'touchmove',
+      onTouchMove,
+      { passive: true }
+    );
+
+    resize();
+
+    /* =====================================================
+        RENDER LOOP
+    ===================================================== */
+
+    const render = (now) => {
+      if (disposed) return;
+
+      const delta =
+        Math.min(
+          32,
+          now - lastTime
+        );
+
+      lastTime = now;
+
+      /* AUTO TOUR */
+
+      if (
+        tourMode &&
+        !prefersReducedMotion &&
+        now > autoStart
+      ) {
+        const cycle =
+          (now - autoStart) %
+          15000;
+
+        targetMode =
+          cycle > 7000
+            ? 'text'
+            : 'sphere';
+      }
+
+      const desired =
+        targetMode === 'text'
+          ? 1
+          : 0;
+
+      const morphSpeed =
+        prefersReducedMotion
+          ? 0.12
+          : 0.035;
+
+      currentMode +=
+        (desired -
+          currentMode) *
+        morphSpeed *
+        Math.max(
+          1,
+          delta / 16.67
+        );
+
+      /* =================================================
+          SMOOTH CURSOR
+      ================================================= */
+
+      pointer.x +=
+        (pointer.targetX -
+          pointer.x) *
+        0.16;
+
+      pointer.y +=
+        (pointer.targetY -
+          pointer.y) *
+        0.16;
+
+      /* =================================================
+          SPHERE ROTATION
+      ================================================= */
+
+      const time =
+        now * 0.00035;
+
+      const cosY =
+        Math.cos(
+          time * 0.65
+        );
+
+      const sinY =
+        Math.sin(
+          time * 0.65
+        );
+
+      const cosX =
+        Math.cos(
+          time * 0.22
+        );
+
+      const sinX =
+        Math.sin(
+          time * 0.22
+        );
+
+      /*
+        Increased cursor movement.
+
+        Old:
+        0.28 / 0.20
+
+        New:
+        0.55 / 0.42
+      */
+
+      const followX =
+        pointer.active
+          ? pointer.x * 0.55
+          : 0;
+
+      const followY =
+        pointer.active
+          ? pointer.y * 0.42
+          : 0;
+
+      /* =================================================
+          PARTICLE LOOP
+      ================================================= */
+
+      for (
+        let i = 0;
+        i < particleCount;
+        i += 1
+      ) {
+        const index = i * 3;
+
+        const sx =
+          sphereTargets[index];
+
+        const sy =
+          sphereTargets[index + 1];
+
+        const sz =
+          sphereTargets[index + 2];
+
+        /* Sphere rotation */
+
+        const rx =
+          sx * cosY -
+          sz * sinY;
+
+        const rz =
+          sx * sinY +
+          sz * cosY;
+
+        const ry =
+          sy * cosX -
+          rz * sinX;
+
+        const rz2 =
+          sy * sinX +
+          rz * cosX;
+
+        /* Text target */
+
+        const tx =
+          textTargets[index];
+
+        const ty =
+          textTargets[index + 1];
+
+        const tz =
+          textTargets[index + 2];
+
+        /* Morph sphere -> text */
+
+        let x =
+          rx * (1 - currentMode) +
+          tx * currentMode;
+
+        let y =
+          ry * (1 - currentMode) +
+          ty * currentMode;
+
+        let z =
+          rz2 * (1 - currentMode) +
+          tz * currentMode;
+
+        /* =================================================
+            STRONG MOUSE FIELD
+        ================================================= */
+
+        if (pointer.active) {
+          const dx =
+            followX - x;
+
+          const dy =
+            followY - y;
+
+          const distance =
+            Math.sqrt(
+              dx * dx +
+              dy * dy
+            );
+
+          /*
+            Interaction radius.
+
+            Bigger value =
+            mouse affects more particles.
+          */
+
+          const radius = 3.65;
+
+          const influence =
+            Math.max(
+              0,
+              1 -
+              distance /
+              radius
+            );
+
+          /*
+            Smooth falloff
+          */
+
+          const smoothInfluence =
+            influence *
+            influence;
+
+          /*
+            Attraction
+          */
+
+          x +=
+            dx *
+            smoothInfluence *
+            0.42;
+
+          y +=
+            dy *
+            smoothInfluence *
+            0.42;
+
+          /*
+            Push particles outward
+            around cursor.
+          */
+
+          if (
+            distance > 0.001
+          ) {
+            const push =
+              smoothInfluence *
+              0.20;
+
+            x +=
+              (dx /
+                distance) *
+              push;
+
+            y +=
+              (dy /
+                distance) *
+              push;
+          }
+
+          /*
+            Depth movement.
+
+            This creates the
+            3D floating effect.
+          */
+
+          z +=
+            smoothInfluence *
+            0.55;
+        }
+
+        /* =================================================
+            EXTRA MICRO MOVEMENT
+        ================================================= */
+
+        const wave =
+          Math.sin(
+            now * 0.0015 +
+            i * 0.025
+          ) *
+          0.008;
+
+        x += wave;
+        y += wave * 0.7;
+
+        /* =================================================
+            SMOOTH PARTICLE POSITION
+        ================================================= */
+
+        positions[index] +=
+          (x -
+            positions[index]) *
+          0.16;
+
+        positions[index + 1] +=
+          (y -
+            positions[index + 1]) *
+          0.16;
+
+        positions[index + 2] +=
+          (z -
+            positions[index + 2]) *
+          0.16;
+      }
+
+      /* =================================================
+          DRAW
+      ================================================= */
+
+      gl.clear(
+        gl.COLOR_BUFFER_BIT |
+        gl.DEPTH_BUFFER_BIT
+      );
+
+      gl.useProgram(program);
+
+      gl.bindBuffer(
+        gl.ARRAY_BUFFER,
+        positionBuffer
+      );
+
+      gl.bufferSubData(
+        gl.ARRAY_BUFFER,
+        0,
+        positions
+      );
+
+      gl.enableVertexAttribArray(
+        positionLocation
+      );
+
+      gl.vertexAttribPointer(
+        positionLocation,
+        3,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      );
+
+      gl.bindBuffer(
+        gl.ARRAY_BUFFER,
+        sizeBuffer
+      );
+
+      gl.enableVertexAttribArray(
+        sizeLocation
+      );
+
+      gl.vertexAttribPointer(
+        sizeLocation,
+        1,
+        gl.FLOAT,
+        false,
+        0,
+        0
+      );
+
+      gl.uniform1f(
+        pointScaleLocation,
+        Math.min(
+          canvas.width,
+          canvas.height
+        ) * 0.0022
+      );
+
+      gl.drawArrays(
+        gl.POINTS,
+        0,
+        particleCount
+      );
+
+      rafId =
+        requestAnimationFrame(
+          render
+        );
+    };
+
+    if (
+      prefersReducedMotion ||
+      isTouchDevice
+    ) {
+      targetMode = 'sphere';
+    }
+
+    rafId =
+      requestAnimationFrame(
+        render
+      );
+
+    return () => {
+      disposed = true;
+
+      cancelAnimationFrame(
+        rafId
+      );
+
+      window.removeEventListener(
+        'resize',
+        resize
+      );
+
+      hero.removeEventListener(
+        'pointermove',
+        onPointerMove
+      );
+
+      hero.removeEventListener(
+        'pointerleave',
+        onPointerLeave
+      );
+
+      hero.removeEventListener(
+        'touchmove',
+        onTouchMove
+      );
+
+      delete hero.__setParticleMode;
+
+      gl.deleteBuffer(
+        positionBuffer
+      );
+
+      gl.deleteBuffer(
+        sizeBuffer
+      );
+
+      gl.deleteProgram(
+        program
+      );
+    };
+  }, [tourMode]);
+
+  const setParticleMode = (mode) => {
+    if (
+      heroRef.current
+        ?.__setParticleMode
+    ) {
+      heroRef.current.__setParticleMode(
+        mode
+      );
+    }
+
+    setTourMode(
+      mode === 'auto'
+    );
+  };
+
+  return (
+    <section
+      ref={heroRef}
+      className="
+        group
+        relative
+        min-h-[560px]
+        h-[calc(100vh-80px)]
+        max-h-[900px]
+        w-full
+        overflow-hidden
+        bg-[#030202]
+        text-white
+        cursor-crosshair
+      "
+    >
+
+      {/* ==================================================
+          PARTICLE CANVAS
+      ================================================== */}
+
+      <canvas
+        ref={canvasRef}
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+        "
+        aria-hidden="true"
+      />
+
+      {/* ==================================================
+          MOUSE FOLLOWING GLOW
+      ================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          z-[2]
+          h-56
+          w-56
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          opacity-0
+          transition-opacity
+          duration-300
+          group-hover:opacity-100
+        "
+        style={{
+          left: 'var(--cursor-x)',
+          top: 'var(--cursor-y)',
+          background:
+            'radial-gradient(circle, rgba(194,157,86,0.20) 0%, rgba(194,157,86,0.08) 30%, transparent 72%)',
+          filter: 'blur(10px)',
+        }}
+      />
+
+      {/* ==================================================
+          BACKGROUND RADIAL LIGHT
+      ================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(circle_at_50%_48%,rgba(194,157,86,0.12),transparent_36%),radial-gradient(circle_at_50%_50%,rgba(107,19,18,0.18),transparent_65%)]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[linear-gradient(to_bottom,rgba(0,0,0,0.28),transparent_28%,transparent_72%,rgba(0,0,0,0.75))]
+        "
+      />
+
+      {/* ==================================================
+          TOP LEFT LABEL
+      ================================================== */}
+
+      <div
+        className="
+          absolute
+          left-4
+          top-5
+          z-20
+          sm:left-7
+          sm:top-7
+          lg:left-10
+          lg:top-9
+        "
+      >
+        <div className="flex items-center gap-3">
+          <span className="h-px w-7 bg-[#C29D56]" />
+
+          <span
+            className="
+              text-[9px]
+              font-bold
+              uppercase
+              tracking-[0.28em]
+              text-[#C29D56]
+              sm:text-[10px]
+            "
+          >
+            EXP 00 / RESIDENTIAL
+          </span>
+        </div>
+
+        <p
+          className="
+            mt-1
+            pl-10
+            text-[8px]
+            uppercase
+            tracking-[0.22em]
+            text-white/45
+            sm:text-[9px]
+          "
+        >
+          Computational Living
+        </p>
+      </div>
+
+      {/* ==================================================
+          TOP RIGHT BRAND
+      ================================================== */}
+
+      <div
+        className="
+          absolute
+          right-4
+          top-5
+          z-20
+          text-right
+          sm:right-7
+          sm:top-7
+          lg:right-10
+          lg:top-9
+        "
+      >
+        <p
+          className="
+            text-[9px]
+            font-bold
+            uppercase
+            tracking-[0.2em]
+            text-white/75
+            sm:text-[10px]
+          "
+        >
+          ĀDI SHAKTI
+        </p>
+
+        <p
+          className="
+            mt-1
+            text-[7px]
+            uppercase
+            tracking-[0.22em]
+            text-[#C29D56]/75
+            sm:text-[8px]
+          "
+        >
+          Coloniser & Homebuilders
+        </p>
+      </div>
+
+      {/* ==================================================
+          LEFT VERTICAL INFORMATION
+      ================================================== */}
+
+      <div
+        className="
+          absolute
+          left-4
+          top-1/2
+          z-20
+          hidden
+          -translate-y-1/2
+          lg:block
+        "
+      >
+        <div
+          className="
+            writing-vertical
+            text-[8px]
+            font-bold
+            uppercase
+            tracking-[0.32em]
+            text-white/35
+          "
+          style={{
+            writingMode:
+              'vertical-rl',
+          }}
+        >
+          10.38 ACRES · RESIDENTIAL
+          PLOTS · SATRIKH ROAD,
+          LUCKNOW
+        </div>
+      </div>
+
+      {/* ==================================================
+          RIGHT VERTICAL INFORMATION
+      ================================================== */}
+
+      <div
+        className="
+          absolute
+          right-4
+          top-1/2
+          z-20
+          hidden
+          -translate-y-1/2
+          text-right
+          lg:block
+        "
+      >
+        <p
+          className="
+            text-[8px]
+            font-bold
+            tracking-[0.25em]
+            text-white/35
+          "
+        >
+          01
+        </p>
+
+        <div
+          className="
+            my-2
+            ml-auto
+            h-16
+            w-px
+            bg-gradient-to-b
+            from-transparent
+            via-[#C29D56]/50
+            to-transparent
+          "
+        />
+
+        <p
+          className="
+            text-[8px]
+            font-bold
+            uppercase
+            tracking-[0.25em]
+            text-[#C29D56]/70
+          "
+        >
+          HARIKA PARADISE
+        </p>
+      </div>
+
+      {/* ==================================================
+          HERO CONTENT
+          
+          MOVED UP
+          
+          OLD:
+          pb-7 sm:pb-10
+
+          NEW:
+          pb-20 sm:pb-24 lg:pb-28
+      ================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          z-20
+          flex
+          justify-center
+          px-4
+          pb-20
+          sm:pb-24
+          lg:pb-28
+        "
+      >
+        <div
+          className="
+            pointer-events-auto
+            w-full
+            max-w-3xl
+            text-center
+          "
+        >
+
+          {/* Small Heading */}
+
+          <p
+            className="
+              mb-3
+              text-[9px]
+              font-semibold
+              uppercase
+              tracking-[0.42em]
+              text-[#C29D56]
+              sm:text-[10px]
+            "
+          >
+            A New Dimension of Living
+          </p>
+
+          {/* MAIN HEADING */}
+
+          <h1
+            className="
+              text-4xl
+              font-black
+              uppercase
+              leading-none
+              tracking-[-0.04em]
+              text-white
+              drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]
+              transition-all
+              duration-500
+              hover:tracking-[-0.02em]
+              sm:text-6xl
+              md:text-7xl
+              lg:text-8xl
+            "
+          >
+            Adi{' '}
+            <span
+              className="
+                text-[#C29D56]
+                transition-all
+                duration-500
+                hover:text-[#E1C27A]
+              "
+            >
+              Shakti
+            </span>
+          </h1>
+
+          {/* DESCRIPTION */}
+
+          <p
+            className="
+              mx-auto
+              mt-4
+              max-w-xl
+              text-[11px]
+              leading-relaxed
+              text-white/65
+              sm:text-sm
+            "
+          >
+            Where thoughtful planning meets a
+            better way of living.
+          </p>
+
+          {/* BUTTONS */}
+
+          <div
+            className="
+              mt-5
+              flex
+              flex-wrap
+              items-center
+              justify-center
+              gap-2.5
+            "
+          >
+
+            <Link
+              to="/our-projects"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-2
+                rounded-md
+                bg-[#C29D56]
+                px-4
+                py-2.5
+                text-[10px]
+                font-extrabold
+                uppercase
+                tracking-wide
+                text-[#3a0a0a]
+                shadow-[0_8px_30px_rgba(194,157,86,0.18)]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:bg-[#E1C27A]
+                hover:shadow-[0_12px_35px_rgba(194,157,86,0.35)]
+                sm:px-5
+                sm:text-xs
+              "
+            >
+              Explore Projects
+
+              <ArrowRight
+                className="
+                  h-3.5
+                  w-3.5
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                "
+              />
+            </Link>
+
+            <Link
+              to="/enquire-now"
+              className="
+                group
+                inline-flex
+                items-center
+                gap-2
+                rounded-md
+                border
+                border-[#C29D56]/45
+                bg-black/25
+                px-4
+                py-2.5
+                text-[10px]
+                font-extrabold
+                uppercase
+                tracking-wide
+                text-white
+                backdrop-blur-sm
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-[#C29D56]
+                hover:bg-[#6B1312]/70
+                hover:shadow-[0_10px_30px_rgba(194,157,86,0.18)]
+                sm:px-5
+                sm:text-xs
+              "
+            >
+              <PhoneCall
+                className="
+                  h-3.5
+                  w-3.5
+                  text-[#C29D56]
+                  transition-transform
+                  duration-300
+                  group-hover:rotate-12
+                "
+              />
+
+              Enquire Now
+            </Link>
+
+          </div>
+        </div>
+      </div>
+
+      {/* ==================================================
+          INTERACTIVE FIELD LABEL
+      ================================================== */}
+
+      <div
+        className="
+          absolute
+          bottom-4
+          left-4
+          z-20
+          flex
+          items-center
+          gap-2
+          sm:left-7
+          lg:left-10
+        "
+      >
+        <span
+          className="
+            h-1.5
+            w-1.5
+            rounded-full
+            bg-[#C29D56]
+            shadow-[0_0_10px_rgba(194,157,86,0.9)]
+            animate-pulse
+          "
+        />
+
+        <span
+          className="
+            text-[7px]
+            font-semibold
+            uppercase
+            tracking-[0.2em]
+            text-white/35
+          "
+        >
+          Move Cursor · Interactive Field
+        </span>
+      </div>
+
+      {/* ==================================================
+          WEBGL FALLBACK
+      ================================================== */}
+
+      {!webglSupported && (
+        <div
+          className="
+            absolute
+            inset-0
+            z-10
+            flex
+            items-center
+            justify-center
+            bg-[radial-gradient(circle_at_center,rgba(107,19,18,0.45),#030202_65%)]
+          "
+        >
+          <div
+            className="
+              px-6
+              text-center
+            "
+          >
+            <div
+              className="
+                mx-auto
+                mb-5
+                h-36
+                w-36
+                rounded-full
+                border
+                border-[#C29D56]/30
+                bg-[radial-gradient(circle_at_35%_30%,rgba(225,194,122,0.5),rgba(107,19,18,0.25)_35%,transparent_70%)]
+                shadow-[0_0_80px_rgba(194,157,86,0.12)]
+              "
+            />
+
+            <p
+              className="
+                text-xs
+                uppercase
+                tracking-[0.3em]
+                text-[#C29D56]
+              "
+            >
+              Harika Paradise
+            </p>
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+};
+
+const Home = () => {
   // Gallery State & Lightbox
   const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
   const [lightboxImg, setLightboxImg] = useState(null);
@@ -94,13 +1747,6 @@ const Home = () => {
   const feedbackContainerRef = useRef(null);
   const thumbnailContainerRef = useRef(null);
 
-  // Auto-slide effect for Hero every 6 seconds with cinematic zoom
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
 
   // Auto-scroll effect for Feature Cards every 3 seconds on Mobile
   useEffect(() => {
@@ -403,18 +2049,6 @@ const Home = () => {
           animation: rainDropWord 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        @keyframes cinematicZoom {
-          0% {
-            transform: scale(1);
-          }
-          100% {
-            transform: scale(1.08);
-          }
-        }
-        .animate-cinematic-zoom {
-          animation: cinematicZoom 6s ease-out forwards;
-        }
-
         @keyframes blueprintFloat {
           0% {
             background-position: 0 0, 0 0;
@@ -582,70 +2216,8 @@ const Home = () => {
         }
       `}</style>
 
-      {/* ================= SECTION 1: HERO SLIDER (CINEMATIC FADE & ZOOM STYLE) ================= */}
-      <section className="relative w-full overflow-hidden bg-slate-900 
-                          h-[400px] sm:h-[450px] md:h-[520px] lg:h-[calc(100vh-80px)]">
-
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-95 z-0'
-              }`}
-          >
-            <img
-              src={slide.image}
-              alt={`Slide ${index + 1}`}
-              className={`w-full h-full object-cover object-center ${index === currentSlide ? 'animate-cinematic-zoom' : ''}`}
-              onError={(e) => {
-                e.target.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80';
-              }}
-            />
-
-            {/* Dark Gradient Overlay for Readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
-
-            <div className="absolute inset-0 z-20 flex items-end pb-8 sm:pb-12 md:pb-14">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="max-w-md space-y-2">
-                  <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-tight leading-snug drop-shadow-md">
-                    {slide.title}
-                  </h1>
-                  <p className="text-slate-100 text-[11px] sm:text-xs leading-relaxed line-clamp-2 sm:line-clamp-none drop-shadow-sm">
-                    {slide.description}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-2 pt-1">
-                    <Link
-                      to="/our-projects"
-                      className="bg-[#C29D56] hover:bg-[#b08b47] text-[#6B1312] px-3 py-1.5 rounded-md font-bold text-[11px] sm:text-xs shadow-md transition-all flex items-center gap-1 group"
-                    >
-                      Explore Projects
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      to="/enquire-now"
-                      className="bg-[#6B1312] hover:bg-[#520e0e] text-white border border-[#C29D56]/40 px-3 py-1.5 rounded-md font-bold text-[11px] sm:text-xs shadow-md transition-all flex items-center gap-1"
-                    >
-                      <PhoneCall className="w-3 h-3 text-[#C29D56]" /> Enquire Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        <div className="absolute bottom-3 left-0 right-0 z-30 flex justify-center space-x-1.5">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`h-1.5 rounded-full transition-all ${index === currentSlide ? 'w-5 bg-[#C29D56]' : 'w-1.5 bg-white/50 hover:bg-white'
-                }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      </section>
+      {/* ================= SECTION 1: INTERACTIVE PARTICLE HERO ================= */}
+      <ParticleHero />
 
       {/* ================= SECTION 2: COMPANY & PROJECT OVERVIEW (LIGHT GEOMETRICAL BG) ================= */}
       <section
@@ -677,8 +2249,8 @@ const Home = () => {
 
             <div
               className={`w-20 h-1 bg-[#6B1312] mx-auto rounded-full mt-2 transition-all duration-700 ${isSection2Visible
-                  ? 'opacity-100 scale-100'
-                  : 'opacity-0 scale-50'
+                ? 'opacity-100 scale-100'
+                : 'opacity-0 scale-50'
                 }`}
             />
           </div>
@@ -1467,7 +3039,7 @@ const Home = () => {
                 </div>
 
               </div>
-             
+
 
               {/* =========================
       VIEW FULL GALLERY
@@ -1579,8 +3151,8 @@ const Home = () => {
                   <span
                     key={index}
                     className={`rain-word ${isSectionFeedbackVisible
-                        ? "animate-rain-drop"
-                        : ""
+                      ? "animate-rain-drop"
+                      : ""
                       }`}
                     style={{
                       animationDelay: `${index * 0.15}s`,
@@ -1597,8 +3169,8 @@ const Home = () => {
 
               <div
                 className={`w-14 h-1 bg-[#6B1312] mx-auto rounded-full mt-1.5 transition-all duration-700 ${isSectionFeedbackVisible
-                    ? "opacity-100 scale-100"
-                    : "opacity-0 scale-50"
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-50"
                   }`}
               />
             </div>
@@ -1637,7 +3209,7 @@ const Home = () => {
               {feedbackData.map((item, index) => {
 
                 /* =========================
-                   MALE IMAGES
+                    MALE IMAGES
                 ========================= */
                 const maleImages = [
                   "https://tse3.mm.bing.net/th/id/OIP.7UlLJKC6VjaK803Itd1McwAAAA?r=0&w=260&h=280&rs=1&pid=ImgDetMain&o=7&rm=3",
@@ -1645,7 +3217,7 @@ const Home = () => {
                 ];
 
                 /* =========================
-                   FEMALE IMAGES
+                    FEMALE IMAGES
                 ========================= */
                 const femaleImages = [
                   "https://img.freepik.com/premium-vector/female-employee-avatar_505024-1176.jpg?w=2000",
@@ -1653,7 +3225,7 @@ const Home = () => {
                 ];
 
                 /* =========================
-                   IMAGE BASED ON GENDER
+                    IMAGE BASED ON GENDER
                 ========================= */
                 const isFemale =
                   String(item.gender || "").toLowerCase() === "female";
