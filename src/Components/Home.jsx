@@ -432,12 +432,9 @@ const ParticleHero = () => {
           0.5) *
         6.5;
 
-      textTargets[index + 1] =
-        (0.5 -
-          point.y /
-          textCanvas.height) *
-        1.65;
-
+       textTargets[index + 1] =
+       (0.5 - point.y / textCanvas.height) *
+       6.0;
       textTargets[index + 2] =
         (Math.random() - 0.5) *
         0.22;
