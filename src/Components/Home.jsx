@@ -1506,6 +1506,8 @@ const ParticleHero = () => {
             max-w-3xl
             -translate-y-2
             text-center
+             sm:-translate-y-24
+             lg:-translate-y-28
           "
         >
 
