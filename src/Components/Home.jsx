@@ -7,7 +7,7 @@ import { ArrowRight, PhoneCall, Building2, MapPin, Maximize2, LayoutGrid, Trees,
 
 import introImg from '../assets/HARIKA PARADISE GATE VIEW.jpeg';
 import featProjImg from '../assets/01.jpeg';
-import logoImg from '../assets/AdiShakti-Logo.png';
+import logoImg from '../assets/AdiShakti-Logo-1.png';
 import why1Img from '../assets/Why1.png';
 import why2Img from '../assets/Why2.png';
 import why3Img from '../assets/Why3.png';
